@@ -1,13 +1,17 @@
 const About = () => {
   return (
-    <section id="about" className="section gray-bg">
+    <section
+  id="about"
+  className="section gray-bg"
+  style={{ paddingTop: "140px", paddingBottom: "80px" }}
+>
       <div className="container">
         <div className="row sm-m-25px-b m-35px-b">
           <div className="col-md-12">
             <div className="section-title">
               <h3 className="dark-color text-uppercase">ABOUT ME</h3>
               <p className="text-uppercase small">
-                A Lead UX &amp; UI designer based in Canada
+                Multimedia medium creative from the Midwest.
               </p>
             </div>
           </div>
@@ -34,7 +38,7 @@ const About = () => {
           </div>
           <div className="col-lg-7 m-15px-tb">
             <div className="about-me">
-              <h4>I'M Tony Smith</h4>
+              <h4>I'M EJUAN</h4> 
               <h6>
                 A Lead <span className="theme-color">UX &amp; UI</span> designer
                 based in <span className="theme-color">Canada</span>

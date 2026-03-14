@@ -24,14 +24,18 @@ const Work = () => {
     //     return () => isotope.current.destroy();
   }, []);
   return (
-    <section id="work" className="section">
+    <section
+  id="work"
+  className="section"
+  style={{ paddingTop: "40px", paddingBottom: "80px", scrollMarginTop: "110px" }}
+>
       <div className="container">
         <div className="row sm-m-25px-b m-35px-b">
           <div className="col-md-12">
             <div className="section-title">
-              <h3 className="dark-color text-uppercase">LATEST WORKS</h3>
+              <h3 className="dark-color text-uppercase">wORK & PROJECTS</h3>
               <p className="text-uppercase small">
-                A Lead UX &amp; UI designer based in Canada
+                Archive of Work, projects, collaborations and discoveries.
               </p>
             </div>
           </div>
@@ -39,85 +43,117 @@ const Work = () => {
       </div>
       <div className="container">
         <div className="portfolio-content lightbox-gallery">
-          <div className="grid-item product branding">
-            <div className="portfolio-box-01">
-              <div className="portfolio-img">
-                <img src="static/img/portfolio-1.jpg" alt="image" />
-              </div>
-              <div className="portfolio-info">
-                <h5>Our Photography</h5>
-                <span>Design</span>
-              </div>
-              <a className="link-overlay" href="#" />
+         <div className="grid-item product branding">
+  <div className="portfolio-box-01">
+    <div className="portfolio-img">
+      <img src="static/img/portfolio-6.jpg" alt="image" />
+    </div>
+    <div className="portfolio-info">
+      <h5></h5>
+      <span></span>
+    </div>
+    <a className="link-overlay" href="#" />
+  </div>
+
+  <div style={{ paddingTop: "12px", paddingBottom: "5px" }}>
+    <h5 style={{ marginBottom: "4px" }}>AFUEGO51</h5>
+    <span style={{ fontSize: "13px", opacity: 0.8 }}>Food Truck design</span>
             </div>
-          </div>{" "}
+          </div>
           {/* grid item */}
           <div className="grid-item product branding">
-            <div className="portfolio-box-01">
-              <div className="portfolio-img">
-                <img src="static/img/portfolio-6.jpg" alt="image" />
-              </div>
-              <div className="portfolio-info">
-                <h5>Our Photography</h5>
-                <span>Design</span>
-              </div>
-              <a className="link-overlay" href="#" />
+  <div className="portfolio-box-01">
+    <div className="portfolio-img">
+      <img src="static/img/portfolio-6.jpg" alt="image" />
+    </div>
+    <div className="portfolio-info">
+      <h5></h5>
+      <span></span>
+    </div>
+    <a className="link-overlay" href="#" />
+  </div>
+
+  <div style={{ paddingTop: "12px", paddingBottom: "5px" }}>
+    <h5 style={{ marginBottom: "4px" }}>MF DOOM - Art Print</h5>
+    <span style={{ fontSize: "13px", opacity: 0.8 }}>Illustration</span>
             </div>
-          </div>{" "}
+          </div>
           {/* grid item */}
           <div className="grid-item product branding">
-            <div className="portfolio-box-01">
-              <div className="portfolio-img">
-                <img src="static/img/portfolio-2.jpg" alt="image" />
-              </div>
-              <div className="portfolio-info">
-                <h5>Our Photography</h5>
-                <span>Design</span>
-              </div>
-              <a className="link-overlay" href="#" />
+  <div className="portfolio-box-01">
+    <div className="portfolio-img">
+      <img src="static/img/portfolio-6.jpg" alt="image" />
+    </div>
+    <div className="portfolio-info">
+      <h5></h5>
+      <span></span>
+    </div>
+    <a className="link-overlay" href="#" />
+  </div>
+
+  <div style={{ paddingTop: "12px", paddingBottom: "5px" }}>
+    <h5 style={{ marginBottom: "4px" }}>CUTIE - LYRIC MUSIC VIDEO</h5>
+    <span style={{ fontSize: "13px", opacity: 0.8 }}>Animation</span>
             </div>
-          </div>{" "}
+          </div>
           {/* grid item */}
           <div className="grid-item product branding">
-            <div className="portfolio-box-01">
-              <div className="portfolio-img">
-                <img src="static/img/portfolio-3.jpg" alt="image" />
-              </div>
-              <div className="portfolio-info">
-                <h5>Our Photography</h5>
-                <span>Design</span>
-              </div>
-              <a className="link-overlay" href="#" />
+  <div className="portfolio-box-01">
+    <div className="portfolio-img">
+      <img src="static/img/portfolio-6.jpg" alt="image" />
+    </div>
+    <div className="portfolio-info">
+      <h5></h5>
+      <span></span>
+    </div>
+    <a className="link-overlay" href="#" />
+  </div>
+
+  <div style={{ paddingTop: "12px", paddingBottom: "5px" }}>
+    <h5 style={{ marginBottom: "4px" }}>K.H.A.S.H Foundation</h5>
+    <span style={{ fontSize: "13px", opacity: 0.8 }}>Design</span>
             </div>
-          </div>{" "}
+          </div>
           {/* grid item */}
           <div className="grid-item product branding">
-            <div className="portfolio-box-01">
-              <div className="portfolio-img">
-                <img src="static/img/portfolio-4.jpg" alt="image" />
-              </div>
-              <div className="portfolio-info">
-                <h5>Our Photography</h5>
-                <span>Design</span>
-              </div>
-              <a className="link-overlay" href="#" />
+  <div className="portfolio-box-01">
+    <div className="portfolio-img">
+      <img src="static/img/portfolio-6.jpg" alt="image" />
+    </div>
+    <div className="portfolio-info">
+      <h5></h5>
+      <span></span>
+    </div>
+    <a className="link-overlay" href="#" />
+  </div>
+
+  <div style={{ paddingTop: "12px", paddingBottom: "5px" }}>
+    <h5 style={{ marginBottom: "4px" }}>LEVEE x SWAPTOBER </h5>
+    <span style={{ fontSize: "13px", opacity: 0.8 }}>Animation/Design
+    </span>
             </div>
-          </div>{" "}
+          </div>
           {/* grid item */}
           <div className="grid-item product branding">
-            <div className="portfolio-box-01">
-              <div className="portfolio-img">
-                <img src="static/img/portfolio-5.jpg" alt="image" />
-              </div>
-              <div className="portfolio-info">
-                <h5>Our Photography</h5>
-                <span>Design</span>
-              </div>
-              <a className="link-overlay" href="#" />
+  <div className="portfolio-box-01">
+    <div className="portfolio-img">
+      <img src="static/img/portfolio-6.jpg" alt="image" />
+    </div>
+    <div className="portfolio-info">
+      <h5></h5>
+      <span></span>
+    </div>
+    <a className="link-overlay" href="#" />
+  </div>
+
+  <div style={{ paddingTop: "12px", paddingBottom: "5px" }}>
+    <h5 style={{ marginBottom: "4px" }}>BAR-K Event backdrop</h5>
+    <span style={{ fontSize: "13px", opacity: 0.8 }}>Illustration</span>
             </div>
-          </div>{" "}
+          </div>
           {/* grid item */}
-        </div>{" "}
+          
+        </div>
         {/* portfolio-content */}
       </div>
     </section>

@@ -14,13 +14,17 @@ const Header = ({ headerColor, isTransparent }) => {
         <nav
           className={`navbar header-nav header-${
             headerColor ? headerColor : "white"
-          } ${isTransparent ? "header-transparent" : ""} navbar-expand-lg`}
+          } ${isTransparent ? "header-transparent" : ""} navbar-expand-md`}
         >
           <div className="container">
             {/* Brand */}
-            <a className="navbar-brand" href="index.html">
-              Tony <span className="theme-bg" />
-            </a>
+           <a className="navbar-brand" href="/">
+  <img
+  src="/static/img/2EJUAN signature logo-09.png"
+  alt=""
+  style={{ height: "50px", width: "auto", display: "block" }}
+/>
+</a>
             {/* / */}
             {/* Mobile Toggle */}
             <Accordion.Toggle
@@ -41,37 +45,32 @@ const Header = ({ headerColor, isTransparent }) => {
               id="navbar-collapse-toggle"
             >
               <ul className="navbar-nav ml-auto nav-ul">
-                <li>
-                  <a className="nav-link active" href="#home">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#about">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#services">
-                    services
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#work">
-                    Portfolio
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#blog">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a className="nav-link" href="#contactus">
-                    Contact
-                  </a>
-                </li>
-              </ul>
+  <li>
+    <a className="nav-link active" href="/#home">
+      Home
+    </a>
+  </li>
+  <li>
+    <a className="nav-link" href="/#work">
+      Work
+    </a>
+  </li>
+  <li>
+    <a className="nav-link" href="/about">
+      About 
+    </a>
+  </li>
+  <li>
+    <a className="nav-link" href="/#blog">
+      Blog
+    </a>
+  </li>
+  <li>
+    <a className="nav-link" href="/#contact">
+      Contact
+    </a>
+  </li>
+</ul>
             </Accordion.Collapse>
             {/* / */}
           </div>
