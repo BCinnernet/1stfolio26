@@ -22,7 +22,7 @@ const Header = ({ headerColor, isTransparent }) => {
   <img
   src="/static/img/2EJUAN signature logo-09.png"
   alt=""
-  style={{ height: "50px", width: "auto", display: "block" }}
+  style={{ height: "56px", width: "auto", display: "block" }}
 />
 </a>
             {/* / */}

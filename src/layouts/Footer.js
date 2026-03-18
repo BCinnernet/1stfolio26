@@ -1,33 +1,50 @@
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
+    <footer className="footer" style={{ overflow: "hidden" }}>
+      
+      {/* Scrolling Text */}
+<div className="footer-marquee">
+  <div className="marquee-track">
+    <span>
+      — EJUAN HENDERSON — MULTIMEDIA ARTIST — CREATING IN THE MIDDLE OF THE MAP — KANSAS CITY, MISSOURI — CULTURE — COMMUNITY — EJUAN HENDERSON — MULTIMEDIA ARTIST — CREATING IN THE MIDDLE OF THE MAP — KANSAS CITY, MISSOURI — CULTURE — COMMUNITY 
+    </span>
+    <span>
+      — EJUAN HENDERSON — MULTIMEDIA ARTIST — CREATING IN THE MIDDLE OF THE MAP — KANSAS CITY, MISSOURI — CULTURE — COMMUNITY — EJUAN HENDERSON— MULTIMEDIA ARTIST — CREATING IN THE MIDDLE OF THE MAP — KANSAS CITY, MISSOURI — CULTURE — COMMUNITY
+    </span>
+  </div>
+</div>
+
+      <div className="container" style={{ paddingTop: "30px", paddingBottom: "20px" }}>
         <div className="row align-items-center">
-          <div className="col-md-6 m-10px-tb">
+          
+          {/* Social Links */}
+          <div className="col-md-6 m-12px-tb">
             <div className="nav justify-content-center justify-content-md-start">
-              <a href="#">
-                <i className="fab fa-facebook-f" />
-              </a>
-              <a href="#">
-                <i className="fab fa-twitter" />
-              </a>
-              <a href="#">
+
+              <a href="https://instagram.com/ohhej" target="_blank" rel="noreferrer">
                 <i className="fab fa-instagram" />
               </a>
-              <a href="#">
+
+              <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                <i className="fab fa-twitter" />
+              </a>
+
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer">
                 <i className="fab fa-linkedin-in" />
               </a>
-              <a href="#">
-                <i className="fab fa-pinterest" />
-              </a>
+
             </div>
           </div>
+
+          {/* Copyright */}
           <div className="col-md-6 m-10px-tb text-center text-md-right">
-            <p>© {new Date().getFullYear()} copyright all right reserved</p>
+            <p>© {new Date().getFullYear()} EJUAN HENDERSON. All rights reserved.</p>
           </div>
+
         </div>
       </div>
     </footer>
   );
 };
+
 export default Footer;

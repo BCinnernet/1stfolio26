@@ -15,8 +15,7 @@ export default function App({ Component, pageProps }) {
   }, []);
   return (
     <Fragment>
-      {loading && <Preloader />}
-      {content && <Component {...pageProps} />}
+      <Component {...pageProps} />
     </Fragment>
   );
 }

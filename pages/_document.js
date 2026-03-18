@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        {/* metas */}
         <meta charSet="utf-8" />
         <meta name="author" content="themepaa" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -14,34 +13,32 @@ export default function Document() {
         />
         <meta name="keywords" content="Tony - Portfolio Template" />
         <meta name="description" content="Tony - Portfolio Template" />
-        {/* title */}
-        <title>Tony - Portfolio React NextJS Template</title>
-        {/* Favicon */}
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-        {/* plugin CSS */}
+
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
         <link
-          href="static/plugin/bootstrap/css/bootstrap.min.css"
+          href="/static/plugin/bootstrap/css/bootstrap.min.css"
           rel="stylesheet"
         />
         <link
-          href="static/plugin/font-awesome/css/all.min.css"
+          href="/static/plugin/font-awesome/css/all.min.css"
           rel="stylesheet"
         />
-        <link href="static/plugin/et-line/style.css" rel="stylesheet" />
+        <link href="/static/plugin/et-line/style.css" rel="stylesheet" />
         <link
-          href="static/plugin/themify-icons/themify-icons.css"
-          rel="stylesheet"
-        />
-        <link
-          href="static/plugin/owl-carousel/css/owl.carousel.min.css"
+          href="/static/plugin/themify-icons/themify-icons.css"
           rel="stylesheet"
         />
         <link
-          href="static/plugin/magnific/magnific-popup.css"
+          href="/static/plugin/owl-carousel/css/owl.carousel.min.css"
           rel="stylesheet"
         />
-        {/* theme css */}
-        <link href="static/style/master.css" rel="stylesheet" />
+        <link
+          href="/static/plugin/magnific/magnific-popup.css"
+          rel="stylesheet"
+        />
+
+        <link href="/static/style/master.css" rel="stylesheet" />
       </Head>
       <body>
         <Main />
