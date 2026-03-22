@@ -24,11 +24,34 @@ const Index3 = () => {
           <div className="row align-items-center p-50px-tb">
             <div className="col-12">
               <div className="ht-text">
+  {false && (
   <h2 className="reveal-up">
     I'm <TypingAnimation />
   </h2>
-  <p className="reveal-up delay-1">
-I like pushing things forward, building ideas and bringing them to life. That’s kind of my whole thing!   </p>
+)}
+<h1
+  className="hero-heading"
+  style={{
+    fontSize: "16px",
+    color: "#ffffff",
+    textAlign: "left",
+    lineHeight: "1.6",
+    maxWidth: "500px",
+    letterSpacing: "0px",
+    fontWeight: "400",
+    margin: 0
+  }}
+>
+  <span className="hero-line delay-1">
+    <span>I like pushing things forward.</span>
+  </span><br />
+  <span className="hero-line delay-2">
+    <span>Building ideas and bringing them to life.</span>
+  </span><br />
+  <span className="hero-line delay-3">
+    <span>That’s my whole thing.</span>
+  </span>
+</h1>
 </div>
             </div>
           </div>
@@ -53,12 +76,21 @@ I like pushing things forward, building ideas and bringing them to life. That’
 
             <div className="col-lg-7 m-15px-tb">
               <div className="about-me">
-                <h4>HELLO!</h4>
+ <h4>
+  <span style={{ color: "#141413" }}>I'm</span>{" "}
+  <span style={{ color: "#141413",fontWeight: "800" }}>EJUAN</span>{" "}
+  <span style={{ fontSize: "20px", fontStyle: "italic", color: "#83867d" }}>
+    (ē·wän)
+  </span>{" "}
+  <span style={{ fontSize: "15px", fontStyle: "italic", color: "#83867d" }}>
+    (E.J works too)
+  </span>
+</h4>
                 <h6>
-                  I'm EJUAN a Multimedia artist and creative from the midwest! 
+                  A Multimedia artist and creative from the Midwest! 
                 </h6>
                 <p>
-                  I work across design, motion, and creative direction, with a strength in developing ideas, shaping concepts, and bringing them into a finished form that feels cohesive and intentional.
+                 A Swiss Army knife when it comes to creative work. Bouncing between different mediums to bring ideas into something tangible.
                 </p>
 
                 <div className="btn-bar">
