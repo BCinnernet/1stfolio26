@@ -33,9 +33,9 @@ const Work = () => {
         <div className="row sm-m-25px-b m-35px-b">
           <div className="col-md-12">
             <div className="section-title">
-              <h3 className="dark-color text-uppercase">Work & Projects</h3>
+              <h3 className="dark-color text-uppercase">Selected Work & Projects</h3>
               <p className="text-uppercase small reveal-up delay-1">
-                Archive of work, projects, collaborations, and discoveries.
+                A collection of collaborations, and discoveries.
               </p>
             </div>
           </div>

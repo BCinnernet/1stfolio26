@@ -9,9 +9,9 @@ const About = () => {
         <div className="row sm-m-25px-b m-35px-b">
           <div className="col-md-12">
             <div className="section-title">
-              <h3 className="dark-color text-uppercase">ABOUT ME</h3>
+              <h3 className="dark-color text-uppercase">.</h3>
               <p className="text-uppercase small">
-                Multimedia medium creative from the Midwest.
+                .
               </p>
             </div>
           </div>
@@ -40,54 +40,20 @@ const About = () => {
             <div className="about-me">
               <h4>I'M EJUAN</h4> 
               <h6>
-                A Lead <span className="theme-color">UX &amp; UI</span> designer
-                based in <span className="theme-color">Canada</span>
+                I care <span className="theme-color">A LOOOOOOTTT </span> about creativity and the art of art. <span className="theme-color"></span>
               </h6>
               <p>
-                I design and develop services for customers of all sizes,
-                specializing in creating stylish, modern websites, web services
-                and online stores. My passion is to design digital user
-                experiences through the bold interface and meaningful
-                interactions. Check out my Portfolio
+              A lot of what I do starts with trying to understand how something should feel before figuring out how it should look. 
+              I naturally step into other perspectives, translating thoughts, moods, and intentions into something tangible. 
+              Whether it’s visual, motion, or concept-driven work, I’m always focused on bringing ideas to life in a way that feels honest and human.
+              
+              That mindset carries into everything I do. 
+              I enjoy getting inside an idea, understanding where it’s coming from, and helping shape it into something clear and real. 
+              A big part of my strength is being able to step into someone else’s vision, build on it, and bring it to life in a way that feels aligned and intentional.
+              I also really value collaboration. Some of the best work comes from shared energy, bouncing ideas, refining them, and building something better together than you could alone. 
+              At the end of the day, I just genuinely love the process of creating — taking something abstract and turning it into something people can see, feel, and connect with.
               </p>
-              <div className="row about-list">
-                <div className="col-md-6">
-                  <div className="media">
-                    <label>Birthday</label>
-                    <p>4th april 1991</p>
-                  </div>
-                  <div className="media">
-                    <label>Age</label>
-                    <p>22 Yr</p>
-                  </div>
-                  <div className="media">
-                    <label>Residence</label>
-                    <p>Canada</p>
-                  </div>
-                  <div className="media">
-                    <label>Address</label>
-                    <p>California, USA</p>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="media">
-                    <label>E-mail</label>
-                    <p>info@domain.com</p>
-                  </div>
-                  <div className="media">
-                    <label>Phone</label>
-                    <p>820-885-3321</p>
-                  </div>
-                  <div className="media">
-                    <label>Skype</label>
-                    <p>skype.0404</p>
-                  </div>
-                  <div className="media">
-                    <label>Freelance</label>
-                    <p>Available</p>
-                  </div>
-                </div>
-              </div>
+              
               <div className="btn-bar">
                 <a className="m-btn m-btn-theme" href="#work">
                   Download CV

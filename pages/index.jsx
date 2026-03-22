@@ -25,13 +25,10 @@ const Index3 = () => {
             <div className="col-12">
               <div className="ht-text">
   <h2 className="reveal-up">
-    I love <TypingAnimation />
+    I'm <TypingAnimation />
   </h2>
   <p className="reveal-up delay-1">
-    I'm a multimedia artist exploring music, culture, community,
-    and visual storytelling through illustration, motion design,
-    and experimental work.
-  </p>
+Ideas, visuals and experiences brought to life through curiosity, collaboration, experimentation and a love for the art.  </p>
 </div>
             </div>
           </div>
@@ -44,30 +41,29 @@ const Index3 = () => {
       {/* About Teaser */}
       <section
   className="section gray-bg slant-top"
-  style={{ paddingTop: "80px", paddingBottom: "80px" }}
+  style={{ paddingTop: "80px", paddingBottom: "50" }}
 >
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 m-15px-tb">
-              <div className="about-me-img box-shadow">
-                <img src="static/img/about-us.jpg" alt="About preview" />
+              <div className="about-me-img">
+                <img src="/static/img/Body_scan_01_Test.gif" />
               </div>
             </div>
 
             <div className="col-lg-7 m-15px-tb">
               <div className="about-me">
-                <h4>About Me</h4>
+                <h4>HELLO!</h4>
                 <h6>
-                  Multimedia artist exploring music, culture, and visual storytelling.
+                  I'm EJUAN a Multimedia artist and creative from the midwest! 
                 </h6>
                 <p>
-                  Get a deeper look at who I am, what I make, and how I think
-                  about creative work. You can also find my contact info there.
+                  I work across design, motion, and creative direction, with a strength in developing ideas, shaping concepts, and bringing them into a finished form that feels cohesive and intentional.
                 </p>
 
                 <div className="btn-bar">
                   <a className="m-btn m-btn-theme" href="/about">
-                    Learn More
+                    Check me out!
                   </a>
                 </div>
               </div>

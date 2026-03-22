@@ -54,9 +54,9 @@ const Contact = () => {
         <div className="row sm-m-25px-b m-35px-b">
           <div className="col-md-12">
             <div className="section-title">
-              <h3 className="dark-color text-uppercase">Get in touch</h3>
+              <h3 className="dark-color text-uppercase">How can I help?</h3>
               <p className="text-uppercase small">
-                A Lead UX &amp; UI designer based in Canada
+                Business Hours: 24/7 7 days a week. 
               </p>
             </div>
           </div>
@@ -65,7 +65,7 @@ const Contact = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8 m-15px-tb">
             <div className="contact-form box-shadow">
-              <h4 className="dark-color font-alt m-20px-b">Say Something</h4>
+              <h4 className="dark-color font-alt m-20px-b">Got an idea? Dream? Vision? Let me know! "Hi" is cool too.</h4>
               <form onSubmit={(e) => onSubmit(e)} className="row">
                 <div className="col-md-6">
                   <div className="form-group">
@@ -160,9 +160,9 @@ const Contact = () => {
                 <i className="ti-location-pin" />
               </div>
               <div className="media-body">
-                <h6 className="dark-color font-alt">Our Address</h6>
+                <h6 className="dark-color font-alt">Where we at?</h6>
                 <p>
-                  123 Stree New York City , United States Of America 750065.
+                  Kansas CIty, Missouri
                 </p>
               </div>
             </div>
