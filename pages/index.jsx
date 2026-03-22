@@ -28,7 +28,7 @@ const Index3 = () => {
     I'm <TypingAnimation />
   </h2>
   <p className="reveal-up delay-1">
-Ideas, visuals and experiences brought to life through curiosity, collaboration, experimentation and a love for the art.  </p>
+I like pushing things forward, building ideas and bringing them to life. That’s kind of my whole thing!   </p>
 </div>
             </div>
           </div>
