@@ -29,6 +29,34 @@ const Index3 = () => {
     I'm <TypingAnimation />
   </h2>
 )}
+<div className="hero-socials reveal-up delay-1">
+  <a
+    href="https://instagram.com/ohhej"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram"
+  >
+    <i className="fab fa-instagram" />
+  </a>
+
+  <a
+    href="https://twitter.com"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Twitter"
+  >
+    <i className="fab fa-twitter" />
+  </a>
+
+  <a
+    href="https://linkedin.com"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="LinkedIn"
+  >
+    <i className="fab fa-linkedin-in" />
+  </a>
+</div>
 <h1
   className="hero-heading"
   style={{
@@ -43,13 +71,13 @@ const Index3 = () => {
   }}
 >
   <span className="hero-line delay-1">
-    <span>I like pushing things forward.</span>
+    <span></span>
   </span><br />
   <span className="hero-line delay-2">
-    <span>Building ideas and bringing them to life.</span>
+    <span></span>
   </span><br />
   <span className="hero-line delay-3">
-    <span>That’s my whole thing.</span>
+    <span></span>
   </span>
 </h1>
 </div>
@@ -62,17 +90,21 @@ const Index3 = () => {
       <Work />
 
       {/* About Teaser */}
-      <section
+<section
   className="section gray-bg slant-top"
-  style={{ paddingTop: "80px", paddingBottom: "50" }}
+  style={{ paddingTop: "80px", paddingBottom: "50px" }}
 >
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-5 m-15px-tb">
-              <div className="about-me-img">
-                <img src="/static/img/Body_scan_01_Test.gif" />
-              </div>
-            </div>
+  <div className="container">
+    <div className="row align-items-center">
+      <div className="col-lg-5 m-15px-tb">
+        <div className="about-me-img">
+          <img
+            className="about-gif"
+            src="/static/img/Body_scan_01_Test.gif"
+            alt="Ejuan animated body scan"
+          />
+        </div>
+      </div>
 
             <div className="col-lg-7 m-15px-tb">
               <div className="about-me">
@@ -83,14 +115,14 @@ const Index3 = () => {
     (ē·wän)
   </span>{" "}
   <span style={{ fontSize: "15px", fontStyle: "italic", color: "#83867d" }}>
-    (E.J works too)
+    (Most call me E.J)
   </span>
 </h4>
                 <h6>
-                  A Multimedia artist and creative from the Midwest! 
+                  
                 </h6>
                 <p>
-                 A Swiss Army knife when it comes to creative work. Bouncing between different mediums to bring ideas into something tangible.
+                 "Illustration, design and motion design is where I thrive, but honestly, whatever I can put my hands on, I'll make something out of it! I coded this website just to understand the process for the love of the game."
                 </p>
 
                 <div className="btn-bar">

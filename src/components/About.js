@@ -3,62 +3,47 @@ const About = () => {
     <section
   id="about"
   className="section gray-bg"
-  style={{ paddingTop: "140px", paddingBottom: "80px" }}
+  style={{ paddingTop: "100px", paddingBottom: "10px" }}
 >
       <div className="container">
         <div className="row sm-m-25px-b m-35px-b">
           <div className="col-md-12">
             <div className="section-title">
-              <h3 className="dark-color text-uppercase">.</h3>
-              <p className="text-uppercase small">
-                .
-              </p>
+              
             </div>
           </div>
         </div>
         <div className="row align-items-center">
           <div className="col-lg-5 m-15px-tb">
-            <div className="about-me-img box-shadow">
-              <img src="static/img/about-us.jpg" alt="image" />
-              <div className="nav social-icon">
-                <a href="#">
-                  <i className="fab fa-facebook-f" />
-                </a>
-                <a href="#">
-                  <i className="fab fa-twitter" />
-                </a>
-                <a href="#">
-                  <i className="fab fa-instagram" />
-                </a>
-                <a href="#">
-                  <i className="fab fa-linkedin-in" />
-                </a>
-              </div>
-            </div>
+            
+              <img
+  className="about-image"
+  src="static/img/about-us.jpg"
+  alt="image"
+/>
+            
           </div>
-          <div className="col-lg-7 m-15px-tb">
+          <div className="col-lg-6 m-15px-tb">
             <div className="about-me">
-              <h4>I'M EJUAN</h4> 
-              <h6>
-                I care <span className="theme-color">A LOOOOOOTTT </span> about creativity and the art of art. <span className="theme-color"></span>
-              </h6>
-              <p>
-              A lot of what I do starts with trying to understand how something should feel before figuring out how it should look. 
-              I naturally step into other perspectives, translating thoughts, moods, and intentions into something tangible. 
-              Whether it’s visual, motion, or concept-driven work, I’m always focused on bringing ideas to life in a way that feels honest and human.
-              
-              That mindset carries into everything I do. 
-              I enjoy getting inside an idea, understanding where it’s coming from, and helping shape it into something clear and real. 
-              A big part of my strength is being able to step into someone else’s vision, build on it, and bring it to life in a way that feels aligned and intentional.
-              I also really value collaboration. Some of the best work comes from shared energy, bouncing ideas, refining them, and building something better together than you could alone. 
-              At the end of the day, I just genuinely love the process of creating — taking something abstract and turning it into something people can see, feel, and connect with.
-              </p>
-              
-              <div className="btn-bar">
-                <a className="m-btn m-btn-theme" href="#work">
-                  Download CV
-                </a>
-              </div>
+              <h4>
+  <strong></strong>
+</h4>
+
+<p>
+Ejuan Henderson is a multimedia artist whose work spans illustration, design, and motion with a toolkit built to take on a wide range of creative challenges. Known for his eclectic versatility, he brings ideas to life through a balance of artistic expression and technical skill.
+</p>
+<p>
+Besides typing about myself in third person.. Illustration, design and motion design is where I thrive, but honestly, whatever I can put my hands on, I'll make something out of it! I coded this website just to understand the process for the love of the game.
+</p>
+<p>
+Dreaming, taking an idea and translating it into something we can experience is a trick that never gets old to me.
+</p>
+<p style={{ marginTop: "20px", fontWeight: "500" }}>
+  Available for freelance, collaborations, and creative opportunities.
+</p>
+<p style={{ marginTop: "20px", fontWeight: "400" }}>
+  Business Hours: 24/7 - 7 days a week.
+</p>
             </div>
           </div>
         </div>

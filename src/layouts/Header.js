@@ -34,7 +34,7 @@ const Header = ({ headerColor, isTransparent }) => {
           <div className="container">
             <a className="navbar-brand" href="/">
               <img
-                src="/static/img/Jumbled EJUAN logo-11.png"
+                src="/static/img/Jumbled EJUAN logo - henderson outline - 64.png"
                 alt="Ejuan logo"
                 style={{ height: "60px", width: "auto", display: "block" }}
               />
