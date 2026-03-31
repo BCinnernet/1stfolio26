@@ -6521,14 +6521,14 @@ body {
   }
 
   .about-me-img {
-  border: 0px solid #ffffff;
-  border-radius: 0px;
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: -60px;
-}
+    border: 0px solid #ffffff;
+    border-radius: 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-right: 0;
   }
+}
 .about-image {
   width: 75%;
   max-width: 500px;
@@ -6833,4 +6833,8 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+html,
+body {
+  overflow-x: hidden;
 }
