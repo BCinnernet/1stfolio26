@@ -18,22 +18,34 @@ const Footer = () => {
         <div className="row align-items-center">
           
           {/* Social Links */}
-          <div className="col-md-6 m-12px-tb">
-            <div className="nav justify-content-center justify-content-md-start">
+         <div className="nav justify-content-center justify-content-md-start">
 
-              <a href="https://instagram.com/ohhej" target="_blank" rel="noreferrer">
-                <i className="fab fa-instagram" />
-              </a>
+  <a
+    href="https://www.instagram.com/ohhej"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Instagram"
+  >
+    <i className="fab fa-instagram" />
+  </a>
 
-              <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                <i className="fab fa-twitter" />
-              </a>
-
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-                <i className="fab fa-linkedin-in" />
-              </a>
-
-            </div>
+  <a
+    href="https://bsky.app/profile/becausetheinnernet.com"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="Bluesky"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 600 530"
+      width="20"
+      height="20"
+      fill="currentColor"
+      style={{ verticalAlign: "middle" }}
+    >
+      <path d="M300 266c0 0-92-178-208-178-62 0-92 51-92 104 0 112 162 156 162 156s-55 40-55 88c0 51 46 94 104 94 58 0 89-40 89-40s31 40 89 40c58 0 104-43 104-94 0-48-55-88-55-88s162-44 162-156c0-53-30-104-92-104-116 0-208 178-208 178z" />
+    </svg>
+  </a>
           </div>
 
           {/* Copyright */}

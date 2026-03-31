@@ -24,62 +24,7 @@ const Index3 = () => {
           <div className="row align-items-center p-50px-tb">
             <div className="col-12">
               <div className="ht-text">
-  {false && (
-  <h2 className="reveal-up">
-    I'm <TypingAnimation />
-  </h2>
-)}
-<div className="hero-socials reveal-up delay-1">
-  <a
-    href="https://instagram.com/ohhej"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Instagram"
-  >
-    <i className="fab fa-instagram" />
-  </a>
 
-  <a
-    href="https://twitter.com"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Twitter"
-  >
-    <i className="fab fa-twitter" />
-  </a>
-
-  <a
-    href="https://linkedin.com"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="LinkedIn"
-  >
-    <i className="fab fa-linkedin-in" />
-  </a>
-</div>
-<h1
-  className="hero-heading"
-  style={{
-    fontSize: "16px",
-    color: "#ffffff",
-    textAlign: "left",
-    lineHeight: "1.6",
-    maxWidth: "500px",
-    letterSpacing: "0px",
-    fontWeight: "400",
-    margin: 0
-  }}
->
-  <span className="hero-line delay-1">
-    <span></span>
-  </span><br />
-  <span className="hero-line delay-2">
-    <span></span>
-  </span><br />
-  <span className="hero-line delay-3">
-    <span></span>
-  </span>
-</h1>
 </div>
             </div>
           </div>

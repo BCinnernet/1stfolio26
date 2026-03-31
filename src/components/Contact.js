@@ -1,203 +1,122 @@
-import emailjs from "emailjs-com";
 import { useState } from "react";
 
 const Contact = () => {
-  const [mailData, setMailData] = useState({
-    name: "",
-    email: "",
-    message: "",
-    subject: "",
+  const [cardStyle, setCardStyle] = useState({
+    transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
   });
-  const { name, email, subject, message } = mailData;
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const onChange = (e) => {
-    setMailData({ ...mailData, [e.target.name]: e.target.value });
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
-    if (
-      name.length === 0 ||
-      email.length === 0 ||
-      message.length === 0 ||
-      subject.length === 0
-    ) {
-      setError(true);
-    } else {
-      emailjs
-        .send(
-          "service_seruhwu", // service id
-          "template_21aw58z", // template id
-          mailData,
-          "Q3pccdLZhU-mZT7tQ" // public api
-        )
-        .then(
-          (response) => {
-            setError(false);
-            setSuccess(true);
-            setTimeout(() => {
-              setSuccess(false);
-            }, 3000);
-            setMailData({ name: "", email: "", message: "", subject: "" });
-          },
-          (err) => {
-            console.log(err.text);
-          }
-        );
-    }
+
+  const [glossStyle, setGlossStyle] = useState({
+    background:
+      "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 35%, rgba(255,255,255,0.00) 60%)",
+    transform: "translateX(0px) translateY(0px)",
+  });
+
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateY = ((x - centerX) / centerX) * 6;
+    const rotateX = ((centerY - y) / centerY) * 6;
+
+    const glossX = ((x - centerX) / centerX) * 8;
+    const glossY = ((y - centerY) / centerY) * 8;
+
+    setCardStyle({
+      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+    });
+
+    setGlossStyle({
+      background:
+        "linear-gradient(120deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.00) 60%)",
+      transform: `translateX(${glossX}px) translateY(${glossY}px)`,
+    });
   };
 
-  console.log(error);
+  const handleMouseLeave = () => {
+    setCardStyle({
+      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
+    });
+
+    setGlossStyle({
+      background:
+        "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 35%, rgba(255,255,255,0.00) 60%)",
+      transform: "translateX(0px) translateY(0px)",
+    });
+  };
+
   return (
     <section id="contact" className="section gray-bg">
       <div className="container">
-        <div className="row sm-m-25px-b m-35px-b">
-          <div className="col-md-12">
-            <div className="section-title">
-              <h3 className="dark-color text-uppercase">How can I help?</h3>
-              <p className="text-uppercase small">
-                Business Hours: 24/7 7 days a week. 
-              </p>
-            </div>
-          </div>
-        </div>
-        {/* form */}
         <div className="row justify-content-center">
-          <div className="col-lg-8 m-15px-tb">
-            <div className="contact-form box-shadow">
-              <h4 className="dark-color font-alt m-20px-b">Got an idea? Dream? Vision? Let me know! "Hi" is cool too.</h4>
-              <form onSubmit={(e) => onSubmit(e)} className="row">
-                <div className="col-md-6">
-                  <div className="form-group">
-                    <input
-                      name="name"
-                      onChange={(e) => onChange(e)}
-                      value={name}
-                      id="name"
-                      placeholder="Name *"
-                      className={`form-control ${
-                        error ? (name.length !== 0 ? "" : "invalid") : ""
-                      }`}
-                      type="text"
-                    />
-                    <span className="input-focus-effect theme-bg" />
-                  </div>
+          <div className="col-lg-10">
+            <div
+              className="contact-card"
+              style={cardStyle}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className="contact-card-gloss" style={glossStyle}></div>
+
+              <div className="contact-card-inner">
+                <div className="contact-card-left">
+                  <p className="contact-card-label">How can I help?</p>
+                  <h3 className="contact-card-title">Reach out, lets connect.</h3>
+                  <p className="contact-card-text">
+                    Business Hours: Open 24/7 | 7 days a week.
+                  </p>
                 </div>
-                <div className="col-md-6">
-                  <div className="form-group">
-                    <input
-                      name="email"
-                      onChange={(e) => onChange(e)}
-                      value={email}
-                      id="email"
-                      placeholder="Email *"
-                      className={`form-control ${
-                        error ? (email.length !== 0 ? "" : "invalid") : ""
-                      }`}
-                      type="email"
-                    />
-                    <span className="input-focus-effect theme-bg" />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="form-group">
-                    <input
-                      name="subject"
-                      onChange={(e) => onChange(e)}
-                      value={subject}
-                      id="subject"
-                      placeholder="Subject *"
-                      className={`form-control ${
-                        error ? (subject.length !== 0 ? "" : "invalid") : ""
-                      }`}
-                      type="text"
-                    />
-                    <span className="input-focus-effect theme-bg" />
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <div className="form-group">
-                    <textarea
-                      name="message"
-                      onChange={(e) => onChange(e)}
-                      value={message}
-                      id="message"
-                      placeholder="Your message *"
-                      rows={3}
-                      className={`form-control ${
-                        error ? (message.length !== 0 ? "" : "invalid") : ""
-                      }`}
-                    />
-                    <span className="input-focus-effect theme-bg" />
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <div className="send">
-                    <button
-                      className="m-btn m-btn-theme"
-                      type="submit"
-                      value="Send"
-                    >
-                      {" "}
-                      send message
-                    </button>
-                  </div>
-                  <span
-                    id="suce_message"
-                    className="text-success"
-                    style={{ display: success ? "block" : "none" }}
+
+                <div className="contact-card-right">
+                  <a
+                    href="mailto:ejuanhenderson@gmail.com"
+                    className="contact-card-email"
                   >
-                    Message Sent Successfully
-                  </span>
+                    ejuanhenderson@gmail.com
+                  </a>
+
+                  <div className="contact-card-socials">
+                    <a
+                      href="https://www.instagram.com/ohhej"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Instagram"
+                    >
+                      <i className="fab fa-instagram" />
+                    </a>
+
+                    <a
+                      href="https://bsky.app/profile/becausetheinnernet.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Bluesky"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 600 530"
+                        width="22"
+                        height="22"
+                        fill="currentColor"
+                      >
+                        <path d="M300 266c0 0-92-178-208-178-62 0-92 51-92 104 0 112 162 156 162 156s-55 40-55 88c0 51 46 94 104 94 58 0 89-40 89-40s31 40 89 40c58 0 104-43 104-94 0-48-55-88-55-88s162-44 162-156c0-53-30-104-92-104-116 0-208 178-208 178z" />
+                      </svg>
+                    </a>
+                  </div>
+
+                  <p className="contact-card-location">Kansas City, Missouri</p>
                 </div>
-              </form>
-            </div>
-          </div>{" "}
-          {/* col */}
-          <div className="col-lg-4 m-15px-tb">
-            <div className="contact-info media box-shadow">
-              <div className="icon">
-                <i className="ti-location-pin" />
-              </div>
-              <div className="media-body">
-                <h6 className="dark-color font-alt">Where we at?</h6>
-                <p>
-                  Kansas CIty, Missouri
-                </p>
-              </div>
-            </div>
-            <div className="contact-info media box-shadow">
-              <div className="icon">
-                <i className="ti-mobile" />
-              </div>
-              <div className="media-body">
-                <h6 className="dark-color font-alt">Our Phone</h6>
-                <p>
-                  Office: +004 44444 44444
-                  <br />
-                  Office: +004 44444 44444
-                  <br />
-                </p>
-              </div>
-            </div>
-            <div className="contact-info media box-shadow">
-              <div className="icon">
-                <i className="ti-email" />
-              </div>
-              <div className="media-body">
-                <h6 className="dark-color font-alt">Our Email</h6>
-                <p>
-                  info@domainname.com
-                  <br />
-                  contact@domainname.com
-                </p>
               </div>
             </div>
           </div>
         </div>
-        {/* end form */}
       </div>
     </section>
   );
 };
+
 export default Contact;

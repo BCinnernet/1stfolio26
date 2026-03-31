@@ -54,20 +54,13 @@ const Work = () => {
 />
                 </div>
 
-                <div className="portfolio-info">
-                  <h5></h5>
-                  <span></span>
-                </div>
-
                 <a className="link-overlay" href={`/projects/${project.slug}`} />
               </div>
 
-              <div style={{ paddingTop: "12px", paddingBottom: "5px" }}>
-                <h5 style={{ marginBottom: "4px" }}>{project.title}</h5>
-                <span style={{ fontSize: "13px", opacity: 0.8 }}>
-                  {project.category}
-                </span>
-              </div>
+              <div className="project-card-copy">
+  <h5 className="project-card-title">{project.title}</h5>
+  <span className="project-card-category">{project.category}</span>
+</div>
             </div>
           ))}
         </div>
