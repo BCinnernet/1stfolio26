@@ -87,7 +87,7 @@ const Index3 = () => {
       {/* ── About Teaser ── */}
       <section
         className="section slant-top"
-        style={{ paddingTop: "80px", paddingBottom: "50px", background: "#a8c295" }}
+        style={{ paddingTop: "80px", paddingBottom: "50px", background: "#c8c7be" }}
       >
         <div className="container">
           <div className="row align-items-center">
