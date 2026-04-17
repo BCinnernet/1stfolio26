@@ -6679,7 +6679,7 @@ body {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  color: rgba(77, 78, 72, 0.85);
+  color: #f1ebdf;
   transition: 0.25s ease;
   font-size: 25px; /* 👈 CONTROL ICON SIZE HERE */
 }
