@@ -6653,16 +6653,17 @@ body {
   color: #c6ff6a;
 }
 
-/* On mobile, lay them out in a row and center them */
+/* On mobile, hide the logo socials — they appear inside the menu instead */
 @media (max-width: 767px) {
   .header-logo-socials {
-    flex-direction: row;
-    gap: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none;
+  }
+  ul.navbar-nav .nav-socials {
+    display: flex;
+    margin-left: 0;
+    margin-top: 12px;
+    padding-bottom: 8px;
+    justify-content: center;
   }
 }
 
