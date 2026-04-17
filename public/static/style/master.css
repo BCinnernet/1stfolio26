@@ -34,7 +34,7 @@ Table of contents
 .m-btn-link {
   display: inline-block;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 10px;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 600;
@@ -53,7 +53,7 @@ Table of contents
   border-radius: 0;
   width: auto;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 10px;
   cursor: pointer;
   font-weight: 500;
   text-transform: uppercase;
@@ -66,7 +66,7 @@ Table of contents
   padding: 2px 17px;
 }
 .m-btn.m-btn-sm {
-  font-size: 11px;
+  font-size: 10px;
   padding: 4px 24px;
 }
 .m-btn.m-btn-lg {
@@ -582,7 +582,7 @@ h6 {
   padding: 10px 0;
   background: #df732c;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 10px;
   color: #ffffff;
   display: block;
 }
@@ -780,7 +780,7 @@ h6 {
 
 .header-nav .navbar-nav .nav-link {
   display: block;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.035rem;
@@ -869,7 +869,7 @@ h6 {
 }
 .section-title p {
   margin: 0;
-  font-size: 14px;
+  font-size: 10px;
   letter-spacing: 2px;
 }
 
@@ -895,7 +895,7 @@ h6 {
   position: absolute;
   right: 0;
   top: -30px;
-  font-size: 14px;
+  font-size: 10px;
 }
 .skill-lt.md .skill-bar .skill-bar-in {
   height: 8px;
@@ -5618,7 +5618,7 @@ h6 {
 }
 @media (max-width: 767px) {
   .home-banner-01 h6 {
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 .home-banner-01 h1 {
@@ -5766,7 +5766,7 @@ h6 {
 }
 @media (max-width: 767px) {
   .home-banner-02 h6 {
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 .home-banner-02 h1 {
@@ -5989,7 +5989,7 @@ h6 {
   margin: 0;
   color: #090a0c;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 10px;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 90px;
           flex: 0 0 90px;
@@ -5999,7 +5999,7 @@ h6 {
 .about-me .media p {
   margin-bottom: 0;
   padding-left: 15px;
-  font-size: 14px;
+  font-size: 10px;
 }
 .about-me .btn-bar {
   margin-top: 30px;
@@ -6179,7 +6179,7 @@ h6 {
   padding: 2px 12px;
   display: inline-block;
   vertical-align: top;
-  font-size: 14px;
+  font-size: 10px;
   -webkit-transition: ease all 0.35s;
   transition: ease all 0.35s;
   position: relative;
@@ -6296,7 +6296,7 @@ h6 {
   padding-left: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
-  font-size: 14px;
+  font-size: 10px;
 }
 .contact-form .form-group .form-control.invalid {
   border-color: #ff0000;
@@ -6339,7 +6339,7 @@ h6 {
 }
 .contact-info .media-body p {
   margin: 0;
-  font-size: 14px;
+  font-size: 10px;
 }/*# sourceMappingURL=master.css.map */
 
 /* NAV HOVER LETTER SPACING */
@@ -6422,7 +6422,7 @@ h6 {
 .marquee-track span {
   flex-shrink: 0;
   white-space: nowrap;
-  font-size: 14px;
+  font-size: 10px;
   letter-spacing: 2px;
   padding: 12px 40px 12px 0;
   color: #c6ff6a;
@@ -6519,7 +6519,7 @@ h6 {
   padding: 10px 22px;
   width: 200px;
   color: #f1ebdf;
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   transition: background 0.55s ease-in-out, border-color 0.55s ease-in-out, color 0.55s ease-in-out;
@@ -6628,7 +6628,7 @@ body {
   .hero-socials a {
     width: 38px;
     height: 38px;
-    font-size: 14px;
+    font-size: 10px;
   }
 }
 @media (max-width: 768px) {
@@ -6809,8 +6809,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 14px;
+  gap: 5px;
+  font-size: 12px;
   font-size: 22px;
   line-height: 1;
   transition: 0.25s ease;
@@ -6828,7 +6828,7 @@ body {
 .contact-card-location {
   margin: 0;
   color: rgba(241, 235, 223, 0.65);
-  font-size: 14px;
+  font-size: 10px;
 }
 
 @media (max-width: 767px) {
@@ -6944,8 +6944,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 14px;
+  gap: 5px;
+  font-size: 12px;
   font-size: 22px;
   line-height: 1;
   transition: 0.25s ease;
@@ -6963,7 +6963,7 @@ body {
 .contact-card-location {
   margin: 0;
   color: rgba(241, 235, 223, 0.65);
-  font-size: 14px;
+  font-size: 10px;
 }
 
 @media (max-width: 767px) {
