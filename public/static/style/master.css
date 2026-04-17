@@ -6692,6 +6692,16 @@ body {
 .nav-socials a:hover {
   color: #c6ff6a;
 }
+.nav-social-label {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (min-width: 992px) {
+  .nav-social-label {
+    display: none;
+  }
+}
 .contact-card {
   background: #141013;
   color: #f1ebdf;
