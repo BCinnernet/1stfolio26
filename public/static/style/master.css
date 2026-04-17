@@ -815,6 +815,36 @@ h6 {
   font-size: 12px;
   margin: 0;
 }
+.footer-socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7a7870;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+.footer-socials a span {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+.footer-socials a:hover {
+  color: #c6ff6a;
+}
+.footer-socials svg {
+  width: 1em;
+  height: 1em;
+}
 
 .section-title h3 {
   font-weight: 700;
