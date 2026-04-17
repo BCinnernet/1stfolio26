@@ -6631,8 +6631,9 @@ body {
 
 /* Social icons pinned next to the logo */
 .header-logo-socials {
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 16px;
   margin-left: 20px;
