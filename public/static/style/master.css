@@ -6653,8 +6653,8 @@ body {
   color: #c6ff6a;
 }
 
-/* On mobile, hide the logo socials — they appear inside the menu instead */
-@media (max-width: 767px) {
+/* Below lg breakpoint, hide logo socials and show them inside the nav menu instead */
+@media (max-width: 991px) {
   .header-logo-socials {
     display: none;
   }
@@ -6667,8 +6667,8 @@ body {
   }
 }
 
-/* Hide the duplicate socials inside the nav on desktop */
-@media (min-width: 768px) {
+/* Hide the duplicate socials inside the nav on large screens */
+@media (min-width: 992px) {
   ul.navbar-nav .nav-socials {
     display: none;
   }
