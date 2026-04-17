@@ -27,13 +27,19 @@ const Work = () => {
     <section
       id="work"
       className="section"
-      style={{ paddingTop: "40px", paddingBottom: "80px", scrollMarginTop: "110px" }}
+      style={{
+        paddingTop: "40px",
+        paddingBottom: "80px",
+        scrollMarginTop: "110px",
+      }}
     >
       <div className="container">
         <div className="row sm-m-25px-b m-35px-b">
           <div className="col-md-12">
             <div className="section-title">
-              <h3 className="dark-color text-uppercase">Selected Work & Projects</h3>
+              <h3 className="dark-color text-uppercase">
+                Selected Work & Projects
+              </h3>
               <p className="text-uppercase small reveal-up delay-1">
                 A collection of collaborations, and discoveries.
               </p>
@@ -47,20 +53,31 @@ const Work = () => {
           {projects.map((project, index) => (
             <div key={index} className="grid-item product branding">
               <div className="portfolio-box-01">
-                <div className="portfolio-img">
-                 <img
-  src={project.thumbnailImage || project.mainImage || project.coverImage}
-  alt={project.title}
-/>
+                <div className="project-thumb-frame">
+                  <img
+                    className="project-thumb-media"
+                    src={
+                      project.thumbnailImage ||
+                      project.mainImage ||
+                      project.coverImage
+                    }
+                    alt={project.title}
+                  />
                 </div>
 
-                <a className="link-overlay" href={`/projects/${project.slug}`} />
+                <a
+                  className="link-overlay"
+                  href={`/projects/${project.slug}`}
+                  aria-label={project.title}
+                />
               </div>
 
               <div className="project-card-copy">
-  <h5 className="project-card-title">{project.title}</h5>
-  <span className="project-card-category">{project.category}</span>
-</div>
+                <h5 className="project-card-title">{project.title}</h5>
+                <span className="project-card-category">
+                  {project.category}
+                </span>
+              </div>
             </div>
           ))}
         </div>

@@ -34,11 +34,38 @@ const Header = ({ headerColor, isTransparent }) => {
           <div className="container">
             <a className="navbar-brand" href="/">
               <img
-                src="/static/img/Jumbled EJUAN logo - henderson outline - 64.png"
+                src="/static/img/Jumbled EJUAN logo nb [Recovered].png"
                 alt="Ejuan logo"
-                style={{ height: "60px", width: "auto", display: "block" }}
+                style={{ height: "80px", width: "auto", display: "block" }}
               />
             </a>
+
+            <div className="header-logo-socials">
+              <a
+                href="https://www.instagram.com/ohhej"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
+                <i className="fab fa-instagram" />
+              </a>
+              <a
+                href="https://bsky.app/profile/becausetheinnernet.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Bluesky"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 600 530"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                >
+                  <path d="M300 266c0 0-92-178-208-178-62 0-92 51-92 104 0 112 162 156 162 156s-55 40-55 88c0 51 46 94 104 94 58 0 89-40 89-40s31 40 89 40c58 0 104-43 104-94 0-48-55-88-55-88s162-44 162-156c0-53-30-104-92-104-116 0-208 178-208 178z" />
+                </svg>
+              </a>
+            </div>
 
             <Accordion.Toggle
               as="button"
@@ -50,33 +77,6 @@ const Header = ({ headerColor, isTransparent }) => {
               <span />
               <span />
             </Accordion.Toggle>
-<li className="nav-socials">
-  <a
-    href="https://www.instagram.com/ohhej"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Instagram"
-  >
-    <i className="fab fa-instagram" />
-  </a>
-
-  <a
-    href="https://bsky.app/profile/becausetheinnernet.com"
-    target="_blank"
-    rel="noreferrer"
-    aria-label="Bluesky"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 600 530"
-      width="16"
-      height="16"
-      fill="currentColor"
-    >
-      <path d="M300 266c0 0-92-178-208-178-62 0-92 51-92 104 0 112 162 156 162 156s-55 40-55 88c0 51 46 94 104 94 58 0 89-40 89-40s31 40 89 40c58 0 104-43 104-94 0-48-55-88-55-88s162-44 162-156c0-53-30-104-92-104-116 0-208 178-208 178z" />
-    </svg>
-  </a>
-</li>
             <Accordion.Collapse
               eventKey="toggle"
               className="navbar-collapse justify-content-end"

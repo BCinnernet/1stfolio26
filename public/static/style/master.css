@@ -6467,6 +6467,94 @@ h6 {
 .slant-top {
   clip-path: polygon(0 17%, 100% 0, 100% 100%, 0 100%);
 }
+
+/* ── Work reveal trigger ── */
+.work-reveal-trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 0;
+  background: #eceae2;
+}
+
+.work-reveal-btn {
+  background: #141013;
+  border: 2px solid #141013;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 22px;
+  width: 200px;
+  color: #f1ebdf;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background 0.55s ease-in-out, border-color 0.55s ease-in-out, color 0.55s ease-in-out;
+}
+
+.work-reveal-btn:hover {
+  background: #090a0c;
+  border-color: #c6ff6a;
+  color: #c6ff6a;
+}
+
+.work-reveal-label {
+  white-space: nowrap;
+}
+
+/* ── Folder icon crossfade ── */
+.work-folder-icon {
+  position: relative;
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.folder-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+.folder-img-closed {
+  opacity: 1;
+}
+
+.folder-img-open {
+  opacity: 0;
+}
+
+.work-reveal-btn.is-open .folder-img-closed {
+  opacity: 0;
+}
+
+.work-reveal-btn.is-open .folder-img-open {
+  opacity: 1;
+}
+
+/* ── Work panel expand/collapse ── */
+.work-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #eceae2;
+}
+
+.work-panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.work-panel-inner {
+  overflow: hidden;
+}
 body {
   background-color: #eceae2;
   color: #0d1321;
@@ -6537,8 +6625,47 @@ body {
 .nav-socials {
   display: flex;
   align-items: center;
-  gap: 20px; /* 👈 CONTROL ICON SPACING HERE */
-  margin-left: 50px; /* 👈 SPACE FROM "Contact" */
+  gap: 20px;
+  margin-left: 50px;
+}
+
+/* Social icons pinned next to the logo */
+.header-logo-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+.header-logo-socials a {
+  display: inline-flex;
+  align-items: center;
+  color: #f1ebdf;
+  font-size: 22px;
+  line-height: 1;
+  text-decoration: none;
+}
+.header-logo-socials svg {
+  width: 1em;
+  height: 1em;
+}
+.header-logo-socials a:hover {
+  color: #c6ff6a;
+}
+
+/* On mobile, lay them out in a row instead */
+@media (max-width: 767px) {
+  .header-logo-socials {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+/* Hide the duplicate socials inside the nav on desktop */
+@media (min-width: 768px) {
+  ul.navbar-nav .nav-socials {
+    display: none;
+  }
 }
 
 .nav-socials a {
@@ -6810,6 +6937,8 @@ body {
   padding-top: 12px;
   padding-bottom: 6px;
   min-height: 64px;
+  transition: none;
+  transform: none;
 }
 
 .project-card-title {
@@ -6817,6 +6946,8 @@ body {
   font-size: 18px;
   color: #141013;
   line-height: 1.3;
+  transition: none;
+  transform: none;
 }
 
 .project-card-category {
@@ -6837,4 +6968,40 @@ body {
 html,
 body {
   overflow-x: hidden;
+}
+.project-thumb-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #d9d6cd;
+}
+
+.project-thumb-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+@media (max-width: 767px) {
+  .project-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.gallery-slide img:hover {
+  opacity: 0.88;
+}
+
+/* Header layout — stack on mobile */
+@media (max-width: 991px) {
+  .project-header-image {
+    padding-top: 32px !important;
+  }
 }
