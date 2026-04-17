@@ -780,7 +780,7 @@ h6 {
 
 .header-nav .navbar-nav .nav-link {
   display: block;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.035rem;
@@ -834,7 +834,7 @@ h6 {
   transition: color 0.25s ease;
 }
 .footer-socials a span {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   font-weight: 500;
 }
@@ -6685,9 +6685,16 @@ body {
   color: #c6ff6a;
 }
 .logo-social-label {
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   font-weight: 500;
+}
+
+/* About page: extra top padding on mobile to clear the fixed navbar */
+@media (max-width: 767px) {
+  #about.section {
+    padding-top: 140px !important;
+  }
 }
 
 /* Below lg: hide logo socials, show them at the bottom of the hamburger menu */
@@ -6810,7 +6817,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  font-size: 12px;
+  font-size: 10px;
   font-size: 22px;
   line-height: 1;
   transition: 0.25s ease;
@@ -6828,7 +6835,7 @@ body {
 .contact-card-location {
   margin: 0;
   color: rgba(241, 235, 223, 0.65);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 @media (max-width: 767px) {
@@ -6945,8 +6952,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  font-size: 12px;
-  font-size: 22px;
+  font-size: 14px;
   line-height: 1;
   transition: 0.25s ease;
 }
@@ -6963,7 +6969,7 @@ body {
 .contact-card-location {
   margin: 0;
   color: rgba(241, 235, 223, 0.65);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 @media (max-width: 767px) {
