@@ -6653,36 +6653,8 @@ body {
   color: #c6ff6a;
 }
 
-/* Mobile: logo left, hamburger right, social icons centered below */
-@media (max-width: 767px) {
-  .navbar .container {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .navbar-brand {
-    order: 1;
-  }
-  .navbar-toggler {
-    order: 2;
-    margin-left: auto;
-  }
-  .header-logo-socials {
-    order: 3;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    margin-left: 0;
-    padding: 8px 0;
-  }
-  .navbar-collapse {
-    order: 4;
-    width: 100%;
-  }
-}
-
-/* Medium screens (768px–991px): hide logo socials, show in nav menu */
-@media (min-width: 768px) and (max-width: 991px) {
+/* Below lg: hide logo socials, show them at the bottom of the hamburger menu */
+@media (max-width: 991px) {
   .header-logo-socials {
     display: none;
   }
