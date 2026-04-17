@@ -6642,8 +6642,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: #f1ebdf;
-  font-size: 18px;
+  color: #7a7870;
+  font-size: 20px;
   line-height: 1;
   text-decoration: none;
 }
@@ -6655,9 +6655,9 @@ body {
   color: #c6ff6a;
 }
 .logo-social-label {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 /* Below lg: hide logo socials, show them at the bottom of the hamburger menu */
