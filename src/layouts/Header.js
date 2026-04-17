@@ -48,6 +48,7 @@ const Header = ({ headerColor, isTransparent }) => {
                 aria-label="Instagram"
               >
                 <i className="fab fa-instagram" />
+                <span className="logo-social-label">IG</span>
               </a>
               <a
                 href="https://bsky.app/profile/becausetheinnernet.com"
@@ -64,6 +65,7 @@ const Header = ({ headerColor, isTransparent }) => {
                 >
                   <path d="M300 266c0 0-92-178-208-178-62 0-92 51-92 104 0 112 162 156 162 156s-55 40-55 88c0 51 46 94 104 94 58 0 89-40 89-40s31 40 89 40c58 0 104-43 104-94 0-48-55-88-55-88s162-44 162-156c0-53-30-104-92-104-116 0-208 178-208 178z" />
                 </svg>
+                <span className="logo-social-label">BSKY</span>
               </a>
             </div>
 
@@ -139,15 +141,7 @@ const Header = ({ headerColor, isTransparent }) => {
                   </a>
                 </li>
 
-                <li
-                  className="nav-socials"
-                  style={{
-                    display: "flex",
-                    gap: "12px",
-                    alignItems: "center",
-                    marginLeft: "10px",
-                  }}
-                >
+                <li className="nav-socials">
                   <a
                     href="https://www.instagram.com/ohhej"
                     target="_blank"

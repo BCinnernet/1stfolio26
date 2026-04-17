@@ -6632,16 +6632,17 @@ body {
 /* Social icons pinned next to the logo */
 .header-logo-socials {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   margin-left: 20px;
 }
 .header-logo-socials a {
   display: inline-flex;
   align-items: center;
+  gap: 5px;
   color: #f1ebdf;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1;
   text-decoration: none;
 }
@@ -6651,6 +6652,11 @@ body {
 }
 .header-logo-socials a:hover {
   color: #c6ff6a;
+}
+.logo-social-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
 /* Below lg: hide logo socials, show them at the bottom of the hamburger menu */
