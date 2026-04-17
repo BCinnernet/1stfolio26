@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="col-md-6 m-10px-tb text-center text-md-right">
+          <div className="col-12 m-10px-tb text-center">
             <p>© {new Date().getFullYear()} EJUAN HENDERSON. All rights reserved.</p>
           </div>
 
