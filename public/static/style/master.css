@@ -6810,6 +6810,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
+  font-size: 14px;
   font-size: 22px;
   line-height: 1;
   transition: 0.25s ease;
@@ -6944,6 +6945,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
+  font-size: 14px;
   font-size: 22px;
   line-height: 1;
   transition: 0.25s ease;
