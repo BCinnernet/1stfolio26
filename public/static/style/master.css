@@ -6809,6 +6809,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   font-size: 22px;
   line-height: 1;
   transition: 0.25s ease;
@@ -6942,6 +6943,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 6px;
   font-size: 22px;
   line-height: 1;
   transition: 0.25s ease;
