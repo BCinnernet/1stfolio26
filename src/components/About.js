@@ -48,7 +48,7 @@ const About = () => {
             <PixelatedImage
               src="/static/img/about-photo.jpg"
               alt="Ejuan Henderson"
-              pixelSize={20}
+              pixelSize={12}
             />
           </div>
 
