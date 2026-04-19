@@ -36,9 +36,6 @@ const About = () => {
                 background in marketing, I connect the bigger picture, connect dots, and try to think a
                 few steps ahead. I'm a communicator, a collaborator, and a natural problem solver.
               </p>
-              <p style={{ marginTop: "20px", fontWeight: "500" }}>
-                Available for freelance, collaborations, and creative opportunities.
-              </p>
             </div>
           </div>
 
@@ -53,6 +50,8 @@ const About = () => {
           </div>
 
         </div>
+
+
       </div>
     </section>
   );

@@ -37,7 +37,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section gray-bg" style={{ paddingTop: "40px" }}>
+    <section id="contact" className="section gray-bg" style={{ paddingTop: "60px" }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-10">
@@ -52,9 +52,10 @@ const Contact = () => {
               <div className="contact-card-inner">
 
                 <div className="contact-card-left">
-                  <p className="contact-card-label">How can I help?</p>
+                  <p className="contact-card-label">Lets make something!</p>
                   <h3 className="contact-card-title">Reach out, lets connect.</h3>
-                  <p className="contact-card-text">Business Hours: Open 24/7 | 7 days a week.</p>
+                  <p className="contact-card-text" style={{ fontWeight: "700", color: "#ffffff" }}>Business Hours: Open 24/7 | 7 days a week.</p>
+                  <p className="contact-card-text">Available for freelance, collaborations, and creative opportunities.</p>
                 </div>
 
                 <div className="contact-card-right">
