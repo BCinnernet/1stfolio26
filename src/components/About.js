@@ -5,7 +5,7 @@ const About = () => {
     <section
       id="about"
       className="section gray-bg"
-      style={{ paddingTop: "140px", paddingBottom: "10px" }}
+      style={{ paddingTop: "180px", paddingBottom: "10px" }}
     >
       <div className="container">
 

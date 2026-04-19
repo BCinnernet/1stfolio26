@@ -53,7 +53,6 @@ const PixelatedImage = ({ src, alt, pixelSize = 20 }) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const img = new Image();
-    img.src = src;
     img.onload = () => {
       imgRef.current = img;
       // Cap canvas size to avoid iOS Safari canvas memory limits
@@ -63,6 +62,7 @@ const PixelatedImage = ({ src, alt, pixelSize = 20 }) => {
       canvas.height = Math.round(img.naturalHeight * scale);
       draw(ctx, img, pixelSize); // start pixelated
     };
+    img.src = src; // set src AFTER onload so cached images still trigger it
     return () => cancelAnimationFrame(animRef.current);
   }, [src]);
 
