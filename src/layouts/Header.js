@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Accordion } from "react-bootstrap";
 import { tony } from "./utils";
 import { useRouter } from "next/router";
+import BlueskyIcon from "@/src/components/BlueskyIcon";
+import siteConfig from "@/src/data/siteConfig";
+
+const { instagram, bluesky } = siteConfig.social;
 
 const Header = ({ headerColor, isTransparent }) => {
   const router = useRouter();
@@ -11,27 +15,23 @@ const Header = ({ headerColor, isTransparent }) => {
     tony.stickyNav();
     tony.scrollToActiveNav();
 
-    const updateHash = () => {
-      setActiveHash(window.location.hash);
-    };
-
+    const updateHash = () => setActiveHash(window.location.hash);
     updateHash();
     window.addEventListener("hashchange", updateHash);
-
-    return () => {
-      window.removeEventListener("hashchange", updateHash);
-    };
+    return () => window.removeEventListener("hashchange", updateHash);
   }, []);
 
   return (
     <header>
       <Accordion>
         <nav
-          className={`navbar header-nav header-${
-            headerColor ? headerColor : "white"
-          } ${isTransparent ? "header-transparent" : ""} navbar-expand-md`}
+          className={`navbar header-nav header-${headerColor ?? "white"} ${
+            isTransparent ? "header-transparent" : ""
+          } navbar-expand-md`}
         >
           <div className="container">
+
+            {/* Logo */}
             <a className="navbar-brand" href="/">
               <img
                 src="/static/img/Jumbled EJUAN logo nb [Recovered].png"
@@ -40,45 +40,26 @@ const Header = ({ headerColor, isTransparent }) => {
               />
             </a>
 
+            {/* Social icons — visible on desktop next to logo */}
             <div className="header-logo-socials">
-              <a
-                href="https://www.instagram.com/ohhej"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-              >
+              <a href={instagram.url} target="_blank" rel="noreferrer" aria-label={instagram.label}>
                 <i className="fab fa-instagram" />
-                <span className="logo-social-label">Instagram</span>
+                <span className="logo-social-label">{instagram.label}</span>
               </a>
-              <a
-                href="https://bsky.app/profile/becausetheinnernet.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Bluesky"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 600 530"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                >
-                  <path d="M300 266c0 0-92-178-208-178-62 0-92 51-92 104 0 112 162 156 162 156s-55 40-55 88c0 51 46 94 104 94 58 0 89-40 89-40s31 40 89 40c58 0 104-43 104-94 0-48-55-88-55-88s162-44 162-156c0-53-30-104-92-104-116 0-208 178-208 178z" />
-                </svg>
-                <span className="logo-social-label">Bluesky</span>
+              <a href={bluesky.url} target="_blank" rel="noreferrer" aria-label={bluesky.label}>
+                <BlueskyIcon size={16} />
+                <span className="logo-social-label">{bluesky.label}</span>
               </a>
             </div>
 
-            <Accordion.Toggle
-              as="button"
-              className="navbar-toggler"
-              type="button"
-              eventKey="toggle"
-            >
+            {/* Hamburger toggle */}
+            <Accordion.Toggle as="button" className="navbar-toggler" type="button" eventKey="toggle">
               <span />
               <span />
               <span />
             </Accordion.Toggle>
+
+            {/* Nav links */}
             <Accordion.Collapse
               eventKey="toggle"
               className="navbar-collapse justify-content-end"
@@ -88,24 +69,18 @@ const Header = ({ headerColor, isTransparent }) => {
                 <li>
                   <a
                     className={`nav-link ${
-                      router.pathname === "/" &&
-                      (activeHash === "" || activeHash === "#home")
-                        ? "active"
-                        : ""
+                      router.pathname === "/" && (activeHash === "" || activeHash === "#home") ? "active" : ""
                     }`}
                     href="/#home"
                   >
                     Home
                   </a>
                 </li>
-                
 
                 <li>
                   <a
                     className={`nav-link ${
-                      router.pathname === "/" && activeHash === "#work"
-                        ? "active"
-                        : ""
+                      router.pathname === "/" && activeHash === "#work" ? "active" : ""
                     }`}
                     href="/#work"
                   >
@@ -116,9 +91,7 @@ const Header = ({ headerColor, isTransparent }) => {
                 <li>
                   <a
                     className={`nav-link ${
-                      router.pathname === "/about" && activeHash !== "#contact"
-                        ? "active"
-                        : ""
+                      router.pathname === "/about" && activeHash !== "#contact" ? "active" : ""
                     }`}
                     href="/about"
                     onClick={() => setActiveHash("")}
@@ -130,9 +103,7 @@ const Header = ({ headerColor, isTransparent }) => {
                 <li>
                   <a
                     className={`nav-link ${
-                      router.pathname === "/about" && activeHash === "#contact"
-                        ? "active"
-                        : ""
+                      router.pathname === "/about" && activeHash === "#contact" ? "active" : ""
                     }`}
                     href="/about#contact"
                     onClick={() => setActiveHash("#contact")}
@@ -141,40 +112,24 @@ const Header = ({ headerColor, isTransparent }) => {
                   </a>
                 </li>
 
+                {/* Social icons — visible inside hamburger menu on mobile */}
                 <li className="nav-socials">
-                  <a
-                    href="https://www.instagram.com/ohhej"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Instagram"
+                  <a href={instagram.url} target="_blank" rel="noreferrer" aria-label={instagram.label}
                     style={{ color: "inherit", display: "inline-flex", alignItems: "center", gap: "6px" }}
                   >
                     <i className="fab fa-instagram" />
-                    <span className="nav-social-label">Instagram</span>
+                    <span className="nav-social-label">{instagram.label}</span>
                   </a>
-
-                  <a
-                    href="https://bsky.app/profile/becausetheinnernet.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label="Bluesky"
+                  <a href={bluesky.url} target="_blank" rel="noreferrer" aria-label={bluesky.label}
                     style={{ color: "inherit", display: "inline-flex", alignItems: "center", gap: "6px" }}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 600 530"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      style={{ verticalAlign: "middle" }}
-                    >
-                      <path d="M300 266c0 0-92-178-208-178-62 0-92 51-92 104 0 112 162 156 162 156s-55 40-55 88c0 51 46 94 104 94 58 0 89-40 89-40s31 40 89 40c58 0 104-43 104-94 0-48-55-88-55-88s162-44 162-156c0-53-30-104-92-104-116 0-208 178-208 178z" />
-                    </svg>
-                    <span className="nav-social-label">Bluesky</span>
+                    <BlueskyIcon size={18} />
+                    <span className="nav-social-label">{bluesky.label}</span>
                   </a>
                 </li>
               </ul>
             </Accordion.Collapse>
+
           </div>
         </nav>
       </Accordion>
