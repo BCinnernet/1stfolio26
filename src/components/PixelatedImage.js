@@ -56,8 +56,11 @@ const PixelatedImage = ({ src, alt, pixelSize = 20 }) => {
     img.src = src;
     img.onload = () => {
       imgRef.current = img;
-      canvas.width  = img.naturalWidth;
-      canvas.height = img.naturalHeight;
+      // Cap canvas size to avoid iOS Safari canvas memory limits
+      const MAX = 1200;
+      const scale = Math.min(1, MAX / Math.max(img.naturalWidth, img.naturalHeight));
+      canvas.width  = Math.round(img.naturalWidth  * scale);
+      canvas.height = Math.round(img.naturalHeight * scale);
       draw(ctx, img, pixelSize); // start pixelated
     };
     return () => cancelAnimationFrame(animRef.current);
