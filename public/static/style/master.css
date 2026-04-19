@@ -5978,7 +5978,7 @@ h6 {
 @media (min-width: 992px) {
   .about-me {
     padding-left: 0px;
-    margin-left: -50px;
+    margin-left: 0px;
   }
 }about-me h4 {
   font-weight: 600;
@@ -6686,7 +6686,7 @@ body {
   align-items: center;
   gap: 5px;
   color: #7a7870;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
   text-decoration: none;
 }
@@ -6698,15 +6698,34 @@ body {
   color: #c6ff6a;
 }
 .logo-social-label {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   font-weight: 500;
 }
 
-/* About page: extra top padding on mobile to clear the fixed navbar */
-@media (max-width: 767px) {
+/* ── About page ── */
+.about-page-title {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  /* Extra top padding on mobile to clear the fixed navbar */
   #about.section {
     padding-top: 140px !important;
+  }
+
+  /* Text first, photo second on mobile */
+  .about-text-col  { order: 1; }
+  .about-photo-col { order: 2; }
+
+  /* Cap the photo size on mobile */
+  .about-photo-col canvas {
+    max-width: 280px;
+    margin: 0 auto;
   }
 }
 
@@ -6849,7 +6868,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1;
   transition: 0.25s ease;
 }

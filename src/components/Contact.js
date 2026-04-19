@@ -37,7 +37,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section gray-bg">
+    <section id="contact" className="section gray-bg" style={{ paddingTop: "40px" }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-10">
