@@ -6715,7 +6715,7 @@ body {
 @media (max-width: 991px) {
   /* Extra top padding on mobile to clear the fixed navbar */
   #about.section {
-    padding-top: 140px !important;
+    padding-top: 180px !important;
   }
 
   /* Text first, photo second on mobile */
