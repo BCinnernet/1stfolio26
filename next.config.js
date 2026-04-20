@@ -40,6 +40,24 @@ const securityHeaders = [
   },
 
   {
+    // Restricts where the browser can load resources from.
+    // All assets (CSS, fonts, images, video) are self-hosted so the rules
+    // are tight — the only external origin allowed is YouTube for iframes.
+    key: "Content-Security-Policy",
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self' data:",
+      "img-src 'self' data: blob:",
+      "media-src 'self' blob:",
+      "frame-src https://www.youtube.com",
+      "connect-src 'self'",
+      "worker-src blob:",
+    ].join("; "),
+  },
+
+  {
     // Tells browsers to always use HTTPS for future visits, even if someone
     // types plain "http://" in the address bar.
     // max-age=63072000 = 2 years (standard recommended value).

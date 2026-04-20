@@ -1,4 +1,4 @@
-import SwiperCore, {
+import {
   Autoplay,
   EffectCreative,
   EffectFade,
@@ -7,23 +7,13 @@ import SwiperCore, {
   Navigation,
   Pagination,
   Virtual,
-} from "swiper";
-SwiperCore.use([
-  Mousewheel,
-  Pagination,
-  Navigation,
-  EffectFade,
-  Autoplay,
-  Grid,
-  EffectCreative,
-  Virtual,
-]);
+} from "swiper/modules";
 
 export const sliderProps = {
   testimonial: {
+    modules: [Autoplay, Pagination],
     loop: true,
     spaceBetween: 30,
-    autoplay: true,
     autoplay: {
       delay: 2500,
       disableOnInteraction: false,

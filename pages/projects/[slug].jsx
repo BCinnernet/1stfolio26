@@ -32,6 +32,7 @@ const GalleryItem = ({ item, index, projectTitle, onImageClick }) => {
           src={`https://www.youtube.com/embed/${item.src}`}
           title={item.caption || projectTitle}
           allowFullScreen
+          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
         />
       </div>
     ) : (
@@ -135,6 +136,7 @@ const ProjectDetail = () => {
           src={`https://www.youtube.com/embed/${project.mainVideo}`}
           title={project.title}
           allowFullScreen
+          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
         />
       </div>
     ) : (
