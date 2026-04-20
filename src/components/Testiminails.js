@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { sliderProps } from "../sliderProps";
+import Image from "next/image";
 
 const Testiminails = () => {
   return (
@@ -20,7 +21,7 @@ const Testiminails = () => {
           <SwiperSlide className="testimonial-col-01">
             <div className="media">
               <div className="img">
-                <img src="static/img/team-1.jpg" alt="image" />
+                <Image src="/static/img/team-1.jpg" alt="image" width={60} height={60} />
               </div>
               <div className="media-body p-25px-l">
                 <p>
@@ -42,7 +43,7 @@ const Testiminails = () => {
           <SwiperSlide className="testimonial-col-01">
             <div className="media">
               <div className="img">
-                <img src="static/img/team-2.jpg" alt="image" />
+                <Image src="/static/img/team-2.jpg" alt="image" width={60} height={60} />
               </div>
               <div className="media-body p-25px-l">
                 <p>
@@ -64,7 +65,7 @@ const Testiminails = () => {
           <SwiperSlide className="testimonial-col-01">
             <div className="media">
               <div className="img">
-                <img src="static/img/team-3.jpg" alt="image" />
+                <Image src="/static/img/team-3.jpg" alt="image" width={60} height={60} />
               </div>
               <div className="media-body p-25px-l">
                 <p>
@@ -86,7 +87,7 @@ const Testiminails = () => {
           <SwiperSlide className="testimonial-col-01">
             <div className="media">
               <div className="img">
-                <img src="static/img/team-4.jpg" alt="image" />
+                <Image src="/static/img/team-4.jpg" alt="image" width={60} height={60} />
               </div>
               <div className="media-body p-25px-l">
                 <p>

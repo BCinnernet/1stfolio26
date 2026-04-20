@@ -1,5 +1,6 @@
 import Isotope from "isotope-layout";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import projects from "@/src/data/projects";
 
 const Work = () => {
@@ -40,8 +41,8 @@ const Work = () => {
               <h3 className="dark-color text-uppercase">
                 Selected Work & Projects
               </h3>
-              <p className="text-uppercase small reveal-up delay-1">
-                A collection of collaborations, and discoveries.
+              <p className="text-uppercase reveal-up delay-1" style={{ fontSize: "15px", letterSpacing: "0.08em" }}>
+                Selected work across brand, motion, and illustration.
               </p>
             </div>
           </div>
@@ -53,8 +54,9 @@ const Work = () => {
           {projects.map((project, index) => (
             <div key={index} className="grid-item product branding">
               <div className="portfolio-box-01">
-                <div className="project-thumb-frame">
-                  <img
+                <div className="project-thumb-frame" style={{ position: "relative" }}>
+                  <Image
+                    fill
                     className="project-thumb-media"
                     src={
                       project.thumbnailImage ||
@@ -62,6 +64,7 @@ const Work = () => {
                       project.coverImage
                     }
                     alt={project.title}
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
 
@@ -74,9 +77,7 @@ const Work = () => {
 
               <div className="project-card-copy">
                 <h5 className="project-card-title">{project.title}</h5>
-                <span className="project-card-category">
-                  {project.category}
-                </span>
+                <span className="project-card-category">{project.category}</span>
               </div>
             </div>
           ))}

@@ -1,26 +1,94 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/src/layouts/Layout";
 import projects from "@/src/data/projects";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination } from "swiper";
 
-SwiperCore.use([Navigation, Pagination]);
+// ── Scroll-reveal hook ────────────────────────────────────────────────────────
+const useScrollReveal = () => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.12 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible];
+};
 
+// ── Single alternating gallery row ───────────────────────────────────────────
+const GalleryItem = ({ item, index, projectTitle, onImageClick }) => {
+  const [ref, visible] = useScrollReveal();
+  const isEven = index % 2 === 0;
+
+  const mediaEl =
+    item.type === "video" ? (
+      <div className="gallery-video-wrap">
+        <iframe
+          src={`https://www.youtube.com/embed/${item.src}`}
+          title={item.caption || projectTitle}
+          allowFullScreen
+        />
+      </div>
+    ) : (
+      <div
+        className="gallery-image-wrap"
+        onClick={() => onImageClick(index)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && onImageClick(index)}
+      >
+        <img
+          src={item.src}
+          alt={item.caption || projectTitle}
+          className="gallery-img-hover"
+        />
+      </div>
+    );
+
+  const captionEl = (
+    <div className="gallery-caption">
+      <p>{item.caption}</p>
+    </div>
+  );
+
+  return (
+    <div
+      ref={ref}
+      className={`gallery-section-row${visible ? " is-visible" : ""}`}
+    >
+      <div className="gallery-row-media">{isEven ? mediaEl : captionEl}</div>
+      <div className="gallery-row-text">{isEven ? captionEl : mediaEl}</div>
+    </div>
+  );
+};
+
+// ── Project page ──────────────────────────────────────────────────────────────
 const ProjectDetail = () => {
   const router = useRouter();
   const { slug } = router.query;
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [scrollY, setScrollY] = useState(0);
 
   const project = projects.find((item) => item.slug === slug);
 
-  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    const onScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     document.body.style.overflow = lightboxIndex !== null ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [lightboxIndex]);
 
-  // Close lightbox on Escape key
   useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") setLightboxIndex(null); };
     window.addEventListener("keydown", onKey);
@@ -40,26 +108,53 @@ const ProjectDetail = () => {
     );
   }
 
-  const images = project.galleryImages ?? [];
-  const total = images.length;
+  const gallery = project.gallery ?? [];
+
+  // Build a map: gallery index → image-only index (for lightbox prev/next)
+  const galleryToImageIndex = {};
+  let imgCount = 0;
+  gallery.forEach((item, i) => {
+    if (item.type !== "video") galleryToImageIndex[i] = imgCount++;
+  });
+  const totalImages = imgCount;
+
+  const lightboxImageIndex =
+    lightboxIndex !== null ? galleryToImageIndex[lightboxIndex] ?? null : null;
+
+  const goToImageIndex = (imgIdx) => {
+    const galleryIdx = Object.keys(galleryToImageIndex).find(
+      (k) => galleryToImageIndex[k] === imgIdx
+    );
+    if (galleryIdx !== undefined) setLightboxIndex(Number(galleryIdx));
+  };
 
   const heroMedia =
     project.mainMediaType === "video" && project.mainVideo ? (
-      <video controls style={{ width: "100%", display: "block" }}>
-        <source src={project.mainVideo} type="video/mp4" />
-      </video>
+      <div className="gallery-video-wrap">
+        <iframe
+          src={`https://www.youtube.com/embed/${project.mainVideo}`}
+          title={project.title}
+          allowFullScreen
+        />
+      </div>
     ) : (
-      <img src={project.mainImage} alt={project.title} style={{ width: "100%", display: "block" }} />
+      <div className="hero-parallax-wrap">
+        <img
+          src={project.mainImage}
+          alt={project.title}
+          className="hero-parallax-img"
+          style={{ transform: `translateY(${scrollY * 0.12}px)` }}
+        />
+      </div>
     );
 
   return (
     <Layout headerColor={"dark"}>
 
-      {/* ── Header: text left / hero image right ── */}
+      {/* ── Header ── */}
       <section style={{ background: "#e7e6df", paddingBottom: 0 }}>
         <div className="container">
           <div className="row align-items-end">
-
             <div
               className="col-lg-5 project-header-text"
               style={{ paddingTop: "140px", paddingBottom: "60px" }}
@@ -77,7 +172,6 @@ const ProjectDetail = () => {
                 {project.intro}
               </p>
             </div>
-
             <div
               className="col-lg-7 project-header-image"
               style={{ paddingTop: "80px", paddingBottom: 0, lineHeight: 0 }}
@@ -86,162 +180,75 @@ const ProjectDetail = () => {
                 {heroMedia}
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* ── Gallery carousel ── */}
-      {total > 0 && (
-        <section style={{ paddingTop: "80px", paddingBottom: "100px", background: "#f0eeea" }}>
+      {/* ── Gallery ── */}
+      {gallery.length > 0 && (
+        <section style={{ paddingTop: "100px", paddingBottom: "120px", background: "#f0eeea" }}>
           <div className="container">
-            <Swiper
-              navigation
-              pagination={{ clickable: true }}
-              spaceBetween={16}
-              breakpoints={{
-                0:    { slidesPerView: 1 },
-                640:  { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-              }}
-              style={{
-                "--swiper-navigation-color": "#141013",
-                "--swiper-pagination-color": "#141013",
-                paddingBottom: "48px",
-                paddingLeft: "4px",
-                paddingRight: "4px",
-              }}
-            >
-              {images.map((img, i) => (
-                <SwiperSlide key={i}>
-                  <div
-                    onClick={() => setLightboxIndex(i)}
-                    className="gallery-slide"
-                    style={{ lineHeight: 0, cursor: "zoom-in" }}
-                  >
-                    <img
-                      src={img}
-                      alt={`${project.title} — ${i + 1}`}
-                      style={{
-                        width: "100%",
-                        display: "block",
-                        borderRadius: "6px",
-                        aspectRatio: "4 / 3",
-                        objectFit: "cover",
-                        transition: "opacity 0.2s ease",
-                      }}
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-
-          <div className="container" style={{ marginTop: "40px" }}>
-            <a className="m-btn m-btn-theme" href="/#work">← Back to Work</a>
+            {gallery.map((item, i) => (
+              <GalleryItem
+                key={i}
+                item={item}
+                index={i}
+                projectTitle={project.title}
+                onImageClick={setLightboxIndex}
+              />
+            ))}
+            <div style={{ marginTop: "20px" }}>
+              <a className="m-btn m-btn-theme" href="/#work">← Back to Work</a>
+            </div>
           </div>
         </section>
       )}
 
+
       {/* ── Lightbox ── */}
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && gallery[lightboxIndex]?.type !== "video" && (
         <div
           onClick={() => setLightboxIndex(null)}
           style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0, 0, 0, 0.92)",
+            position: "fixed", inset: 0,
+            background: "rgba(0,0,0,0.92)",
             zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            display: "flex", alignItems: "center", justifyContent: "center",
           }}
         >
           <img
-            src={images[lightboxIndex]}
-            alt={`${project.title} — ${lightboxIndex + 1}`}
+            src={gallery[lightboxIndex].src}
+            alt={gallery[lightboxIndex].caption || project.title}
             onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: "88vw",
-              maxHeight: "88vh",
-              objectFit: "contain",
-              borderRadius: "4px",
-              display: "block",
+              maxWidth: "88vw", maxHeight: "88vh",
+              objectFit: "contain", borderRadius: "4px", display: "block",
             }}
           />
 
-          {/* Close */}
           <button
             onClick={() => setLightboxIndex(null)}
-            style={{
-              position: "absolute",
-              top: "20px",
-              right: "24px",
-              background: "none",
-              border: "none",
-              color: "#fff",
-              fontSize: "32px",
-              lineHeight: 1,
-              cursor: "pointer",
-              opacity: 0.8,
-            }}
-          >
-            ✕
-          </button>
+            style={{ position: "absolute", top: "20px", right: "24px", background: "none", border: "none", color: "#fff", fontSize: "32px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+          >✕</button>
 
-          {/* Prev */}
-          {lightboxIndex > 0 && (
+          {lightboxImageIndex > 0 && (
             <button
-              onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex - 1); }}
-              style={{
-                position: "absolute",
-                left: "20px",
-                background: "none",
-                border: "none",
-                color: "#fff",
-                fontSize: "56px",
-                lineHeight: 1,
-                cursor: "pointer",
-                opacity: 0.8,
-              }}
-            >
-              ‹
-            </button>
+              onClick={(e) => { e.stopPropagation(); goToImageIndex(lightboxImageIndex - 1); }}
+              style={{ position: "absolute", left: "20px", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+            >‹</button>
           )}
 
-          {/* Next */}
-          {lightboxIndex < total - 1 && (
+          {lightboxImageIndex < totalImages - 1 && (
             <button
-              onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex + 1); }}
-              style={{
-                position: "absolute",
-                right: "20px",
-                background: "none",
-                border: "none",
-                color: "#fff",
-                fontSize: "56px",
-                lineHeight: 1,
-                cursor: "pointer",
-                opacity: 0.8,
-              }}
-            >
-              ›
-            </button>
+              onClick={(e) => { e.stopPropagation(); goToImageIndex(lightboxImageIndex + 1); }}
+              style={{ position: "absolute", right: "20px", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+            >›</button>
           )}
 
-          {/* Counter */}
           <span
-            style={{
-              position: "absolute",
-              bottom: "24px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "rgba(255,255,255,0.5)",
-              fontSize: "13px",
-              letterSpacing: "0.08em",
-            }}
+            style={{ position: "absolute", bottom: "24px", left: "50%", transform: "translateX(-50%)", color: "rgba(255,255,255,0.5)", fontSize: "13px", letterSpacing: "0.08em" }}
           >
-            {lightboxIndex + 1} / {total}
+            {lightboxImageIndex + 1} / {totalImages}
           </span>
         </div>
       )}

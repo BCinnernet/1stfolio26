@@ -1,12 +1,14 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const PixelatedImage = ({ src, alt, pixelSize = 20 }) => {
   const canvasRef = useRef(null);
   const imgRef = useRef(null);
   const animRef = useRef(null);
-  const currentSize = useRef(pixelSize);  // tracks where animation currently is
-  const targetSize = useRef(pixelSize);   // tracks where animation is heading
+  const retriggerRef = useRef(null);
+  const currentSize = useRef(pixelSize);
+  const targetSize = useRef(pixelSize);
+  const [hintVisible, setHintVisible] = useState(true);
 
   // Draws the image at a given pixel block size (1 = crisp, 20 = very blocky)
   const draw = (ctx, img, size) => {
@@ -63,18 +65,54 @@ const PixelatedImage = ({ src, alt, pixelSize = 20 }) => {
       draw(ctx, img, pixelSize); // start pixelated
     };
     img.src = src; // set src AFTER onload so cached images still trigger it
-    return () => cancelAnimationFrame(animRef.current);
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      clearTimeout(retriggerRef.current);
+    };
   }, [src]);
 
+  const handleTouch = (e) => {
+    e.preventDefault();
+    setHintVisible(false);
+    clearTimeout(retriggerRef.current);
+    targetSize.current = 1;
+    cancelAnimationFrame(animRef.current);
+    animRef.current = requestAnimationFrame(animate);
+    retriggerRef.current = setTimeout(() => {
+      targetSize.current = pixelSize;
+      cancelAnimationFrame(animRef.current);
+      animRef.current = requestAnimationFrame(animate);
+    }, 2500);
+  };
+
   return (
-    <canvas
-      ref={canvasRef}
-      aria-label={alt}
-      role="img"
-      onMouseEnter={() => { targetSize.current = 1;         cancelAnimationFrame(animRef.current); animRef.current = requestAnimationFrame(animate); }}
-      onMouseLeave={() => { targetSize.current = pixelSize; cancelAnimationFrame(animRef.current); animRef.current = requestAnimationFrame(animate); }}
-      style={{ width: "100%", display: "block", cursor: "pointer" }}
-    />
+    <div style={{ position: "relative", width: "100%" }}>
+      <canvas
+        ref={canvasRef}
+        aria-label={alt}
+        role="img"
+        onMouseEnter={() => { targetSize.current = 1;         cancelAnimationFrame(animRef.current); animRef.current = requestAnimationFrame(animate); }}
+        onMouseLeave={() => { targetSize.current = pixelSize; cancelAnimationFrame(animRef.current); animRef.current = requestAnimationFrame(animate); }}
+        onTouchStart={handleTouch}
+        style={{ width: "100%", display: "block", cursor: "pointer" }}
+      />
+      {hintVisible && (
+        <p style={{
+          textAlign: "center",
+          fontSize: "12px",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          opacity: 0.45,
+          marginTop: "10px",
+          pointerEvents: "none",
+          display: "none",
+        }}
+        className="pixelated-hint"
+        >
+          Tap to reveal
+        </p>
+      )}
+    </div>
   );
 };
 

@@ -1,202 +1,286 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// HOW TO ADD IMAGES
+// ═════════════════════════════════════════════════════════════════════════════
+// PROJECTS.JS — PORTFOLIO CONTENT
 //
-//  1. Export your image from Figma / Photoshop / wherever
-//  2. Drop the file into:  tony/public/static/img/
-//  3. The filename must exactly match what's written below for each project
+// This is the only file to edit when managing projects.
+// Each project shows up as a card on the home page and has its own page.
 //
-//  Supported formats:  .jpg  .png  .gif  .webp
-//  Recommended size:   at least 1200px wide for good quality
+// ─── HOW TO ADD AN IMAGE ─────────────────────────────────────────────────────
 //
-//  Each project has two image roles:
-//    mainImage      → shown on the home page grid AND as the hero on the project page
-//    galleryImages  → the carousel on the project page (you can add as many as you want)
+//   1. Compress the image first at squoosh.app (aim for under 300KB)
+//   2. Drop the file into: tony/public/static/img/
+//   3. Reference it below as: "/static/img/filename.jpg"
 //
-//  To add more carousel slides, just add another line to galleryImages:
-//    "/static/img/yourproject-4.jpg",
-//    "/static/img/yourproject-5.jpg",
-//    etc.
-// ─────────────────────────────────────────────────────────────────────────────
+//   Supported formats: .jpg  .png  .gif  .webp
+//
+// ─── HOW TO ADD A YOUTUBE VIDEO ──────────────────────────────────────────────
+//
+//   1. Upload the video to YouTube
+//   2. Copy the VIDEO ID — it's the part after "watch?v=" in the URL
+//      Example URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+//      Video ID:    dQw4w9WgXcQ
+//   3. Set  type: "video"  and paste the ID into  src:
+//
+// ─── GALLERY ITEMS ───────────────────────────────────────────────────────────
+//
+//   Each project has a `gallery` array. Each item is either
+//   an image or a video, plus a short caption (1–2 sentences max).
+//
+//   Image item:
+//     { type: "image", src: "/static/img/filename.jpg", caption: "Description here." }
+//
+//   Video item:
+//     { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Description here." }
+//
+//   3–5 gallery items per project is the sweet spot.
+//   The gallery alternates: item 1 = media left, item 2 = media right, etc.
+//
+// ─── PROJECT FIELDS ──────────────────────────────────────────────────────────
+//
+//   slug          → URL for this project. Use lowercase-with-dashes.
+//                   Example: "project-name"  →  ejuanhenderson.com/projects/project-name
+//
+//   title         → Project title shown on the card and project page.
+//
+//   category      → Short label shown under the title. (e.g. "Animation", "Illustration / Design")
+//
+//   mainImage     → Image shown on the HOME PAGE grid card AND as the
+//                   hero on the project page. Path: "/static/img/filename.jpg"
+//
+//   mainMediaType → Set to "image" for a photo/gif hero.
+//                   Set to "video" to show a YouTube embed as the hero instead.
+//
+//   mainVideo     → Only needed if mainMediaType is "video".
+//                   Paste the YouTube VIDEO ID here (not the full URL).
+//
+//   intro         → The paragraph of text on the project page describing the work.
+//
+//   gallery       → Array of image/video items (see format above).
+//
+// ═════════════════════════════════════════════════════════════════════════════
 
 const projects = [
 
+  // ─── PROJECT TEMPLATE (copy this block to add a new project) ──────────────
+  //
+  // {
+  //   slug: "project-slug",
+  //   title: "Project Title",
+  //   category: "Category / Sub-category",
+  //   mainImage: "/static/img/main-image.jpg",         ← home grid + hero image
+  //   mainMediaType: "image",                          ← "image" or "video"
+  //   // mainVideo: "YOUTUBE_VIDEO_ID",               ← uncomment if mainMediaType is "video"
+  //   intro: "Project description goes here.",
+  //   gallery: [
+  //     { type: "image", src: "/static/img/image-1.jpg", caption: "Caption for this image." },
+  //     { type: "image", src: "/static/img/image-2.jpg", caption: "Caption for this image." },
+  //     { type: "video", src: "YOUTUBE_VIDEO_ID",        caption: "Caption for this video." },
+  //   ],
+  // },
+  //
+  // ──────────────────────────────────────────────────────────────────────────
+
+
   // ─── AFUEGO51 ──────────────────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   afuego51.jpg      ← home grid + project page hero
-  //   afuego51-2.jpg    ← carousel slide 2  (final mockup / branded material)
-  //   afuego51-3.jpg    ← carousel slide 3  (sketch / exploration / real world)
   {
     slug: "afuego51",
-    title: "AFUEGO51",
-    category: "Food Truck Design",
-    mainImage: "/static/img/afuego51.jpg",
+    title: "AFUEGO51 — Food Truck Design",
+    category: "Brand Identity & Large Format Design",
+    mainImage: "/static/img/afuego51.jpg",       // ← replace with the project image
     mainMediaType: "image",
     intro:
       "AFUEGO51 is a food truck brand built around heat, personality, and street-level energy. The visual identity needed to cut through — working across signage, packaging, and merch in a way that felt bold without losing clarity. I developed the full brand direction, from the wordmark and color system down to how it landed across the truck wrap and printed collateral.",
-    galleryImages: [
-      "/static/img/afuego51.jpg",    // slide 1 — hero / final mockup
-      "/static/img/afuego51-2.jpg",  // slide 2 — application / branded materials
-      "/static/img/afuego51-3.jpg",  // slide 3 — sketches / explorations
+    gallery: [
+      { type: "image", src: "/static/img/afuego51.jpg",   caption: "Final wordmark and brand identity." },
+      { type: "image", src: "/static/img/afuego51-2.jpg", caption: "Brand applications across signage and packaging." },
+      { type: "image", src: "/static/img/afuego51-3.jpg", caption: "Early sketches and concept exploration." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Process walkthrough." },  ← uncomment to add a video
     ],
   },
 
   // ─── MF DOOM ───────────────────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   mfdoom.jpg        ← home grid + project page hero
-  //   mfdoom-2.jpg      ← carousel slide 2
-  //   mfdoom-3.jpg      ← carousel slide 3
   {
     slug: "mf-doom-art-print",
     title: "MF DOOM — Art Print",
-    category: "Illustration",
-    mainImage: "/static/img/mfdoom.jpg",
+    category: "Print Illustration",
+    mainImage: "/static/img/mfdoom.jpg",         // ← replace with the project image
     mainMediaType: "image",
     intro:
       "A tribute print for MF DOOM, built around the weight and mythology the man carried. The illustration pulls from the iconography surrounding his legacy — the mask, the persona, the aura — rendered in a style that feels personal rather than decorative. Designed as a limited-run print, the piece was made to live on a wall and hold up at close range.",
-    galleryImages: [
-      "/static/img/mfdoom.jpg",    // slide 1 — final print
-      "/static/img/mfdoom-2.jpg",  // slide 2 — detail / alternate view
-      "/static/img/mfdoom-3.jpg",  // slide 3 — sketch / process
+    gallery: [
+      { type: "image", src: "/static/img/mfdoom.jpg",   caption: "Final limited-run print." },
+      { type: "image", src: "/static/img/mfdoom-2.jpg", caption: "Detail and alternate view." },
+      { type: "image", src: "/static/img/mfdoom-3.jpg", caption: "Sketch and process work." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Process walkthrough." },
     ],
   },
 
   // ─── CUTIE ─────────────────────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   cutie.gif         ← home grid + project page hero  (GIF supported)
-  //   cutie-2.jpg       ← carousel slide 2
-  //   cutie-3.jpg       ← carousel slide 3
   {
     slug: "cutie-lyric-music-video",
     title: "CUTIE — Lyric Music Video",
-    category: "Animation",
-    mainImage: "/static/img/cutie.gif",
+    category: "Motion Graphics",
+    mainImage: "/static/img/cutie.gif",          // ← GIFs are supported
     mainMediaType: "image",
+    // mainVideo: "YOUTUBE_VIDEO_ID",            // ← uncomment + set mainMediaType: "video" to show the full video as the hero
     intro:
       "An animated lyric video made to move with the track, not just follow it. Every visual decision — typography, color, pacing — was built around the emotional rhythm of the song rather than simply syncing to the beat. The result is a visual environment that feels like part of the music, not a caption running over it.",
-    galleryImages: [
-      "/static/img/cutie.gif",    // slide 1 — animated hero
-      "/static/img/cutie-2.jpg",  // slide 2 — still frame / scene
-      "/static/img/cutie-3.jpg",  // slide 3 — storyboard / motion sketch
+    gallery: [
+      { type: "image", src: "/static/img/cutie.gif",   caption: "Animated hero loop." },
+      { type: "image", src: "/static/img/cutie-2.jpg", caption: "Still frame from the video." },
+      { type: "image", src: "/static/img/cutie-3.jpg", caption: "Storyboard and motion sketches." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Full lyric video." },
     ],
   },
 
   // ─── K.H.A.S.H FOUNDATION ─────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   khash.jpg         ← home grid + project page hero
-  //   khash-2.jpg       ← carousel slide 2
-  //   khash-3.jpg       ← carousel slide 3
   {
     slug: "khash-foundation",
     title: "K.H.A.S.H Foundation",
-    category: "Design",
-    mainImage: "/static/img/khash.jpg",
+    category: "Brand Identity",
+    mainImage: "/static/img/khash.jpg",          // ← replace with the project image
     mainMediaType: "image",
     intro:
       "Brand and design work for the K.H.A.S.H Foundation — a cause-driven organization that needed visuals to match the weight and clarity of its mission. The design system prioritizes legibility and intentionality, building trust at first glance while keeping the overall identity warm and accessible.",
-    galleryImages: [
-      "/static/img/khash.jpg",    // slide 1 — primary brand / lockup
-      "/static/img/khash-2.jpg",  // slide 2 — application / layout
-      "/static/img/khash-3.jpg",  // slide 3 — detail / exploration
+    gallery: [
+      { type: "image", src: "/static/img/khash.jpg",   caption: "Primary brand lockup." },
+      { type: "image", src: "/static/img/khash-2.jpg", caption: "Layout and application." },
+      { type: "image", src: "/static/img/khash-3.jpg", caption: "Detail and exploration." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Brand presentation." },
     ],
   },
 
   // ─── LEVEE x SWAPTOBER ────────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   levee.jpg         ← home grid + project page hero
-  //   levee-2.jpg       ← carousel slide 2
-  //   levee-3.jpg       ← carousel slide 3
   {
-    slug: "levee-x-swaptober",
-    title: "LEVEE x SWAPTOBER",
-    category: "Animation / Design",
-    mainImage: "/static/img/levee.jpg",
+    slug: "levee-x-halloween",
+    title: "LEVEE x Halloween — Event",
+    category: "Motion & Campaign Design",
+    mainImage: "/static/img/levee.jpg",          // ← replace with the Halloween event project image
     mainMediaType: "image",
     intro:
-      "A visual campaign built for LEVEE x SWAPTOBER, blending animation and graphic design to capture the energy of a community event. The work needed to feel alive — something you'd stop to watch — while staying grounded in the identity of both brands. Motion and static assets were developed together as one cohesive visual system.",
-    galleryImages: [
-      "/static/img/levee.jpg",    // slide 1 — key visual / event graphic
-      "/static/img/levee-2.jpg",  // slide 2 — motion frame / secondary asset
-      "/static/img/levee-3.jpg",  // slide 3 — sketch / concept board
+      "A visual campaign for LEVEE x Halloween — an event that needed motion and design that could live on social and stop a scroll. Animation and static assets were developed together as one cohesive system, built to capture the energy of the event and move people to show up.",
+    gallery: [
+      { type: "image", src: "/static/img/levee.jpg",   caption: "Key visual and event graphic." },
+      { type: "image", src: "/static/img/levee-2.jpg", caption: "Motion frame and social assets." },
+      { type: "image", src: "/static/img/levee-3.jpg", caption: "Concept board and sketches." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Campaign animation." },
+    ],
+  },
+
+  // ─── LEVEE — SOLSTICE ─────────────────────────────────────────────────────
+  {
+    slug: "levee-vintage-market",
+    title: "LEVEE — Vintage Market Event",
+    category: "Motion & Campaign Design",
+    mainImage: "/static/img/levee-vintage.jpg",   // ← replace with the Vintage Market project image
+    mainMediaType: "image",
+    intro:
+      "Campaign design and motion work for LEVEE's Vintage Market event. A separate identity from the Halloween campaign but rooted in the same ongoing creative relationship with the brand — built to feel distinct for the occasion while staying true to LEVEE's visual language. Social-first design with motion assets to drive attendance and energy.",
+    gallery: [
+      { type: "image", src: "/static/img/levee-vintage.jpg",   caption: "Key visual for the Vintage Market event." },
+      { type: "image", src: "/static/img/levee-vintage-2.jpg", caption: "Social campaign assets." },
+      { type: "image", src: "/static/img/levee-vintage-3.jpg", caption: "Motion frame and detail." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Vintage Market campaign animation." },
     ],
   },
 
   // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   bark.jpg          ← home grid + project page hero
-  //   bark-2.jpg        ← carousel slide 2
-  //   bark-3.jpg        ← carousel slide 3
   {
     slug: "bar-k-event-backdrop",
     title: "BAR-K Event Backdrop",
-    category: "Illustration",
-    mainImage: "/static/img/bark.jpg",
+    category: "Large Format Illustration",
+    mainImage: "/static/img/bark.jpg",           // ← replace with the project image
     mainMediaType: "image",
     intro:
       "A large-format illustration created for the BAR-K event space, designed to anchor the room and hold up at scale. The piece had to function as both art and environment — something guests would photograph, stand in front of, and remember. Scale, color value, and composition were all considered through the lens of how the work would land in a physical space.",
-    galleryImages: [
-      "/static/img/bark.jpg",    // slide 1 — final illustration
-      "/static/img/bark-2.jpg",  // slide 2 — real world / installed photo
-      "/static/img/bark-3.jpg",  // slide 3 — sketch / detail
+    gallery: [
+      { type: "image", src: "/static/img/bark.jpg",   caption: "Final large-format illustration." },
+      { type: "image", src: "/static/img/bark-2.jpg", caption: "Installed in the event space." },
+      { type: "image", src: "/static/img/bark-3.jpg", caption: "Sketch and detail work." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Time-lapse of the install." },
     ],
   },
 
   // ─── K-STATE WILDCATS ─────────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   kstate.jpg        ← home grid + project page hero
-  //   kstate-2.jpg      ← carousel slide 2
-  //   kstate-3.jpg      ← carousel slide 3
   {
     slug: "kstate-wildcats-tshirt",
     title: "K-State Wildcats T-Shirt Design",
-    category: "Illustration",
-    mainImage: "/static/img/kstate.jpg",
+    category: "Apparel Design",
+    mainImage: "/static/img/kstate.jpg",         // ← replace with the project image
     mainMediaType: "image",
     intro:
       "A graphic tee designed for K-State Wildcats fans — athletic-coded but illustration-first, with the kind of detail that holds up in hand. The design channels school pride without leaning on clichés, translating the Wildcats identity into something you'd actually want to wear. Typography, texture, and mark composition were developed together to make the graphic feel unified and finished.",
-    galleryImages: [
-      "/static/img/kstate.jpg",    // slide 1 — final tee graphic
-      "/static/img/kstate-2.jpg",  // slide 2 — mockup on shirt / real world
-      "/static/img/kstate-3.jpg",  // slide 3 — sketch / type exploration
+    gallery: [
+      { type: "image", src: "/static/img/kstate.jpg",   caption: "Final tee graphic." },
+      { type: "image", src: "/static/img/kstate-2.jpg", caption: "Mockup on garment." },
+      { type: "image", src: "/static/img/kstate-3.jpg", caption: "Sketch and type exploration." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Design process walkthrough." },
     ],
   },
 
   // ─── BOOK COVERS ──────────────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   bookcovers.jpg    ← home grid + project page hero
-  //   bookcovers-2.jpg  ← carousel slide 2
-  //   bookcovers-3.jpg  ← carousel slide 3
   {
     slug: "book-covers",
-    title: "Book Covers",
-    category: "Illustration / Design",
-    mainImage: "/static/img/bookcovers.jpg",
+    title: "The Life I Love & Seeds of Hope — Book Covers",
+    category: "Editorial Illustration",
+    mainImage: "/static/img/bookcovers.jpg",     // ← replace with the project image
     mainMediaType: "image",
     intro:
-      "A series of book cover designs built around the idea that a cover makes a promise. Each piece uses illustration and typography together to communicate tone, genre, and atmosphere before a single word inside is read. The series spans multiple titles, but each cover was treated as its own problem — distinct enough to stand alone, cohesive enough to feel like they share a hand.",
-    galleryImages: [
-      "/static/img/bookcovers.jpg",    // slide 1 — cover series / hero shot
-      "/static/img/bookcovers-2.jpg",  // slide 2 — individual cover / detail
-      "/static/img/bookcovers-3.jpg",  // slide 3 — sketch / type layout
+      "Cover illustration for two titles — The Life I Love and Seeds of Hope. Each cover uses illustration and typography together to communicate tone, genre, and atmosphere before a single word inside is read. Both were treated as their own problem — distinct enough to stand alone, cohesive enough to feel like they share a hand.",
+    gallery: [
+      { type: "image", src: "/static/img/bookcovers.jpg",   caption: "The Life I Love — final cover." },
+      { type: "image", src: "/static/img/bookcovers-2.jpg", caption: "Seeds of Hope — final cover." },
+      { type: "image", src: "/static/img/bookcovers-3.jpg", caption: "Sketch and type layout." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Cover design process." },
     ],
   },
 
   // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
-  // Files to add → tony/public/static/img/
-  //   holditdown.jpg    ← home grid + project page hero
-  //   holditdown-2.jpg  ← carousel slide 2
-  //   holditdown-3.jpg  ← carousel slide 3
   {
     slug: "hold-it-down-cover-art",
-    title: "Hold It Down — Cover Art",
-    category: "Illustration / Animation",
-    mainImage: "/static/img/holditdown.jpg",
+    title: "Hold It Down — Animated Cover Art",
+    category: "Album Art & Motion",
+    mainImage: "/static/img/holditdown.jpg",     // ← replace with the project image
     mainMediaType: "image",
     intro:
-      "Cover art and animation for Hold It Down — a project where the still image and the motion version had to work equally well. The illustration was built with movement in mind from the start: forms that could breathe, elements that could shift without losing what made them feel grounded. The final deliverable works as a static cover and as a looping animated piece.",
-    galleryImages: [
-      "/static/img/holditdown.jpg",    // slide 1 — final cover art
-      "/static/img/holditdown-2.jpg",  // slide 2 — animated frame / motion still
-      "/static/img/holditdown-3.jpg",  // slide 3 — sketch / concept
+      "Cover art and animation for Hold It Down — live on Spotify as an animated canvas that plays alongside the track. The illustration was built with movement in mind from the start: forms that breathe, elements that shift without losing what makes them feel grounded. The final deliverable works as a static cover and as a looping animated piece in the player.",
+    gallery: [
+      { type: "image", src: "/static/img/holditdown.jpg",   caption: "Final cover art — static version." },
+      { type: "image", src: "/static/img/holditdown-2.jpg", caption: "Spotify Canvas — animated frame." },
+      { type: "image", src: "/static/img/holditdown-3.jpg", caption: "Sketch and concept." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Animated canvas in action." },
+    ],
+  },
+
+  // ─── DEMO REEL ────────────────────────────────────────────────────────────
+  {
+    slug: "demo-reel",
+    title: "Demo Reel",
+    category: "Motion Graphics",
+    mainImage: "/static/img/demo-reel-thumb.jpg",  // ← add a thumbnail image (still frame or custom graphic)
+    mainMediaType: "video",
+    mainVideo: "YOUTUBE_VIDEO_ID",                 // ← paste the YouTube video ID here
+    intro:
+      "A reel of motion work spanning animation, lyric videos, and branded content. Built across a range of styles and clients, it represents the breadth of what I do when things are moving.",
+    gallery: [
+      // Add supporting clips, stills, or behind-the-scenes below
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Description of this clip." },
+      // { type: "image", src: "/static/img/reel-still-1.jpg", caption: "Still from the reel." },
+    ],
+  },
+
+  // ─── VARIOUS PROJECTS ─────────────────────────────────────────────────────
+  {
+    slug: "various-projects",
+    title: "Various Projects",
+    category: "Mixed Work",
+    mainImage: "/static/img/various-thumb.jpg",    // ← add a thumbnail — a collage or single strong image works well
+    mainMediaType: "image",
+    intro:
+      "A mix of personal work, side projects, and things made just to make them. Not every piece fits a neat category — these are the ones that don't, and that's the point.",
+    gallery: [
+      // Add whatever here — personal illustrations, experiments, fun stuff
+      // { type: "image", src: "/static/img/various-1.jpg", caption: "Description." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID",          caption: "Description." },
     ],
   },
 

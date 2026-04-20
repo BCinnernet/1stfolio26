@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Accordion } from "react-bootstrap";
 import { tony } from "./utils";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import BlueskyIcon from "@/src/components/BlueskyIcon";
 import siteConfig from "@/src/data/siteConfig";
 
@@ -33,9 +34,11 @@ const Header = ({ headerColor, isTransparent }) => {
 
             {/* Logo */}
             <a className="navbar-brand" href="/">
-              <img
+              <Image
                 src="/static/img/Jumbled EJUAN logo nb [Recovered].png"
                 alt="Ejuan logo"
+                width={200}
+                height={80}
                 style={{ height: "80px", width: "auto", display: "block" }}
               />
             </a>

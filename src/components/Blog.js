@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Blog = () => {
   return (
     <section id="blog" className="section white-bg">
@@ -17,7 +19,7 @@ const Blog = () => {
             <div className="blog-grid">
               <div className="blog-grid-img">
                 <a href="#">
-                  <img src="static/img/blog-1.jpg" alt="image" />
+                  <Image src="/static/img/blog-1.jpg" alt="image" width={400} height={250} />
                 </a>
               </div>
               <div className="blog-gird-info">
@@ -42,7 +44,7 @@ const Blog = () => {
             <div className="blog-grid">
               <div className="blog-grid-img">
                 <a href="#">
-                  <img src="static/img/blog-2.jpg" alt="image" />
+                  <Image src="/static/img/blog-2.jpg" alt="image" width={400} height={250} />
                 </a>
               </div>
               <div className="blog-gird-info">
@@ -67,7 +69,7 @@ const Blog = () => {
             <div className="blog-grid">
               <div className="blog-grid-img">
                 <a href="#">
-                  <img src="static/img/blog-3.jpg" alt="image" />
+                  <Image src="/static/img/blog-3.jpg" alt="image" width={400} height={250} />
                 </a>
               </div>
               <div className="blog-gird-info">
