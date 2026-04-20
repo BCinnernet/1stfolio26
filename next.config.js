@@ -46,13 +46,19 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' data: https://fonts.gstatic.com",
-      "img-src 'self' data: blob:",
+      // Next.js hydration requires unsafe-inline + unsafe-eval
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://use.typekit.net https://www.googletagmanager.com https://www.instagram.com",
+      // Google Fonts + Adobe Fonts stylesheet delivery
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://use.typekit.net",
+      // Google Fonts + Adobe Fonts file delivery
+      "font-src 'self' data: https://fonts.gstatic.com https://use.typekit.net",
+      // Instagram embed thumbnails served from Meta CDN
+      "img-src 'self' data: blob: https://www.instagram.com https://*.cdninstagram.com https://*.fbcdn.net",
       "media-src 'self' blob: https://www.youtube.com https://player.vimeo.com",
-      "frame-src https://www.youtube.com https://player.vimeo.com",
-      "connect-src 'self'",
+      // Lottie is self-hosted JSON — no external origin needed
+      "frame-src https://www.youtube.com https://player.vimeo.com https://www.instagram.com",
+      // Analytics data pings + Adobe Fonts licence check
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://performance.typekit.net",
       "worker-src blob:",
     ].join("; "),
   },
