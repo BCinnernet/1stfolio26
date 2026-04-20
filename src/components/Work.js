@@ -29,7 +29,7 @@ const Work = () => {
       id="work"
       className="section"
       style={{
-        paddingTop: "40px",
+        paddingTop: "16px",
         paddingBottom: "80px",
         scrollMarginTop: "110px",
       }}
