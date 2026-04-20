@@ -80,23 +80,6 @@ const projects = [
   // ──────────────────────────────────────────────────────────────────────────
 
 
-  // ─── AFUEGO51 ──────────────────────────────────────────────────────────────
-  {
-    slug: "afuego51",
-    title: "AFUEGO51 — Food Truck Design",
-    category: "Brand Identity & Large Format Design",
-    mainImage: "/static/img/afuego51.jpg",       // ← replace with the project image
-    mainMediaType: "image",
-    intro:
-      "AFUEGO51 is a food truck brand built around heat, personality, and street-level energy. The visual identity needed to cut through — working across signage, packaging, and merch in a way that felt bold without losing clarity. I developed the full brand direction, from the wordmark and color system down to how it landed across the truck wrap and printed collateral.",
-    gallery: [
-      { type: "image", src: "/static/img/afuego51.jpg",   caption: "Final wordmark and brand identity." },
-      { type: "image", src: "/static/img/afuego51-2.jpg", caption: "Brand applications across signage and packaging." },
-      { type: "image", src: "/static/img/afuego51-3.jpg", caption: "Early sketches and concept exploration." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Process walkthrough." },  ← uncomment to add a video
-    ],
-  },
-
   // ─── MF DOOM ───────────────────────────────────────────────────────────────
   {
     slug: "mf-doom-art-print",
@@ -105,12 +88,114 @@ const projects = [
     mainImage: "/static/img/mfdoom.jpg",         // ← replace with the project image
     mainMediaType: "image",
     intro:
-      "A tribute print for MF DOOM, built around the weight and mythology the man carried. The illustration pulls from the iconography surrounding his legacy — the mask, the persona, the aura — rendered in a style that feels personal rather than decorative. Designed as a limited-run print, the piece was made to live on a wall and hold up at close range.",
+      "What started as a personal tribute became something much bigger. The print spread on its own — copied onto walls in New York and Iowa, tattooed on strangers, shared across the internet without a single dollar behind it. No client, no brief. Just a piece made out of respect for the legend. The fact that people wanted it on their skin and their buildings says more than any brief could.",
     gallery: [
       { type: "image", src: "/static/img/mfdoom.jpg",   caption: "Final limited-run print." },
       { type: "image", src: "/static/img/mfdoom-2.jpg", caption: "Detail and alternate view." },
       { type: "image", src: "/static/img/mfdoom-3.jpg", caption: "Sketch and process work." },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Process walkthrough." },
+    ],
+  },
+
+  // ─── AFUEGO51 ──────────────────────────────────────────────────────────────
+  {
+    slug: "afuego51",
+    title: "AFUEGO51 — Food Truck Design",
+    category: "Brand Identity & Large Format Design",
+    mainImage: "/static/img/afuego51.jpg",       // ← replace with the project image
+    mainMediaType: "image",
+    intro:
+      "Starting from nothing — no name, no visual identity, no presence. AFUEGO51 needed a brand that could cut through before the food even had a chance to speak. I built the full identity from the ground up: wordmark, color system, truck wrap, large format printing, packaging, and merch. The truck launched, hit social media, and started selling out. The work did its job.",
+    gallery: [
+      { type: "image", src: "/static/img/afuego51.jpg",   caption: "Final wordmark and brand identity." },
+      { type: "image", src: "/static/img/afuego51-2.jpg", caption: "Brand applications across signage and packaging." },
+      { type: "image", src: "/static/img/afuego51-3.jpg", caption: "Early sketches and concept exploration." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Process walkthrough." },
+    ],
+  },
+
+  // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
+  {
+    slug: "hold-it-down-cover-art",
+    title: "Hold It Down — Animated Cover Art",
+    category: "Album Art & Motion",
+    mainImage: "/static/img/holditdown.jpg",     // ← replace with the project image
+    mainMediaType: "image",
+    intro:
+      "Cover art and animated Spotify Canvas for Hold It Down — a project by Kansas City rapper and producer Dom Chronicles, featuring Sir Michael Rocks. The illustration was built with movement in mind from the start, designed to loop seamlessly as a Spotify Canvas while holding up as a standalone static cover. It's live on Spotify right now, animating every time someone presses play.",
+    gallery: [
+      { type: "image", src: "/static/img/holditdown.jpg",   caption: "Final cover art — static version." },
+      { type: "image", src: "/static/img/holditdown-2.jpg", caption: "Spotify Canvas — animated frame." },
+      { type: "image", src: "/static/img/holditdown-3.jpg", caption: "Sketch and concept." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Animated canvas in action." },
+    ],
+  },
+
+  // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
+  {
+    slug: "bar-k-event-backdrop",
+    title: "BAR-K Event Backdrop",
+    category: "Large Format Illustration",
+    mainImage: "/static/img/bark.jpg",           // ← replace with the project image
+    mainMediaType: "image",
+    intro:
+      "A large-format illustration commission through my work at Commerce Bank — created for BAR-K, a dog-friendly bar and event space with locations in Kansas City and St. Louis, Missouri. The piece had to anchor a room, hold up at scale, and function as a backdrop that thousands of people would stand in front of and photograph. From initial sketches to real-world install, it landed exactly where it needed to.",
+    gallery: [
+      { type: "image", src: "/static/img/bark.jpg",   caption: "Final large-format illustration." },
+      { type: "image", src: "/static/img/bark-2.jpg", caption: "Installed in the event space." },
+      { type: "image", src: "/static/img/bark-3.jpg", caption: "Sketch and detail work." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Time-lapse of the install." },
+    ],
+  },
+
+  // ─── BOOK COVERS ──────────────────────────────────────────────────────────
+  {
+    slug: "book-covers",
+    title: "The Life I Love & Seeds of Hope — Book Covers",
+    category: "Editorial Illustration",
+    mainImage: "/static/img/bookcovers.jpg",     // ← replace with the project image
+    mainMediaType: "image",
+    intro:
+      "Cover illustration for two published bestsellers — The Life I Love and Seeds of Hope — both available for purchase online. Each cover was designed to make a promise before a single page is turned, using illustration and typography together to communicate tone and genre at a glance. Two different titles, two different moods, one consistent hand.",
+    gallery: [
+      { type: "image", src: "/static/img/bookcovers.jpg",   caption: "The Life I Love — final cover." },
+      { type: "image", src: "/static/img/bookcovers-2.jpg", caption: "Seeds of Hope — final cover." },
+      { type: "image", src: "/static/img/bookcovers-3.jpg", caption: "Sketch and type layout." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Cover design process." },
+    ],
+  },
+
+  // ─── LEVEE x HALLOWEEN ────────────────────────────────────────────────────
+  {
+    slug: "levee-x-halloween",
+    title: "LEVEE x Halloween — Event",
+    category: "Motion & Campaign Design",
+    mainImage: "/static/img/levee.jpg",          // ← replace with the Halloween event project image
+    mainMediaType: "image",
+    intro:
+      "A Halloween event campaign for LEVEE — motion-first, built to stop a scroll and move people to show up. The campaign came with music, which meant the motion and the sound had to work as one thing rather than separately. Social assets, animated graphics, and a cohesive visual identity built for the night.",
+    gallery: [
+      { type: "image", src: "/static/img/levee.jpg",   caption: "Key visual and event graphic." },
+      { type: "image", src: "/static/img/levee-2.jpg", caption: "Motion frame and social assets." },
+      { type: "image", src: "/static/img/levee-3.jpg", caption: "Concept board and sketches." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Campaign animation." },
+    ],
+  },
+
+  // ─── LEVEE — VINTAGE MARKET ───────────────────────────────────────────────
+  {
+    slug: "levee-vintage-market",
+    title: "LEVEE — Vintage Market Event",
+    category: "Motion & Campaign Design",
+    mainImage: "/static/img/levee-vintage.jpg",   // ← replace with the Vintage Market project image
+    mainMediaType: "image",
+    intro:
+      "A visual campaign for LEVEE's Vintage Market — part of an ongoing creative relationship with the brand. Each LEVEE event gets its own distinct identity while staying true to the brand's visual language. Motion and static assets developed together, built to live on social and drive attendance.",
+    gallery: [
+      { type: "image", src: "/static/img/levee-vintage.jpg",   caption: "Key visual for the Vintage Market event." },
+      { type: "image", src: "/static/img/levee-vintage-2.jpg", caption: "Social campaign assets." },
+      { type: "image", src: "/static/img/levee-vintage-3.jpg", caption: "Motion frame and detail." },
+      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Vintage Market campaign animation." },
     ],
   },
 
@@ -123,80 +208,12 @@ const projects = [
     mainMediaType: "image",
     // mainVideo: "YOUTUBE_VIDEO_ID",            // ← uncomment + set mainMediaType: "video" to show the full video as the hero
     intro:
-      "An animated lyric video made to move with the track, not just follow it. Every visual decision — typography, color, pacing — was built around the emotional rhythm of the song rather than simply syncing to the beat. The result is a visual environment that feels like part of the music, not a caption running over it.",
+      "An animated lyric video for a musician and rapper — built to move with the track, not just illustrate it. Every visual choice was made in service of the music: the typography, the color, the pacing. The result is a visual world that feels like part of the song rather than a layer placed on top of it.",
     gallery: [
       { type: "image", src: "/static/img/cutie.gif",   caption: "Animated hero loop." },
       { type: "image", src: "/static/img/cutie-2.jpg", caption: "Still frame from the video." },
       { type: "image", src: "/static/img/cutie-3.jpg", caption: "Storyboard and motion sketches." },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Full lyric video." },
-    ],
-  },
-
-  // ─── K.H.A.S.H FOUNDATION ─────────────────────────────────────────────────
-  {
-    slug: "khash-foundation",
-    title: "K.H.A.S.H Foundation",
-    category: "Brand Identity",
-    mainImage: "/static/img/khash.jpg",          // ← replace with the project image
-    mainMediaType: "image",
-    intro:
-      "Brand and design work for the K.H.A.S.H Foundation — a cause-driven organization that needed visuals to match the weight and clarity of its mission. The design system prioritizes legibility and intentionality, building trust at first glance while keeping the overall identity warm and accessible.",
-    gallery: [
-      { type: "image", src: "/static/img/khash.jpg",   caption: "Primary brand lockup." },
-      { type: "image", src: "/static/img/khash-2.jpg", caption: "Layout and application." },
-      { type: "image", src: "/static/img/khash-3.jpg", caption: "Detail and exploration." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Brand presentation." },
-    ],
-  },
-
-  // ─── LEVEE x SWAPTOBER ────────────────────────────────────────────────────
-  {
-    slug: "levee-x-halloween",
-    title: "LEVEE x Halloween — Event",
-    category: "Motion & Campaign Design",
-    mainImage: "/static/img/levee.jpg",          // ← replace with the Halloween event project image
-    mainMediaType: "image",
-    intro:
-      "A visual campaign for LEVEE x Halloween — an event that needed motion and design that could live on social and stop a scroll. Animation and static assets were developed together as one cohesive system, built to capture the energy of the event and move people to show up.",
-    gallery: [
-      { type: "image", src: "/static/img/levee.jpg",   caption: "Key visual and event graphic." },
-      { type: "image", src: "/static/img/levee-2.jpg", caption: "Motion frame and social assets." },
-      { type: "image", src: "/static/img/levee-3.jpg", caption: "Concept board and sketches." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Campaign animation." },
-    ],
-  },
-
-  // ─── LEVEE — SOLSTICE ─────────────────────────────────────────────────────
-  {
-    slug: "levee-vintage-market",
-    title: "LEVEE — Vintage Market Event",
-    category: "Motion & Campaign Design",
-    mainImage: "/static/img/levee-vintage.jpg",   // ← replace with the Vintage Market project image
-    mainMediaType: "image",
-    intro:
-      "Campaign design and motion work for LEVEE's Vintage Market event. A separate identity from the Halloween campaign but rooted in the same ongoing creative relationship with the brand — built to feel distinct for the occasion while staying true to LEVEE's visual language. Social-first design with motion assets to drive attendance and energy.",
-    gallery: [
-      { type: "image", src: "/static/img/levee-vintage.jpg",   caption: "Key visual for the Vintage Market event." },
-      { type: "image", src: "/static/img/levee-vintage-2.jpg", caption: "Social campaign assets." },
-      { type: "image", src: "/static/img/levee-vintage-3.jpg", caption: "Motion frame and detail." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Vintage Market campaign animation." },
-    ],
-  },
-
-  // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
-  {
-    slug: "bar-k-event-backdrop",
-    title: "BAR-K Event Backdrop",
-    category: "Large Format Illustration",
-    mainImage: "/static/img/bark.jpg",           // ← replace with the project image
-    mainMediaType: "image",
-    intro:
-      "A large-format illustration created for the BAR-K event space, designed to anchor the room and hold up at scale. The piece had to function as both art and environment — something guests would photograph, stand in front of, and remember. Scale, color value, and composition were all considered through the lens of how the work would land in a physical space.",
-    gallery: [
-      { type: "image", src: "/static/img/bark.jpg",   caption: "Final large-format illustration." },
-      { type: "image", src: "/static/img/bark-2.jpg", caption: "Installed in the event space." },
-      { type: "image", src: "/static/img/bark-3.jpg", caption: "Sketch and detail work." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Time-lapse of the install." },
     ],
   },
 
@@ -208,46 +225,12 @@ const projects = [
     mainImage: "/static/img/kstate.jpg",         // ← replace with the project image
     mainMediaType: "image",
     intro:
-      "A graphic tee designed for K-State Wildcats fans — athletic-coded but illustration-first, with the kind of detail that holds up in hand. The design channels school pride without leaning on clichés, translating the Wildcats identity into something you'd actually want to wear. Typography, texture, and mark composition were developed together to make the graphic feel unified and finished.",
+      "A graphic tee designed through my work at Commerce Bank for K-State Wildcats — a Division I college athletics program with real reach. The design went to print and landed on actual students. Athletic-coded but illustration-first, the graphic translates school pride into something worth wearing rather than just another piece of licensed merch.",
     gallery: [
       { type: "image", src: "/static/img/kstate.jpg",   caption: "Final tee graphic." },
-      { type: "image", src: "/static/img/kstate-2.jpg", caption: "Mockup on garment." },
+      { type: "image", src: "/static/img/kstate-2.jpg", caption: "Printed and worn by students." },
       { type: "image", src: "/static/img/kstate-3.jpg", caption: "Sketch and type exploration." },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Design process walkthrough." },
-    ],
-  },
-
-  // ─── BOOK COVERS ──────────────────────────────────────────────────────────
-  {
-    slug: "book-covers",
-    title: "The Life I Love & Seeds of Hope — Book Covers",
-    category: "Editorial Illustration",
-    mainImage: "/static/img/bookcovers.jpg",     // ← replace with the project image
-    mainMediaType: "image",
-    intro:
-      "Cover illustration for two titles — The Life I Love and Seeds of Hope. Each cover uses illustration and typography together to communicate tone, genre, and atmosphere before a single word inside is read. Both were treated as their own problem — distinct enough to stand alone, cohesive enough to feel like they share a hand.",
-    gallery: [
-      { type: "image", src: "/static/img/bookcovers.jpg",   caption: "The Life I Love — final cover." },
-      { type: "image", src: "/static/img/bookcovers-2.jpg", caption: "Seeds of Hope — final cover." },
-      { type: "image", src: "/static/img/bookcovers-3.jpg", caption: "Sketch and type layout." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Cover design process." },
-    ],
-  },
-
-  // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
-  {
-    slug: "hold-it-down-cover-art",
-    title: "Hold It Down — Animated Cover Art",
-    category: "Album Art & Motion",
-    mainImage: "/static/img/holditdown.jpg",     // ← replace with the project image
-    mainMediaType: "image",
-    intro:
-      "Cover art and animation for Hold It Down — live on Spotify as an animated canvas that plays alongside the track. The illustration was built with movement in mind from the start: forms that breathe, elements that shift without losing what makes them feel grounded. The final deliverable works as a static cover and as a looping animated piece in the player.",
-    gallery: [
-      { type: "image", src: "/static/img/holditdown.jpg",   caption: "Final cover art — static version." },
-      { type: "image", src: "/static/img/holditdown-2.jpg", caption: "Spotify Canvas — animated frame." },
-      { type: "image", src: "/static/img/holditdown-3.jpg", caption: "Sketch and concept." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Animated canvas in action." },
     ],
   },
 
@@ -276,11 +259,27 @@ const projects = [
     mainImage: "/static/img/various-thumb.jpg",    // ← add a thumbnail — a collage or single strong image works well
     mainMediaType: "image",
     intro:
-      "A mix of personal work, side projects, and things made just to make them. Not every piece fits a neat category — these are the ones that don't, and that's the point.",
+      "Short film posters, merch designs, motion graphic one-offs, and things made just to make them. Not every piece fits a neat category — these are the ones that don't, and that's the point.",
     gallery: [
-      // Add whatever here — personal illustrations, experiments, fun stuff
+      // Add whatever here — posters, merch, experiments, fun stuff
       // { type: "image", src: "/static/img/various-1.jpg", caption: "Description." },
       // { type: "video", src: "YOUTUBE_VIDEO_ID",          caption: "Description." },
+    ],
+  },
+
+  // ─── TBD ──────────────────────────────────────────────────────────────────
+  {
+    slug: "khash-foundation",
+    title: "K.H.A.S.H Foundation",
+    category: "Brand Identity",
+    mainImage: "/static/img/khash.jpg",          // ← replace with the project image
+    mainMediaType: "image",
+    intro:
+      "Brand and identity work for the K.H.A.S.H Foundation — a cause-driven organization with real presence. More to come as the brand grows.",
+    gallery: [
+      { type: "image", src: "/static/img/khash.jpg",   caption: "Primary brand lockup." },
+      { type: "image", src: "/static/img/khash-2.jpg", caption: "Layout and application." },
+      { type: "image", src: "/static/img/khash-3.jpg", caption: "Detail and exploration." },
     ],
   },
 

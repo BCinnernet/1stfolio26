@@ -98,7 +98,7 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <Layout headerColor={"dark"}>
-        <section style={{ paddingTop: "140px", paddingBottom: "80px", background: "#e7e6df" }}>
+        <section style={{ paddingTop: "140px", paddingBottom: "80px", background: "#edeae4" }}>
           <div className="container">
             <h2>Project not found</h2>
             <p>This project page does not exist yet.</p>
@@ -152,7 +152,7 @@ const ProjectDetail = () => {
     <Layout headerColor={"dark"}>
 
       {/* ── Header ── */}
-      <section style={{ background: "#e7e6df", paddingBottom: 0 }}>
+      <section style={{ background: "#edeae4", paddingBottom: 0 }}>
         <div className="container">
           <div className="row align-items-end">
             <div
@@ -186,7 +186,7 @@ const ProjectDetail = () => {
 
       {/* ── Gallery ── */}
       {gallery.length > 0 && (
-        <section style={{ paddingTop: "100px", paddingBottom: "120px", background: "#f0eeea" }}>
+        <section style={{ paddingTop: "100px", paddingBottom: "120px", background: "#f5f3ef" }}>
           <div className="container">
             {gallery.map((item, i) => (
               <GalleryItem
