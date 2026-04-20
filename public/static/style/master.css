@@ -466,7 +466,7 @@ h6 {
 }
 
 .gray-bg {
-  background-color: #e7e6df; /* slightly darker than main */
+  background-color: #edeae4; /* slightly darker than main */
 }
 
 .white-bg {
@@ -6516,36 +6516,56 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 28px 0;
-  background: #eceae2;
+  padding: 40px 0;
+  background: #f2efe9;
+  overflow: visible;
+  scroll-margin-top: 80px;
 }
 
 .work-reveal-btn {
+  position: relative;
   background: #141013;
-  border: 2px solid #141013;
-  border-radius: 8px;
+  border: none;
+  border-radius: 18px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 22px;
-  width: 200px;
+  gap: 12px;
+  padding: 0 28px;
+  height: 52px;
   color: #f1ebdf;
   font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: background 0.55s ease-in-out, border-color 0.55s ease-in-out, color 0.55s ease-in-out;
+  overflow: hidden;
+  transition: color 0.3s ease, transform 0.18s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-.work-reveal-btn:hover {
-  background: #090a0c;
-  border-color: #c6ff6a;
+.work-reveal-btn:hover,
+.work-reveal-btn.is-open {
   color: #c6ff6a;
+}
+
+.work-reveal-btn:active {
+  filter: brightness(0.8);
+  transition: filter 0.08s ease;
+}
+
+.btn-gloss {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: transform 0.18s ease, background 0.18s ease;
 }
 
 .work-reveal-label {
   white-space: nowrap;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Folder icon crossfade ── */
@@ -6555,6 +6575,7 @@ h6 {
   width: 26px;
   height: 26px;
   flex-shrink: 0;
+  z-index: 1;
 }
 
 .folder-img {
@@ -6588,7 +6609,7 @@ h6 {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-  background: #eceae2;
+  background: #f2efe9;
 }
 
 .work-panel.is-open {
@@ -6599,7 +6620,7 @@ h6 {
   overflow: hidden;
 }
 body {
-  background-color: #eceae2;
+  background-color: #f2efe9;
   color: #0d1321;
 }
 /* HERO SOCIAL ICONS */

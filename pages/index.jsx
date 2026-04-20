@@ -1,24 +1,44 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Layout from "@/src/layouts/Layout";
 import dynamic from "next/dynamic";
 
 const Work = dynamic(() => import("@/src/components/Work"), { ssr: false });
 
+const GLOSS_DEFAULT = "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 35%, rgba(255,255,255,0.00) 60%)";
+const GLOSS_HOVER   = "linear-gradient(120deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.00) 60%)";
+
 const Index3 = () => {
   const [workOpen, setWorkOpen] = useState(false);
-  const [btnTilt, setBtnTilt] = useState({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
+  const [btnStyle, setBtnStyle] = useState({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
+  const [glossStyle, setGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
+  const btnRef = useRef(null);
+  const triggerRef = useRef(null);
 
-  const handleBtnMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 18;
-    const rotateX = ((rect.height / 2 - y) / (rect.height / 2)) * 18;
-    setBtnTilt({ transform: `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)` });
+  const handleMouseMove = (e) => {
+    if (!btnRef.current) return;
+    const rect = btnRef.current.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+    // Distance beyond the button edge (0 when inside)
+    const edgeDx = Math.max(0, Math.abs(dx) - rect.width / 2);
+    const edgeDy = Math.max(0, Math.abs(dy) - rect.height / 2);
+    const edgeDist = Math.hypot(edgeDx, edgeDy);
+    const factor = Math.max(0, 1 - edgeDist / 56);
+    const nx = Math.max(-1, Math.min(1, dx / (rect.width / 2)));
+    const ny = Math.max(-1, Math.min(1, dy / (rect.height / 2)));
+    const rotateY =  nx * 18 * factor;
+    const rotateX = -ny * 18 * factor;
+    const glossX  =  nx * 12 * factor;
+    const glossY  =  ny * 12 * factor;
+    setBtnStyle({ transform: `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)` });
+    setGlossStyle({ background: factor > 0 ? GLOSS_HOVER : GLOSS_DEFAULT, transform: `translateX(${glossX}px) translateY(${glossY}px)` });
   };
 
-  const handleBtnMouseLeave = () => {
-    setBtnTilt({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
+  const handleMouseLeave = () => {
+    setBtnStyle({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
+    setGlossStyle({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
   };
 
   // Auto-open after 2s on first load
@@ -58,15 +78,28 @@ const Index3 = () => {
       </section>
 
       {/* ── Work reveal trigger — sits at the seam ── */}
-      <div className="work-reveal-trigger">
-        <button
-          className={`work-reveal-btn${workOpen ? " is-open" : ""}`}
-          onClick={() => setWorkOpen((prev) => !prev)}
-          aria-expanded={workOpen}
-          style={btnTilt}
-          onMouseMove={handleBtnMouseMove}
-          onMouseLeave={handleBtnMouseLeave}
+      <div ref={triggerRef} className="work-reveal-trigger">
+        <div
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ padding: "48px 64px", display: "inline-block" }}
         >
+        <button
+          ref={btnRef}
+          className={`work-reveal-btn${workOpen ? " is-open" : ""}`}
+          onClick={() => {
+            const opening = !workOpen;
+            setWorkOpen(opening);
+            if (opening) {
+              setTimeout(() => {
+                triggerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }, 300);
+            }
+          }}
+          aria-expanded={workOpen}
+          style={btnStyle}
+        >
+          <div className="btn-gloss" style={glossStyle} />
           <span className="work-folder-icon">
             <img src="/static/img/Folder Icon_closed.png" alt="" className="folder-img folder-img-closed" />
             <img src="/static/img/Folder Icon_open.png"   alt="" className="folder-img folder-img-open"   />
@@ -75,6 +108,7 @@ const Index3 = () => {
             {workOpen ? "Close Work" : "Work / Projects"}
           </span>
         </button>
+        </div>
       </div>
 
       {/* ── Work panel — expands on open ── */}
@@ -87,7 +121,7 @@ const Index3 = () => {
       {/* ── About Teaser ── */}
       <section
         className="section slant-top"
-        style={{ paddingTop: "80px", paddingBottom: "50px", background: "#c8c7be" }}
+        style={{ paddingTop: "80px", paddingBottom: "50px", background: "#d0cfc6" }}
       >
         <div className="container">
           <div className="row align-items-center">

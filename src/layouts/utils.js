@@ -23,8 +23,7 @@ export const tony = {
       let current = "";
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+        if (pageYOffset >= sectionTop - 120) {
           current = section.getAttribute("id");
         }
       });
@@ -33,7 +32,7 @@ export const tony = {
         if (current !== null) {
           a.classList.remove("active");
         }
-        if (a.getAttribute("href") == `#${current}`) {
+        if (a.getAttribute("href").replace(/^\//, "") == `#${current}`) {
           a.classList.add("active");
         }
       });
