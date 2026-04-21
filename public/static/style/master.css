@@ -7264,8 +7264,14 @@ body {
 }
 
 @keyframes ee-line-in {
-  from { transform: translateY(110%); }
-  to   { transform: translateY(0); }
+  from {
+    transform: translateY(22px);
+    clip-path: inset(100% 0 0% 0);
+  }
+  to {
+    transform: translateY(0);
+    clip-path: inset(0% 0 0% 0);
+  }
 }
 
 .ee-content {
@@ -7276,7 +7282,7 @@ body {
   max-width: 700px;
 }
 .ee-line-wrap {
-  overflow: hidden;
+  overflow: visible;
 }
 .ee-line {
   display: block;
