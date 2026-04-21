@@ -4,6 +4,7 @@ import { tony } from "./utils";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import BlueskyIcon from "@/src/components/BlueskyIcon";
+import SlideChars from "@/src/components/SlideChars";
 import siteConfig from "@/src/data/siteConfig";
 
 const { instagram, bluesky } = siteConfig.social;
@@ -76,7 +77,7 @@ const Header = ({ headerColor, isTransparent }) => {
                     }`}
                     href="/#home"
                   >
-                    Home
+                    <SlideChars text="Home" />
                   </a>
                 </li>
 
@@ -87,7 +88,7 @@ const Header = ({ headerColor, isTransparent }) => {
                     }`}
                     href="/#work"
                   >
-                    Work
+                    <SlideChars text="Work" />
                   </a>
                 </li>
 
@@ -99,7 +100,7 @@ const Header = ({ headerColor, isTransparent }) => {
                     href="/about"
                     onClick={() => setActiveHash("")}
                   >
-                    About
+                    <SlideChars text="About" />
                   </a>
                 </li>
 
@@ -111,7 +112,7 @@ const Header = ({ headerColor, isTransparent }) => {
                     href="/about#contact"
                     onClick={() => setActiveHash("#contact")}
                   >
-                    Contact
+                    <SlideChars text="Contact" />
                   </a>
                 </li>
 

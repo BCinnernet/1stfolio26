@@ -1,11 +1,11 @@
 import Isotope from "isotope-layout";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import SlideChars from "@/src/components/SlideChars";
 import projects from "@/src/data/projects";
 
 const Work = () => {
   const isotope = useRef();
-  const [filterKey, setFilterKey] = useState("*");
 
   useEffect(() => {
     setTimeout(() => {
@@ -76,7 +76,9 @@ const Work = () => {
               </div>
 
               <div className="project-card-copy">
-                <h5 className="project-card-title">{project.title}</h5>
+                <h5 className="project-card-title">
+                  <SlideChars text={project.title} stagger={20} />
+                </h5>
                 <span className="project-card-category">{project.category}</span>
               </div>
             </div>
