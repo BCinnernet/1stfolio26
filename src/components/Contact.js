@@ -55,12 +55,12 @@ const Contact = () => {
 
                 <div className="contact-card-left">
                   <p className="contact-card-label">Lets make something!</p>
-                  <h3 className="contact-card-title">Reach out, lets connect.</h3>
                   <p className="contact-card-text" style={{ fontWeight: "700", color: "#ffffff" }}>Business Hours: Open 24/7 | 7 days a week.</p>
                   <p className="contact-card-text">Available for freelance, collaborations, and creative opportunities.</p>
                 </div>
 
                 <div className="contact-card-right">
+                  <h3 className="contact-card-title">Reach out, lets connect.</h3>
                   <a href={`mailto:${email}`} className="contact-card-email">{email}</a>
 
                   <div className="contact-card-socials">
