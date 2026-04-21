@@ -102,14 +102,14 @@ const PixelatedImage = ({ src, alt, pixelSize = 20 }) => {
           fontSize: "12px",
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          opacity: 0.45,
+          opacity: 0.25,
           marginTop: "10px",
           pointerEvents: "none",
           display: "none",
         }}
         className="pixelated-hint"
         >
-          Tap to reveal
+          Tap
         </p>
       )}
     </div>

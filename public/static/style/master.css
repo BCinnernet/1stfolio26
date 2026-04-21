@@ -6549,6 +6549,11 @@ h6 {
   color: #c6ff6a;
 }
 
+.work-reveal-btn:hover .slide-char-a,
+.work-reveal-btn:hover .slide-char-b {
+  transform: translateY(-100%);
+}
+
 .work-reveal-btn:active {
   filter: brightness(0.8);
   transition: filter 0.08s ease;
@@ -7131,16 +7136,25 @@ body {
 }
 
 /* ── Back to top button ─────────────────────────────────────────────────────── */
+@keyframes btt-blob {
+  0%   { border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%; }
+  20%  { border-radius: 55% 45% 42% 58% / 55% 42% 58% 45%; }
+  40%  { border-radius: 48% 52% 62% 38% / 38% 62% 42% 58%; }
+  60%  { border-radius: 62% 38% 50% 50% / 56% 48% 52% 44%; }
+  80%  { border-radius: 50% 50% 44% 56% / 44% 58% 42% 56%; }
+  100% { border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%; }
+}
+
 .back-to-top {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 36px;
-  height: 36px;
-  background: transparent;
+  width: 44px;
+  height: 44px;
+  background: #141013;
   color: #fff;
-  border: 2px solid #141013;
-  border-radius: 50%;
+  border: none;
+  border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -7150,11 +7164,8 @@ body {
   transition:
     opacity 0.3s ease,
     transform 0.3s ease,
-    width 0.7s cubic-bezier(0.34, 2.1, 0.54, 1),
-    height 0.7s cubic-bezier(0.34, 2.1, 0.54, 1),
-    border-radius 0.7s cubic-bezier(0.34, 2.1, 0.54, 1),
-    background 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-    border-color 0.35s ease;
+    width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: 9999;
   pointer-events: none;
   overflow: hidden;
@@ -7163,55 +7174,27 @@ body {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+  animation: btt-blob 4s ease-in-out infinite;
 }
 .back-to-top:hover {
-  width: 48px;
-  height: 48px;
-  border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
-  background: #141013;
-  border-color: #141013;
-}
-.back-to-top:hover .back-to-top-arrow {
-  opacity: 1;
-  transform: translateY(0);
+  width: 52px;
+  height: 52px;
+  animation: btt-blob 2s ease-in-out infinite;
 }
 .back-to-top-arrow {
-  opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s,
-    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
 }
 .back-to-top-arrow svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   stroke: #fff;
   stroke-width: 2.5;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-/* ── Back to top idle animations ───────────────────────────────────────────── */
-@keyframes btt-float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-5px); }
-}
-@keyframes btt-pulse-border {
-  0%, 100% { border-color: #141013; }
-  50%       { border-color: #c6ff6a; }
-}
-.back-to-top.visible {
-  animation:
-    btt-float 3s ease-in-out infinite,
-    btt-pulse-border 3s ease-in-out infinite;
-}
-.back-to-top.visible:hover {
-  animation: none;
 }
 
 /* ── Pixelated image tap hint — only on touch devices ──────────────────────── */

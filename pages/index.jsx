@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Layout from "@/src/layouts/Layout";
 import dynamic from "next/dynamic";
+import SlideChars from "@/src/components/SlideChars";
 
 const Work = dynamic(() => import("@/src/components/Work"), { ssr: false });
 
@@ -105,7 +106,7 @@ const Index3 = () => {
             <img src="/static/img/Folder Icon_open.png"   alt="" className="folder-img folder-img-open"   />
           </span>
           <span className="work-reveal-label">
-            {workOpen ? "Close Work" : "Work / Projects"}
+            <SlideChars key={workOpen ? "close" : "open"} text={workOpen ? "Close Work" : "Work / Projects"} stagger={25} />
           </span>
         </button>
         </div>
