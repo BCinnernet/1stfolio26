@@ -14,6 +14,7 @@ const Index3 = () => {
   const [glossStyle, setGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
   const btnRef = useRef(null);
   const triggerRef = useRef(null);
+  const aboutRef = useRef(null);
 
   const handleMouseMove = (e) => {
     if (!btnRef.current) return;
@@ -56,6 +57,25 @@ const Index3 = () => {
     }
   }, [workOpen]);
 
+  // Scroll reveal for about teaser section
+  useEffect(() => {
+    const els = aboutRef.current?.querySelectorAll(".sr");
+    if (!els) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("sr-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Layout headerColor={"dark"}>
 
@@ -79,7 +99,7 @@ const Index3 = () => {
       </section>
 
       {/* ── Work reveal trigger — sits at the seam ── */}
-      <div ref={triggerRef} className="work-reveal-trigger">
+      <div ref={triggerRef} id="work" className="work-reveal-trigger">
         <div
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -121,12 +141,13 @@ const Index3 = () => {
 
       {/* ── About Teaser ── */}
       <section
+        ref={aboutRef}
         className="section slant-top"
         style={{ paddingTop: "80px", paddingBottom: "50px", background: "#d0cfc6" }}
       >
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-5 m-15px-tb">
+            <div className="col-lg-5 m-15px-tb sr" style={{ "--sr-delay": "0ms" }}>
               <div className="about-me-img">
                 <img
                   className="about-gif"
@@ -137,7 +158,7 @@ const Index3 = () => {
             </div>
             <div className="col-lg-7 m-15px-tb">
               <div className="about-me">
-                <h4>
+                <h4 className="sr" style={{ "--sr-delay": "120ms" }}>
                   <span style={{ color: "#141413" }}>I'm</span>{" "}
                   <span style={{ color: "#141413", fontWeight: "800" }}>EJUAN</span>{" "}
                   <span style={{ fontSize: "20px", fontStyle: "italic", color: "#83867d" }}>
@@ -148,10 +169,10 @@ const Index3 = () => {
                   </span>
                 </h4>
                 <h6></h6>
-                <p>
+                <p className="sr" style={{ "--sr-delay": "220ms" }}>
                   "Illustration, design and motion design is where I thrive, but honestly, whatever I can put my hands on, I'll make something out of it! I coded this website just to understand the process for the love of the game."
                 </p>
-                <div className="btn-bar">
+                <div className="btn-bar sr" style={{ "--sr-delay": "320ms" }}>
                   <a className="m-btn m-btn-theme" href="/about">
                     Check me out!
                   </a>

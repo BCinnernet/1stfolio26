@@ -151,7 +151,7 @@ const projects = [
   // ─── BOOK COVERS ──────────────────────────────────────────────────────────
   {
     slug: "book-covers",
-    title: "The Life I Love & Seeds of Hope — Book Covers",
+    title: "Book Cover Illustration",
     category: "Editorial Illustration",
     mainImage: "/static/img/bookcovers.jpg",     // ← replace with the project image
     mainMediaType: "image",

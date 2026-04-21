@@ -1,25 +1,27 @@
 import PixelatedImage from "@/src/components/PixelatedImage";
+import useSectionReveal from "@/src/hooks/useSectionReveal";
 
 const About = () => {
+  const ref = useSectionReveal(0.08);
+
   return (
     <section
+      ref={ref}
       id="about"
       className="section gray-bg"
       style={{ paddingTop: "180px", paddingBottom: "10px" }}
     >
       <div className="container">
 
-        {/* Page title — offset matches the body copy column */}
         <div className="row">
           <div className="col-lg-5 offset-lg-1">
-            <h2 className="about-page-title">About</h2>
+            <h2 className="about-page-title sr" style={{ "--sr-delay": "0ms" }}>About</h2>
           </div>
         </div>
 
         <div className="row align-items-center">
 
-          {/* Bio text — shown first on mobile, left on desktop */}
-          <div className="col-lg-5 offset-lg-1 about-text-col">
+          <div className="col-lg-5 offset-lg-1 about-text-col sr" style={{ "--sr-delay": "100ms" }}>
             <div className="about-me">
               <p>
                 I'm Ejuan, or EJ, a multimedia artist whose work spans illustration, design, and motion
@@ -39,9 +41,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Profile photo — shown second on mobile, right on desktop */}
-          {/* To swap your photo: drop about-photo.jpg into /public/static/img/ */}
-          <div className="col-lg-4 offset-lg-1 about-photo-col">
+          <div className="col-lg-4 offset-lg-1 about-photo-col sr" style={{ "--sr-delay": "220ms" }}>
             <PixelatedImage
               src="/static/img/about-photo.jpg"
               alt="Ejuan Henderson"
@@ -50,7 +50,6 @@ const About = () => {
           </div>
 
         </div>
-
 
       </div>
     </section>

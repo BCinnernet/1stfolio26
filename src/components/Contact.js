@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BlueskyIcon from "@/src/components/BlueskyIcon";
 import siteConfig from "@/src/data/siteConfig";
+import useSectionReveal from "@/src/hooks/useSectionReveal";
 
 const { email, location, social } = siteConfig;
 const { instagram, bluesky } = social;
@@ -9,6 +10,7 @@ const GLOSS_DEFAULT = "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(2
 const GLOSS_HOVER   = "linear-gradient(120deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.00) 60%)";
 
 const Contact = () => {
+  const ref = useSectionReveal(0.1);
   const [cardStyle, setCardStyle] = useState({
     transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
   });
@@ -37,13 +39,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section gray-bg" style={{ paddingTop: "60px" }}>
+    <section ref={ref} id="contact" className="section gray-bg" style={{ paddingTop: "60px" }}>
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-lg-10">
             <div
-              className="contact-card"
-              style={cardStyle}
+              className="contact-card sr"
+              style={{ "--sr-delay": "0ms", ...cardStyle }}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
