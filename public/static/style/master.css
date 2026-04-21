@@ -6956,7 +6956,8 @@ body {
 
 .project-card-title {
   margin-bottom: 4px;
-  font-size: clamp(13px, 1.3vw, 18px);
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 600;
   color: #141013;
   line-height: 1.3;
   transition: none;
@@ -6977,7 +6978,8 @@ body {
 }
 .project-card-title {
   margin-bottom: 4px;
-  font-size: clamp(11px, 1.1vw, 16px);
+  font-size: clamp(15px, 1.1vw, 16px);
+  font-weight: 600;
   color: #141013;
 }
 
