@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/src/layouts/Layout";
 import projects from "@/src/data/projects";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 // ── Scroll-reveal hook ────────────────────────────────────────────────────────
 const useScrollReveal = () => {
@@ -19,6 +21,36 @@ const useScrollReveal = () => {
   }, []);
   return [ref, visible];
 };
+
+// ── Hero media slider (used when project.heroMedia is defined) ────────────────
+const HeroSlider = ({ slides, title }) => (
+  <Swiper
+    className="hero-slider"
+    modules={[Pagination]}
+    pagination={{ clickable: true }}
+    loop={slides.length > 1}
+    speed={500}
+  >
+    {slides.map((item, i) =>
+      item.type === "video" ? (
+        <SwiperSlide key={i}>
+          <div className="gallery-video-wrap">
+            <iframe
+              src={`https://www.youtube.com/embed/${item.src}`}
+              title={item.caption || title}
+              allowFullScreen
+              sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
+            />
+          </div>
+        </SwiperSlide>
+      ) : (
+        <SwiperSlide key={i}>
+          <img src={item.src} alt={item.caption || title} className="hero-slider-img" />
+        </SwiperSlide>
+      )
+    )}
+  </Swiper>
+);
 
 // ── Single alternating gallery row ───────────────────────────────────────────
 const GalleryItem = ({ item, index, projectTitle, onImageClick }) => {
@@ -109,7 +141,17 @@ const ProjectDetail = () => {
     );
   }
 
-  const gallery = project.gallery ?? [];
+  const gallery = (() => {
+    let imgCount = 0;
+    return (project.gallery ?? []).map((item) => {
+      if (item.type !== "image") return item;
+      imgCount++;
+      return {
+        ...item,
+        src: item.src || `/static/img/${project.slug}-gallery-${imgCount}.jpg`,
+      };
+    });
+  })();
 
   // Build a map: gallery index → image-only index (for lightbox prev/next)
   const galleryToImageIndex = {};
@@ -129,7 +171,13 @@ const ProjectDetail = () => {
     if (galleryIdx !== undefined) setLightboxIndex(Number(galleryIdx));
   };
 
-  const heroMedia =
+  const heroSrc =
+    project.mainImage ||
+    (project.mainMediaType === "video"
+      ? `/static/img/${project.slug}-thumb.jpg`
+      : `/static/img/${project.slug}-hero.jpg`);
+
+  const singleHeroEl =
     project.mainMediaType === "video" && project.mainVideo ? (
       <div className="gallery-video-wrap">
         <iframe
@@ -142,13 +190,28 @@ const ProjectDetail = () => {
     ) : (
       <div className="hero-parallax-wrap">
         <img
-          src={project.mainImage}
+          src={heroSrc}
           alt={project.title}
           className="hero-parallax-img"
           style={{ transform: `translateY(${scrollY * 0.12}px)` }}
         />
       </div>
     );
+
+  // Derive hero slide image srcs from slug when no explicit src is provided
+  const heroSlides = project.heroMedia?.length > 0
+    ? (() => {
+        let imgCount = 0;
+        return project.heroMedia.map((item) => {
+          if (item.type !== "image") return item;
+          imgCount++;
+          return {
+            ...item,
+            src: item.src || `/static/img/${project.slug}-hero-slide-${imgCount}.jpg`,
+          };
+        });
+      })()
+    : null;
 
   return (
     <Layout headerColor={"dark"}>
@@ -179,7 +242,10 @@ const ProjectDetail = () => {
               style={{ paddingTop: "80px", paddingBottom: 0, lineHeight: 0 }}
             >
               <div style={{ borderRadius: "8px 8px 0 0", overflow: "hidden" }}>
-                {heroMedia}
+                {heroSlides
+                  ? <HeroSlider slides={heroSlides} title={project.title} />
+                  : singleHeroEl
+                }
               </div>
             </div>
           </div>

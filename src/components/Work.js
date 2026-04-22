@@ -77,7 +77,13 @@ const Work = () => {
                   <Image
                     fill
                     className="project-thumb-media"
-                    src={project.thumbnailImage || project.mainImage || project.coverImage}
+                    src={
+                      project.thumbnailImage ||
+                      project.mainImage ||
+                      (project.mainMediaType === "video"
+                        ? `/static/img/${project.slug}-thumb.jpg`
+                        : `/static/img/${project.slug}-hero.jpg`)
+                    }
                     alt={project.title}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />

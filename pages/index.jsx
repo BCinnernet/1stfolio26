@@ -1,25 +1,59 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// pages/index.jsx — HOME PAGE
+//
+// This is the main landing page. It contains three sections:
+//   1. Video banner (the full-screen hero at the top)
+//   2. Work / Projects toggle button + expandable project grid
+//   3. About teaser (the "WHAT'S UP, I'M EJ" section)
+//
+// To edit text content on this page, search for the JSX below (~line 90+).
+// To edit the project cards, go to src/data/projects.js instead.
+// ─────────────────────────────────────────────────────────────────────────────
+
 import { useState, useEffect, useRef } from "react";
 import Layout from "@/src/layouts/Layout";
 import dynamic from "next/dynamic";
 import SlideChars from "@/src/components/SlideChars";
 import ProximityText from "@/src/components/ProximityText";
 
+// Work is loaded only in the browser (ssr: false) because Isotope (the grid
+// layout library it uses) doesn't work on the server side.
 const Work = dynamic(() => import("@/src/components/Work"), { ssr: false });
 
+// These two gradients create the shiny "gloss" layer on the Work button.
+// GLOSS_DEFAULT = subtle shine at rest; GLOSS_HOVER = slightly brighter on hover.
 const GLOSS_DEFAULT = "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 35%, rgba(255,255,255,0.00) 60%)";
 const GLOSS_HOVER   = "linear-gradient(120deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.00) 60%)";
 
 const Index3 = () => {
+  // true = project grid is visible, false = collapsed
   const [workOpen, setWorkOpen] = useState(false);
+
+  // The name that shows next to "WHAT'S UP, I'M".
+  // Starts as "EJUAN", then swaps to "EJ" at 2.8s on load.
+  // Hovering the name toggles it back and forth permanently.
   const [nameVariant, setNameVariant] = useState("EJUAN");
   const [nameHovered, setNameHovered] = useState(false);
-  const [textLean, setTextLean] = useState(0);
-  const [btnStyle, setBtnStyle] = useState({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
-  const [glossStyle, setGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
-  const btnRef = useRef(null);
-  const triggerRef = useRef(null);
-  const aboutRef = useRef(null);
 
+  // textLean: -1 to 1, updated as the mouse moves across the about column.
+  // Used to slightly shift the "Check me out" button for a parallax feel.
+  const [textLean, setTextLean] = useState(0);
+
+  // 3D tilt style applied to the Work/Projects button on mouse hover.
+  const [btnStyle, setBtnStyle] = useState({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
+
+  // Gloss overlay position on the Work button — shifts with the mouse.
+  const [glossStyle, setGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
+
+  // refs point to actual DOM elements so we can read their size/position.
+  const btnRef     = useRef(null); // the Work/Projects button element
+  const triggerRef = useRef(null); // the wrapper div around the button (used for scroll)
+  const aboutRef   = useRef(null); // the about teaser section (used for scroll reveal)
+
+  // ── Work button 3D tilt ─────────────────────────────────────────────────
+  // Called on every mousemove anywhere in the padded zone around the button.
+  // Calculates how far the cursor is from the button center → applies a tilt.
+  // The tilt fades out as the cursor moves further than ~56px beyond the edge.
   const handleMouseMove = (e) => {
     if (!btnRef.current) return;
     const rect = btnRef.current.getBoundingClientRect();
@@ -42,24 +76,28 @@ const Index3 = () => {
     setGlossStyle({ background: factor > 0 ? GLOSS_HOVER : GLOSS_DEFAULT, transform: `translateX(${glossX}px) translateY(${glossY}px)` });
   };
 
+  // Resets the button to flat (no tilt) when the mouse leaves the hover zone.
   const handleMouseLeave = () => {
     setBtnStyle({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
     setGlossStyle({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
   };
 
-  // Auto-open after 2s on first load
+  // ── Auto-open work panel after 2 seconds on first load ──────────────────
   useEffect(() => {
     const t = setTimeout(() => setWorkOpen(true), 2000);
     return () => clearTimeout(t);
   }, []);
 
-  // Swap EJUAN → EJ after 2.8s
+  // ── Swap name from EJUAN → EJ after 2.8 seconds ─────────────────────────
+  // To change this behavior, edit the two strings here or adjust the timeout.
   useEffect(() => {
     const t = setTimeout(() => setNameVariant("EJ"), 2800);
     return () => clearTimeout(t);
   }, []);
 
-  // After opening, nudge Isotope to recalculate its grid layout
+  // ── Tell Isotope to recalculate the grid after the work panel opens ──────
+  // Isotope measures columns immediately; if the panel is hidden it gets 0px.
+  // Firing a resize event 400ms after open gives it correct measurements.
   useEffect(() => {
     if (workOpen) {
       const t = setTimeout(() => window.dispatchEvent(new Event("resize")), 400);
@@ -67,7 +105,11 @@ const Index3 = () => {
     }
   }, [workOpen]);
 
-  // Scroll reveal for about teaser section
+  // ── Scroll-reveal for the about teaser section ───────────────────────────
+  // Any element inside aboutRef with class "sr" starts invisible.
+  // Once it enters the viewport (10% visible), the class "sr-visible" is added
+  // which triggers the fade+slide-up animation defined in master.css.
+  // The "--sr-delay" CSS variable staggers each element's entrance timing.
   useEffect(() => {
     const els = aboutRef.current?.querySelectorAll(".sr");
     if (!els) return;
@@ -89,7 +131,10 @@ const Index3 = () => {
   return (
     <Layout headerColor={"dark"}>
 
-      {/* ── Home Banner ── */}
+      {/* ── SECTION 1: Video Hero Banner ──────────────────────────────────
+          Full-width video background at the top of the page.
+          Replace the video file at /public/static/video/hero-video.mp4
+          to swap the hero video. The overlay div dims it slightly.        */}
       <section
         id="home"
         className="home-banner-01 video-hero slant-bottom"
@@ -108,7 +153,11 @@ const Index3 = () => {
         </div>
       </section>
 
-      {/* ── Work reveal trigger — sits at the seam ── */}
+      {/* ── SECTION 2: Work / Projects Toggle Button ──────────────────────
+          Clicking this button opens/closes the project grid below it.
+          The folder icon swaps between open/closed images.
+          The button label uses SlideChars for the rolling text animation.
+          On open, the page scrolls down to show the grid.                 */}
       <div ref={triggerRef} id="work" className="work-reveal-trigger">
         <div
           onMouseMove={handleMouseMove}
@@ -122,6 +171,7 @@ const Index3 = () => {
             const opening = !workOpen;
             setWorkOpen(opening);
             if (opening) {
+              // Scroll to the button after a short delay so the panel can begin opening
               setTimeout(() => {
                 triggerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
               }, 300);
@@ -130,11 +180,16 @@ const Index3 = () => {
           aria-expanded={workOpen}
           style={btnStyle}
         >
+          {/* Shiny gloss layer that shifts with mouse position */}
           <div className="btn-gloss" style={glossStyle} />
+
+          {/* Folder icon — swap images in /public/static/img/ to change */}
           <span className="work-folder-icon">
             <img src="/static/img/Folder Icon_closed.png" alt="" className="folder-img folder-img-closed" />
             <img src="/static/img/Folder Icon_open.png"   alt="" className="folder-img folder-img-open"   />
           </span>
+
+          {/* Button label — remounting via `key` replays the roll animation */}
           <span className="work-reveal-label">
             <SlideChars key={workOpen ? "close" : "open"} text={workOpen ? "Close Work" : "Work / Projects"} stagger={25} />
           </span>
@@ -142,14 +197,25 @@ const Index3 = () => {
         </div>
       </div>
 
-      {/* ── Work panel — expands on open ── */}
+      {/* ── PROJECT GRID (expands when workOpen is true) ──────────────────
+          The Work component contains the Isotope grid of project cards.
+          Project data lives in src/data/projects.js — edit there.        */}
       <div className={`work-panel${workOpen ? " is-open" : ""}`}>
         <div className="work-panel-inner">
           <Work />
         </div>
       </div>
 
-      {/* ── About Teaser ── */}
+      {/* ── SECTION 3: About Teaser ───────────────────────────────────────
+          The "WHAT'S UP, I'M EJ" section that previews the about page.
+          - Left column: animated GIF (the body scan)
+          - Right column: name, role, body copy, CTA button
+
+          To change body text, edit the ProximityText `segments` props below.
+          Each segment is { text: "...", italic: true/false }.
+          italic: true makes that text slant.
+
+          To change the GIF, replace /public/static/img/Body_scan_01_Test.gif */}
       <section
         ref={aboutRef}
         className="section slant-top"
@@ -157,6 +223,8 @@ const Index3 = () => {
       >
         <div className="container">
           <div className="row align-items-center">
+
+            {/* Left: the animated GIF */}
             <div className="col-lg-5 m-15px-tb sr" style={{ "--sr-delay": "0ms" }}>
               <div className="about-me-img">
                 <img
@@ -166,6 +234,10 @@ const Index3 = () => {
                 />
               </div>
             </div>
+
+            {/* Right: text content
+                onMouseMove tracks cursor position to drive the textLean parallax
+                on the "Check me out" button at the bottom.                    */}
             <div
               className="col-lg-7 m-15px-tb"
               onMouseMove={(e) => {
@@ -181,6 +253,12 @@ const Index3 = () => {
               onTouchEnd={() => setTextLean(0)}
             >
               <div className="about-me">
+
+                {/* ── Headline: "WHAT'S UP, I'M [EJ / EJUAN]" ──────────────
+                    The name part uses SlideChars with animateIn so it rolls in
+                    on mount. Hovering the name toggles between EJ and EJUAN
+                    and STAYS in that state until hovered again.
+                    To change the greeting text, edit the string below.         */}
                 <h2 className="home-teaser-name sr" style={{ "--sr-delay": "120ms" }}>
                   WHAT'S UP, I'M
                   <span
@@ -195,11 +273,20 @@ const Index3 = () => {
                     />
                   </span>
                 </h2>
+
+                {/* ── Role line ─────────────────────────────────────────────
+                    ProximityText makes each character react to cursor proximity:
+                    characters near the cursor scale up, bold, and lift slightly.
+                    To edit the text, change the `text` value in `segments`.    */}
                 <ProximityText
                   className="home-teaser-role sr"
                   style={{ "--sr-delay": "200ms" }}
                   segments={[{ text: "Multimedia Artist", italic: false }]}
                 />
+
+                {/* ── Body copy paragraphs ──────────────────────────────────
+                    Each ProximityText is one paragraph. Edit the `text` strings
+                    to change the copy. Use italic: true for italic phrases.    */}
                 <ProximityText
                   className="home-teaser-body sr"
                   style={{ "--sr-delay": "270ms", marginBottom: "0" }}
@@ -223,11 +310,17 @@ const Index3 = () => {
                     { text: ". At the intersection of creative instinct and technicality, is the space I operate in.", italic: false },
                   ]}
                 />
+
+                {/* ── CTA Button ────────────────────────────────────────────
+                    "Check me out →" links to the /about page.
+                    The translateX shifts slightly with textLean (mouse parallax).
+                    To change button text or link, edit the <a> below.          */}
                 <div className="btn-bar sr" style={{ "--sr-delay": "360ms", transform: `translateX(${textLean * 2}px)` }}>
                   <a className="m-btn m-btn-theme" href="/about">
                     Check me out →
                   </a>
                 </div>
+
               </div>
             </div>
           </div>
