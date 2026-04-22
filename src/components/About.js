@@ -24,19 +24,16 @@ const About = () => {
           <div className="col-lg-5 offset-lg-1 about-text-col sr" style={{ "--sr-delay": "100ms" }}>
             <div className="about-me">
               <p>
-                I'm Ejuan, or EJ, a multimedia artist whose work spans illustration, design, and motion
-                with a toolkit built to take on a wide range of creative challenges. Known for my eclectic
-                versatility, and ability to bring ideas to life through a balance of artistic expression
-                and technical skill.
+                I'm Ejuan, EJ works too. A multimedia artist working across illustration, design, motion, and whatever direction an idea wants to go. I couldn't stick to one lane if I tried, so I don't.
               </p>
               <p>
-                Illustration, design and motion design is where I thrive, but truly, whatever I can put
-                my hands on, I'll make something out of it!
+                I'm naturally curious and into a lot of things, which shows up in my work. I like bringing ideas to life in whatever form they need to take, combining creative instinct with actually building and shaping the work as it comes together.
               </p>
               <p>
-                Outside of my craft, I focus on how things work, and how they could work better. With a
-                background in marketing, I connect the bigger picture, connect dots, and try to think a
-                few steps ahead. I'm a communicator, a collaborator, and a natural problem solver.
+                I've got a background in marketing and enjoy being part of a team just as much as working independently. I enjoy working and collaborating with people who have a vision and helping push it further.
+              </p>
+              <p>
+                At the end of the day, I'm here to make things that people can connect with.
               </p>
             </div>
           </div>

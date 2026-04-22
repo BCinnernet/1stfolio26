@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Layout from "@/src/layouts/Layout";
 import dynamic from "next/dynamic";
 import SlideChars from "@/src/components/SlideChars";
+import ProximityText from "@/src/components/ProximityText";
 
 const Work = dynamic(() => import("@/src/components/Work"), { ssr: false });
 
@@ -10,6 +11,9 @@ const GLOSS_HOVER   = "linear-gradient(120deg, rgba(255,255,255,0.14) 0%, rgba(2
 
 const Index3 = () => {
   const [workOpen, setWorkOpen] = useState(false);
+  const [nameVariant, setNameVariant] = useState("EJUAN");
+  const [nameHovered, setNameHovered] = useState(false);
+  const [textLean, setTextLean] = useState(0);
   const [btnStyle, setBtnStyle] = useState({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
   const [glossStyle, setGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
   const btnRef = useRef(null);
@@ -46,6 +50,12 @@ const Index3 = () => {
   // Auto-open after 2s on first load
   useEffect(() => {
     const t = setTimeout(() => setWorkOpen(true), 2000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Swap EJUAN → EJ after 2.8s
+  useEffect(() => {
+    const t = setTimeout(() => setNameVariant("EJ"), 2800);
     return () => clearTimeout(t);
   }, []);
 
@@ -156,25 +166,60 @@ const Index3 = () => {
                 />
               </div>
             </div>
-            <div className="col-lg-7 m-15px-tb">
+            <div
+              className="col-lg-7 m-15px-tb"
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                setTextLean(((e.clientX - rect.left) / rect.width - 0.5) * 2);
+              }}
+              onMouseLeave={() => setTextLean(0)}
+              onTouchMove={(e) => {
+                const t = e.touches[0];
+                const rect = e.currentTarget.getBoundingClientRect();
+                setTextLean(((t.clientX - rect.left) / rect.width - 0.5) * 2);
+              }}
+              onTouchEnd={() => setTextLean(0)}
+            >
               <div className="about-me">
-                <h4 className="sr" style={{ "--sr-delay": "120ms" }}>
-                  <span style={{ color: "#141413" }}>I'm</span>{" "}
-                  <span style={{ color: "#141413", fontWeight: "800" }}>EJUAN</span>{" "}
-                  <span style={{ fontSize: "20px", fontStyle: "italic", color: "#83867d" }}>
-                    (ē·wän)
-                  </span>{" "}
-                  <span style={{ fontSize: "15px", fontStyle: "italic", color: "#83867d" }}>
-                    (Most call me E.J)
+                <h2 className="home-teaser-name sr" style={{ "--sr-delay": "120ms" }}>
+                  WHAT'S UP, I'M
+                  <span
+                    className="home-name-hover-wrap"
+                    onMouseEnter={() => setNameHovered(true)}
+                    onMouseLeave={() => setNameHovered(false)}
+                  >
+                    <SlideChars
+                      key={nameHovered ? "ejuan-hover" : nameVariant}
+                      text={nameHovered ? "EJUAN" : nameVariant}
+                      stagger={22}
+                      animateIn
+                    />
                   </span>
-                </h4>
-                <h6></h6>
-                <p className="sr" style={{ "--sr-delay": "220ms" }}>
-                  "Illustration, design and motion design is where I thrive, but honestly, whatever I can put my hands on, I'll make something out of it! I coded this website just to understand the process for the love of the game."
-                </p>
-                <div className="btn-bar sr" style={{ "--sr-delay": "320ms" }}>
+                </h2>
+                <ProximityText
+                  className="home-teaser-role sr"
+                  style={{ "--sr-delay": "200ms" }}
+                  segments={[{ text: "Multimedia Artist", italic: false }]}
+                />
+                <ProximityText
+                  className="home-teaser-body sr"
+                  style={{ "--sr-delay": "270ms" }}
+                  segments={[
+                    { text: "Illustration, design, motion, and whatever else the work calls for. I couldn't stick to one lane if I tried, so I don't! I am too curious and love too many things, my work is eclectic on purpose.", italic: false },
+                  ]}
+                />
+                <ProximityText
+                  className="home-teaser-body sr"
+                  style={{ "--sr-delay": "320ms" }}
+                  segments={[
+                    { text: "I enjoy working and collaborating with those who have a vision and need someone who is a ", italic: false },
+                    { text: "resourceful resource", italic: true },
+                    { text: ". At the intersection of creative instinct and technicality, is the space I operate in.", italic: false },
+                  ]}
+                />
+                <div className="btn-bar sr" style={{ "--sr-delay": "360ms", transform: `translateX(${textLean * 2}px)` }}>
                   <a className="m-btn m-btn-theme" href="/about">
-                    Check me out!
+                    Check me out →
                   </a>
                 </div>
               </div>

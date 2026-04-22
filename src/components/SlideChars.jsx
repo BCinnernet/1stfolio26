@@ -1,4 +1,4 @@
-const SlideChars = ({ text, stagger = 30, by = "char" }) => {
+const SlideChars = ({ text, stagger = 30, by = "char", animateIn = false }) => {
   const units =
     by === "word"
       ? text.split(" ").flatMap((word, i, arr) =>
@@ -7,7 +7,7 @@ const SlideChars = ({ text, stagger = 30, by = "char" }) => {
       : [...text];
 
   return (
-    <span className="slide-wrap">
+    <span className={`slide-wrap${animateIn ? " slide-wrap-in" : ""}`}>
       {units.map((unit, i) =>
         unit === " " ? (
           <span key={i} style={{ display: "inline-block", width: "0.35em" }} />
