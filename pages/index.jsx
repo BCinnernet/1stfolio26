@@ -185,8 +185,7 @@ const Index3 = () => {
                   WHAT'S UP, I'M
                   <span
                     className="home-name-hover-wrap"
-                    onMouseEnter={() => setNameHovered(true)}
-                    onMouseLeave={() => setNameHovered(false)}
+                    onMouseEnter={() => setNameHovered((h) => !h)}
                   >
                     <SlideChars
                       key={nameHovered ? "ejuan-hover" : nameVariant}
@@ -203,9 +202,16 @@ const Index3 = () => {
                 />
                 <ProximityText
                   className="home-teaser-body sr"
-                  style={{ "--sr-delay": "270ms" }}
+                  style={{ "--sr-delay": "270ms", marginBottom: "0" }}
                   segments={[
-                    { text: "Illustration, design, motion, and whatever else the work calls for. I couldn't stick to one lane if I tried, so I don't! I am too curious and love too many things, my work is eclectic on purpose.", italic: false },
+                    { text: "Illustration, design, motion, and whatever else the work calls for.", italic: false },
+                  ]}
+                />
+                <ProximityText
+                  className="home-teaser-body sr"
+                  style={{ "--sr-delay": "300ms" }}
+                  segments={[
+                    { text: "I couldn't stick to one lane if I tried, so I don't! I am too curious and love too many things, my work is eclectic on purpose.", italic: false },
                   ]}
                 />
                 <ProximityText
