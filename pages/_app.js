@@ -41,7 +41,11 @@ export default function App({ Component, pageProps }) {
       }
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("breaksite", breakSite);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("breaksite", breakSite);
+    };
   }, []);
 
   const breakSite = () => {
@@ -52,7 +56,7 @@ export default function App({ Component, pageProps }) {
 
     setTimeout(() => {
       const targets = [
-        ...document.querySelectorAll("header, section, .work-reveal-trigger, .work-panel, footer"),
+        ...document.querySelectorAll(".mob-header, .header-left, section, .work-reveal-trigger, .work-panel, footer"),
       ].filter((el) => {
         const r = el.getBoundingClientRect();
         return r.width > 0 && r.height > 0;

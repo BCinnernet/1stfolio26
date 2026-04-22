@@ -11,8 +11,8 @@ const Footer = () => {
       {/* Scrolling marquee text */}
       <div className="footer-marquee">
         <div className="marquee-track">
-          <span>EJUAN HENDERSON — MULTIMEDIA ARTIST — YOUR CHEAT CODE: ↑↑↓↓←→←→BA — KANSAS CITY, MISSOURI — A CREATIVE SWISS ARMY KNIFE — EXPERIMENTATION AND DISCOVERY — I JUST WANT TO MAKE COOL STUFF — A RESOURCEFUL RESOURCE — </span>
-          <span>EJUAN HENDERSON — MULTIMEDIA ARTIST — YOUR CHEAT CODE: ↑↑↓↓←→←→BA — KANSAS CITY, MISSOURI — A CREATIVE SWISS ARMY KNIFE — EXPERIMENTATION AND DISCOVERY — I JUST WANT TO MAKE COOL STUFF — A RESOURCEFUL RESOURCE — </span>
+          <span>EJUAN HENDERSON — MULTIMEDIA ARTIST — <button className="marquee-break-btn" onClick={() => window.dispatchEvent(new Event("breaksite"))}>YOUR CHEAT CODE: ↑↑↓↓←→←→BA</button> — KANSAS CITY, MISSOURI — A CREATIVE SWISS ARMY KNIFE — EXPERIMENTATION AND DISCOVERY — I JUST WANT TO MAKE COOL STUFF — A RESOURCEFUL RESOURCE — </span>
+          <span>EJUAN HENDERSON — MULTIMEDIA ARTIST — <button className="marquee-break-btn" onClick={() => window.dispatchEvent(new Event("breaksite"))}>YOUR CHEAT CODE: ↑↑↓↓←→←→BA</button> — KANSAS CITY, MISSOURI — A CREATIVE SWISS ARMY KNIFE — EXPERIMENTATION AND DISCOVERY — I JUST WANT TO MAKE COOL STUFF — A RESOURCEFUL RESOURCE — </span>
         </div>
       </div>
 
