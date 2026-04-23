@@ -119,20 +119,18 @@ const projects = [
   // ─── MF DOOM ───────────────────────────────────────────────────────────────
   {
     slug: "mf-doom-art-print",
-    title: "MF DOOM — Art Print",
+    title: "MF DOOM Illustration",
     category: "Print Illustration",
     mainMediaType: "image",
     intro:
-      "What started as a personal tribute became something much bigger. The print spread on its own — copied onto walls in New York and Iowa, tattooed on strangers, shared across the internet without a single dollar behind it. No client, no brief. Just a piece made out of respect for the legend. The fact that people wanted it on their skin and their buildings says more than any brief could.",
-    heroMedia: [
-      { type: "video", src: "YOUTUBE_VIDEO_ID",  caption: "Process walkthrough." },
-      { type: "image", caption: "Final limited-run print — front." },
-      { type: "image", caption: "Detail and alternate view." },
-      { type: "image", caption: "Wall install, New York." },
-    ],
+      "What started as a personal tribute to the late MF DOOM, became something much bigger. The print spread on its own, the internet did its thing. This piece was copied onto walls in Colorado and New York, tattooed on strangers and shared across the internet without a single dollar behind it. Just a piece made out of respect for a legend (if you know you know). The fact that I could contribute something like that to the world and have it impact people at all means the world to me. ",
     gallery: [
-      { type: "image", caption: "Sketch and process work." },
-      { type: "image", caption: "ADD CAPTION HERE." },
+      { type: "video", src: "0IShJ_xxbaY", caption: "Quick Proccess video of the initial idea from sketch." },
+      { type: "image", caption: "Close up / Detailed view. My goal was to imitate a vintage print effect to sell the comic aesthetic." },
+      { type: "image", caption: "Art prints and the Album that inspired everything." },
+      { type: "image", caption: "Inspired graffiti mural in Colorado Springs, Colorado at What's Left Records." },
+      { type: "image", caption: "Inspired graffiti mural in Brooklyn, New York." },
+      { type: "image", caption: "Inspired Tattoo of my MF DOOM piece." },
     ],
   },
 

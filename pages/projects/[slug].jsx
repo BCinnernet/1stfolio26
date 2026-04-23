@@ -1,26 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/src/layouts/Layout";
 import projects from "@/src/data/projects";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-
-// ── Scroll-reveal hook ────────────────────────────────────────────────────────
-const useScrollReveal = () => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.12 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-  return [ref, visible];
-};
 
 // ── Hero media slider (used when project.heroMedia is defined) ────────────────
 const HeroSlider = ({ slides, title }) => (
@@ -52,53 +35,6 @@ const HeroSlider = ({ slides, title }) => (
   </Swiper>
 );
 
-// ── Single alternating gallery row ───────────────────────────────────────────
-const GalleryItem = ({ item, index, projectTitle, onImageClick }) => {
-  const [ref, visible] = useScrollReveal();
-  const isEven = index % 2 === 0;
-
-  const mediaEl =
-    item.type === "video" ? (
-      <div className="gallery-video-wrap">
-        <iframe
-          src={`https://www.youtube.com/embed/${item.src}`}
-          title={item.caption || projectTitle}
-          allowFullScreen
-          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-        />
-      </div>
-    ) : (
-      <div
-        className="gallery-image-wrap"
-        onClick={() => onImageClick(index)}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => e.key === "Enter" && onImageClick(index)}
-      >
-        <img
-          src={item.src}
-          alt={item.caption || projectTitle}
-          className="gallery-img-hover"
-        />
-      </div>
-    );
-
-  const captionEl = (
-    <div className="gallery-caption">
-      <p>{item.caption}</p>
-    </div>
-  );
-
-  return (
-    <div
-      ref={ref}
-      className={`gallery-section-row${visible ? " is-visible" : ""}`}
-    >
-      <div className="gallery-row-media">{isEven ? mediaEl : captionEl}</div>
-      <div className="gallery-row-text">{isEven ? captionEl : mediaEl}</div>
-    </div>
-  );
-};
 
 // ── Project page ──────────────────────────────────────────────────────────────
 const ProjectDetail = () => {
@@ -252,26 +188,52 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* ── Gallery ── */}
+      {/* ── Gallery grid ── */}
       {gallery.length > 0 && (
         <section style={{ paddingTop: "100px", paddingBottom: "120px", background: "#f5f3ef" }}>
           <div className="container">
-            {gallery.map((item, i) => (
-              <GalleryItem
-                key={i}
-                item={item}
-                index={i}
-                projectTitle={project.title}
-                onImageClick={setLightboxIndex}
-              />
-            ))}
-            <div style={{ marginTop: "20px" }}>
+            <div className="gallery-grid">
+              {gallery.map((item, i) => (
+                <div
+                  key={i}
+                  className={`gallery-grid-item${item.type === "video" ? " gallery-grid-item--video" : ""}`}
+                >
+                  {item.type === "video" ? (
+                    <div className="gallery-video-wrap">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${item.src}`}
+                        title={item.caption || project.title}
+                        allowFullScreen
+                        sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="gallery-grid-img-wrap"
+                      onClick={() => setLightboxIndex(i)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => e.key === "Enter" && setLightboxIndex(i)}
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.caption || project.title}
+                        className="gallery-grid-img"
+                      />
+                    </div>
+                  )}
+                  {item.caption && (
+                    <p className="gallery-grid-caption">{item.caption}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: "60px" }}>
               <a className="m-btn m-btn-theme" href="/#work">← Back to Work</a>
             </div>
           </div>
         </section>
       )}
-
 
       {/* ── Lightbox ── */}
       {lightboxIndex !== null && gallery[lightboxIndex]?.type !== "video" && (
@@ -284,15 +246,21 @@ const ProjectDetail = () => {
             display: "flex", alignItems: "center", justifyContent: "center",
           }}
         >
-          <img
-            src={gallery[lightboxIndex].src}
-            alt={gallery[lightboxIndex].caption || project.title}
+          <div
             onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: "88vw", maxHeight: "88vh",
-              objectFit: "contain", borderRadius: "4px", display: "block",
-            }}
-          />
+            style={{ display: "flex", flexDirection: "column", alignItems: "center", maxWidth: "88vw" }}
+          >
+            <img
+              src={gallery[lightboxIndex].src}
+              alt={gallery[lightboxIndex].caption || project.title}
+              style={{ maxWidth: "88vw", maxHeight: "75vh", objectFit: "contain", borderRadius: "4px", display: "block" }}
+            />
+            {gallery[lightboxIndex].caption && (
+              <p style={{ marginTop: "16px", color: "rgba(255,255,255,0.6)", fontSize: "14px", letterSpacing: "0.04em", lineHeight: "1.6", textAlign: "center", maxWidth: "560px" }}>
+                {gallery[lightboxIndex].caption}
+              </p>
+            )}
+          </div>
 
           <button
             onClick={() => setLightboxIndex(null)}
@@ -302,19 +270,19 @@ const ProjectDetail = () => {
           {lightboxImageIndex > 0 && (
             <button
               onClick={(e) => { e.stopPropagation(); goToImageIndex(lightboxImageIndex - 1); }}
-              style={{ position: "absolute", left: "20px", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+              style={{ position: "absolute", left: "20px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
             >‹</button>
           )}
 
           {lightboxImageIndex < totalImages - 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); goToImageIndex(lightboxImageIndex + 1); }}
-              style={{ position: "absolute", right: "20px", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+              style={{ position: "absolute", right: "20px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
             >›</button>
           )}
 
           <span
-            style={{ position: "absolute", bottom: "24px", left: "50%", transform: "translateX(-50%)", color: "rgba(255,255,255,0.5)", fontSize: "13px", letterSpacing: "0.08em" }}
+            style={{ position: "absolute", bottom: "24px", left: "50%", transform: "translateX(-50%)", color: "rgba(255,255,255,0.4)", fontSize: "13px", letterSpacing: "0.08em" }}
           >
             {lightboxImageIndex + 1} / {totalImages}
           </span>
