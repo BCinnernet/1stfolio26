@@ -264,6 +264,7 @@ const Index3 = () => {
                   <span
                     className="home-name-hover-wrap"
                     onMouseEnter={() => setNameHovered((h) => !h)}
+                    onTouchEnd={(e) => { e.preventDefault(); setNameHovered((h) => !h); }}
                   >
                     <SlideChars
                       key={nameHovered ? "ejuan-hover" : nameVariant}
