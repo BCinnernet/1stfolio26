@@ -140,12 +140,11 @@ const projects = [
     title: "AFUEGO51 — Food Truck Design",
     category: "Brand Identity & Large Format Design",
     mainMediaType: "image",
-    intro:
-      "Starting from nothing — no name, no visual identity, no presence. AFUEGO51 needed a brand that could cut through before the food even had a chance to speak. I built the full identity from the ground up: wordmark, color system, truck wrap, large format printing, packaging, and merch. The truck launched, hit social media, and started selling out. The work did its job.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "Final wordmark and brand identity." },
-      { type: "image", caption: "Brand applications across signage and packaging." },
-      { type: "image", caption: "Early sketches and concept exploration." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Process walkthrough." },
     ],
   },
@@ -156,12 +155,11 @@ const projects = [
     title: "Hold It Down — Animated Cover Art",
     category: "Album Art & Motion",
     mainMediaType: "image",
-    intro:
-      "Cover art and animated Spotify Canvas for Hold It Down — a project by Kansas City rapper and producer Dom Chronicles, featuring Sir Michael Rocks. The illustration was built with movement in mind from the start, designed to loop seamlessly as a Spotify Canvas while holding up as a standalone static cover. It's live on Spotify right now, animating every time someone presses play.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "Final cover art — static version." },
-      { type: "image", caption: "Spotify Canvas — animated frame." },
-      { type: "image", caption: "Sketch and concept." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Animated canvas in action." },
     ],
   },
@@ -172,12 +170,11 @@ const projects = [
     title: "BAR-K Event Backdrop",
     category: "Large Format Illustration",
     mainMediaType: "image",
-    intro:
-      "A large-format illustration commission through my work at Commerce Bank — created for BAR-K, a dog-friendly bar and event space with locations in Kansas City and St. Louis, Missouri. The piece had to anchor a room, hold up at scale, and function as a backdrop that thousands of people would stand in front of and photograph. From initial sketches to real-world install, it landed exactly where it needed to.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "Final large-format illustration." },
-      { type: "image", caption: "Installed in the event space." },
-      { type: "image", caption: "Sketch and detail work." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Time-lapse of the install." },
     ],
   },
@@ -188,12 +185,11 @@ const projects = [
     title: "Book Cover Illustration",
     category: "Editorial Illustration",
     mainMediaType: "image",
-    intro:
-      "Cover illustration for two published bestsellers — The Life I Love and Seeds of Hope — both available for purchase online. Each cover was designed to make a promise before a single page is turned, using illustration and typography together to communicate tone and genre at a glance. Two different titles, two different moods, one consistent hand.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "The Life I Love — final cover." },
-      { type: "image", caption: "Seeds of Hope — final cover." },
-      { type: "image", caption: "Sketch and type layout." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Cover design process." },
     ],
   },
@@ -204,12 +200,11 @@ const projects = [
     title: "LEVEE x Halloween — Event",
     category: "Motion & Campaign Design",
     mainMediaType: "image",
-    intro:
-      "A Halloween event campaign for LEVEE — motion-first, built to stop a scroll and move people to show up. The campaign came with music, which meant the motion and the sound had to work as one thing rather than separately. Social assets, animated graphics, and a cohesive visual identity built for the night.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "Key visual and event graphic." },
-      { type: "image", caption: "Motion frame and social assets." },
-      { type: "image", caption: "Concept board and sketches." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Campaign animation." },
     ],
   },
@@ -220,12 +215,11 @@ const projects = [
     title: "LEVEE — Vintage Market Event",
     category: "Motion & Campaign Design",
     mainMediaType: "image",
-    intro:
-      "A visual campaign for LEVEE's Vintage Market — part of an ongoing creative relationship with the brand. Each LEVEE event gets its own distinct identity while staying true to the brand's visual language. Motion and static assets developed together, built to live on social and drive attendance.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "Key visual for the Vintage Market event." },
-      { type: "image", caption: "Social campaign assets." },
-      { type: "image", caption: "Motion frame and detail." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Vintage Market campaign animation." },
     ],
   },
@@ -238,12 +232,11 @@ const projects = [
     mainMediaType: "image",
     mainImage: "/static/img/cutie-lyric-music-video-hero.gif", // GIF hero — kept explicit so .gif extension is used
     // mainVideo: "YOUTUBE_VIDEO_ID",  // ← uncomment + set mainMediaType: "video" to show the full video as the hero
-    intro:
-      "An animated lyric video for a musician and rapper — built to move with the track, not just illustrate it. Every visual choice was made in service of the music: the typography, the color, the pacing. The result is a visual world that feels like part of the song rather than a layer placed on top of it.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.gif", caption: "Animated hero loop." },
-      { type: "image", caption: "Still frame from the video." },
-      { type: "image", caption: "Storyboard and motion sketches." },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.gif", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Full lyric video." },
     ],
   },
@@ -254,12 +247,11 @@ const projects = [
     title: "K-State Wildcats T-Shirt Design",
     category: "Apparel Design",
     mainMediaType: "image",
-    intro:
-      "A graphic tee designed through my work at Commerce Bank for K-State Wildcats — a Division I college athletics program with real reach. The design went to print and landed on actual students. Athletic-coded but illustration-first, the graphic translates school pride into something worth wearing rather than just another piece of licensed merch.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "Final tee graphic." },
-      { type: "image", caption: "Printed and worn by students." },
-      { type: "image", caption: "Sketch and type exploration." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Design process walkthrough." },
     ],
   },
@@ -271,8 +263,7 @@ const projects = [
     category: "Motion Graphics",
     mainMediaType: "video",
     mainVideo: "YOUTUBE_VIDEO_ID",                 // ← paste the YouTube video ID here
-    intro:
-      "A reel of motion work spanning animation, lyric videos, and branded content. Built across a range of styles and clients, it represents the breadth of what I do when things are moving.",
+    intro: "(Coming Soon)",
     gallery: [
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Description of this clip." },
       // { type: "image", caption: "Still from the reel." },
@@ -285,8 +276,7 @@ const projects = [
     title: "Various Projects",
     category: "Mixed Work",
     mainMediaType: "image",
-    intro:
-      "Short film posters, merch designs, motion graphic one-offs, and things made just to make them. Not every piece fits a neat category — these are the ones that don't, and that's the point.",
+    intro: "(Coming Soon)",
     gallery: [
       // { type: "image", caption: "Description." },
       // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Description." },
@@ -299,12 +289,11 @@ const projects = [
     title: "K.H.A.S.H Foundation",
     category: "Brand Identity",
     mainMediaType: "image",
-    intro:
-      "Brand and identity work for the K.H.A.S.H Foundation — a cause-driven organization with real presence. More to come as the brand grows.",
+    intro: "(Coming Soon)",
     gallery: [
-      { type: "image", caption: "Primary brand lockup." },
-      { type: "image", caption: "Layout and application." },
-      { type: "image", caption: "Detail and exploration." },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
     ],
   },
 
