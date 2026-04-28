@@ -22,8 +22,6 @@ const Work = dynamic(() => import("@/src/components/Work"), { ssr: false });
 
 // These two gradients create the shiny "gloss" layer on the Work button.
 // GLOSS_DEFAULT = subtle shine at rest; GLOSS_HOVER = slightly brighter on hover.
-const GLOSS_DEFAULT = "linear-gradient(120deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 35%, rgba(255,255,255,0.00) 60%)";
-const GLOSS_HOVER   = "linear-gradient(120deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.00) 60%)";
 
 const Index3 = () => {
   // true = project grid is visible, false = collapsed
@@ -39,48 +37,9 @@ const Index3 = () => {
   // Used to slightly shift the "Check me out" button for a parallax feel.
   const [textLean, setTextLean] = useState(0);
 
-  // 3D tilt style applied to the Work/Projects button on mouse hover.
-  const [btnStyle, setBtnStyle] = useState({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
-
-  // Gloss overlay position on the Work button — shifts with the mouse.
-  const [glossStyle, setGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
-
   // refs point to actual DOM elements so we can read their size/position.
-  const btnRef     = useRef(null); // the Work/Projects button element
   const triggerRef = useRef(null); // the wrapper div around the button (used for scroll)
   const aboutRef   = useRef(null); // the about teaser section (used for scroll reveal)
-
-  // ── Work button 3D tilt ─────────────────────────────────────────────────
-  // Called on every mousemove anywhere in the padded zone around the button.
-  // Calculates how far the cursor is from the button center → applies a tilt.
-  // The tilt fades out as the cursor moves further than ~56px beyond the edge.
-  const handleMouseMove = (e) => {
-    if (!btnRef.current) return;
-    const rect = btnRef.current.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = e.clientX - cx;
-    const dy = e.clientY - cy;
-    // Distance beyond the button edge (0 when inside)
-    const edgeDx = Math.max(0, Math.abs(dx) - rect.width / 2);
-    const edgeDy = Math.max(0, Math.abs(dy) - rect.height / 2);
-    const edgeDist = Math.hypot(edgeDx, edgeDy);
-    const factor = Math.max(0, 1 - edgeDist / 56);
-    const nx = Math.max(-1, Math.min(1, dx / (rect.width / 2)));
-    const ny = Math.max(-1, Math.min(1, dy / (rect.height / 2)));
-    const rotateY =  nx * 18 * factor;
-    const rotateX = -ny * 18 * factor;
-    const glossX  =  nx * 12 * factor;
-    const glossY  =  ny * 12 * factor;
-    setBtnStyle({ transform: `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)` });
-    setGlossStyle({ background: factor > 0 ? GLOSS_HOVER : GLOSS_DEFAULT, transform: `translateX(${glossX}px) translateY(${glossY}px)` });
-  };
-
-  // Resets the button to flat (no tilt) when the mouse leaves the hover zone.
-  const handleMouseLeave = () => {
-    setBtnStyle({ transform: "perspective(600px) rotateX(0deg) rotateY(0deg)" });
-    setGlossStyle({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
-  };
 
   // ── Auto-open work panel after 2 seconds on first load ──────────────────
   useEffect(() => {
@@ -159,42 +118,27 @@ const Index3 = () => {
           The button label uses SlideChars for the rolling text animation.
           On open, the page scrolls down to show the grid.                 */}
       <div ref={triggerRef} id="work" className="work-reveal-trigger">
-        <div
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{ padding: "48px 64px", display: "inline-block" }}
-        >
         <button
-          ref={btnRef}
           className={`work-reveal-btn${workOpen ? " is-open" : ""}`}
           onClick={() => {
             const opening = !workOpen;
             setWorkOpen(opening);
             if (opening) {
-              // Scroll to the button after a short delay so the panel can begin opening
               setTimeout(() => {
                 triggerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
               }, 300);
             }
           }}
           aria-expanded={workOpen}
-          style={btnStyle}
         >
-          {/* Shiny gloss layer that shifts with mouse position */}
-          <div className="btn-gloss" style={glossStyle} />
-
-          {/* Folder icon — swap images in /public/static/img/ to change */}
           <span className="work-folder-icon">
             <img src="/static/img/Folder Icon_closed.png" alt="" className="folder-img folder-img-closed" />
             <img src="/static/img/Folder Icon_open.png"   alt="" className="folder-img folder-img-open"   />
           </span>
-
-          {/* Button label — remounting via `key` replays the roll animation */}
           <span className="work-reveal-label">
             <SlideChars key={workOpen ? "close" : "open"} text={workOpen ? "Close Work" : "Work / Projects"} stagger={25} />
           </span>
         </button>
-        </div>
       </div>
 
       {/* ── PROJECT GRID (expands when workOpen is true) ──────────────────

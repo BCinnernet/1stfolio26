@@ -11,7 +11,6 @@ const FLOOR_FRIC = 0.78;
 export default function App({ Component, pageProps }) {
   const [loading, setLoading] = useState(true);
   const [content, setContent] = useState(false);
-  const [showTop, setShowTop] = useState(false);
   const [broken,  setBroken]  = useState(false);
 
   const konamiProgress = useRef([]);
@@ -26,11 +25,6 @@ export default function App({ Component, pageProps }) {
     setTimeout(() => setContent(true),  1000);
   }, []);
 
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 200);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -245,17 +239,26 @@ export default function App({ Component, pageProps }) {
     <Fragment>
       <Component {...pageProps} />
 
-      <button
-        className={`back-to-top${showTop ? " visible" : ""}`}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        aria-label="Back to top"
-      >
-        <span className="back-to-top-arrow">
-          <svg viewBox="0 0 24 24">
-            <polyline points="18 15 12 9 6 15" />
-          </svg>
-        </span>
-      </button>
+      <div className="scroll-btns visible">
+        <button
+          className="scroll-btn"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Back to top"
+        >
+          <span className="scroll-btn-arrow">
+            <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15" /></svg>
+          </span>
+        </button>
+        <button
+          className="scroll-btn"
+          onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })}
+          aria-label="Scroll to bottom"
+        >
+          <span className="scroll-btn-arrow">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" /></svg>
+          </span>
+        </button>
+      </div>
 
       {broken && (
         <>

@@ -7,7 +7,7 @@
 // ─── ADDING A NEW PROJECT — QUICK STEPS ──────────────────────────────────────
 //
 //   1. Copy the template block below and fill in:
-//        slug, title, category, mainMediaType, intro, gallery captions
+//        slug, title, category, tags, year, mainMediaType, description, gallery
 //
 //   2. Run:  npm run check-images
 //      It prints the exact filenames your new project needs.
@@ -25,7 +25,7 @@
 //   Image paths are derived automatically from the project slug.
 //   For a project with  slug: "my-project"  name your files:
 //
-//     my-project-hero.jpg        ← home grid card + project page hero
+//     my-project-hero.jpg        ← home grid card + project page banner
 //     my-project-gallery-1.jpg   ← first gallery image
 //     my-project-gallery-2.jpg   ← second gallery image
 //     my-project-gallery-3.jpg   ← third gallery image
@@ -42,7 +42,7 @@
 //     Set  mainMediaType: "video"  and  mainVideo: "YOUTUBE_VIDEO_ID"
 //     Still provide a -thumb.jpg so the home grid card has something to show.
 //
-//   Gallery video (appears in the alternating gallery rows):
+//   Gallery video (appears in the gallery):
 //     { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Description." }
 //
 //   To find the video ID: it's the part after "watch?v=" in the YouTube URL.
@@ -52,34 +52,53 @@
 // ─── PROJECT FIELDS ──────────────────────────────────────────────────────────
 //
 //   slug          → URL path and image filename base. Use lowercase-with-dashes.
-//                   Example: "my-project" → /projects/my-project
-//                                         → my-project-hero.jpg, etc.
 //
-//   title         → Shown on the grid card and project page header.
+//   title         → Shown on the grid card and project page.
 //
-//   category      → Short label under the title. e.g. "Brand Identity"
+//   category      → Short label shown on the card. e.g. "Print Illustration"
+//
+//   tags          → Drives the filter tabs on the home page. Use one or more of:
+//                     "illustration-design"
+//                     "brand-identity"
+//                     "motion-design"
+//                   Example: tags: ["illustration-design"]
+//                   Example: tags: ["motion-design", "illustration-design"]
+//
+//   year          → Displayed on the project page. e.g. "2024" or "2023–2024"
 //
 //   mainMediaType → "image"  — photo or GIF hero (default)
 //                   "video"  — YouTube embed as the hero
 //
 //   mainVideo     → YouTube video ID. Only set when mainMediaType is "video".
 //
-//   intro         → Description paragraph on the project page.
+//   description   → Array of paragraph strings shown on the project page.
+//                   Each string becomes its own paragraph.
+//                   Example: description: [
+//                     "First paragraph of the project story.",
+//                     "Second paragraph with more detail.",
+//                   ]
 //
 //   heroMedia     → Optional. Turns the project hero into a dot-navigated slider.
 //                   Leave it out to show a single static hero image.
-//                   First item is typically a video, followed by supporting images.
 //                   Image: { type: "image", caption: "Description." }
 //                             files: slug-hero-slide-1.jpg, -slide-2.jpg, etc.
 //                   Video: { type: "video", src: "YOUTUBE_ID", caption: "..." }
 //
-//   gallery       → Supporting images shown below the hero in alternating rows.
-//                   Use these for sketches, process shots, real-world photos —
-//                   anything that adds context rather than leading the story.
+//   gallery       → Images and videos shown below the description.
 //                   Image: { type: "image", caption: "Description." }
 //                             files: slug-gallery-1.jpg, -gallery-2.jpg, etc.
 //                   Video: { type: "video", src: "YOUTUBE_ID", caption: "..." }
-//                   Image srcs are derived from slug — you don't type them here.
+//                   Optional size field controls layout width:
+//                     size: "full"       → spans the full width
+//                     size: "half"       → half width (default)
+//                     size: "third"      → one third width
+//                     size: "two-thirds" → two thirds width
+//
+//   credits       → Optional. Shown in the footer of the project page.
+//                   credits: { lines: ["Studio / Name", "Role"] }
+//
+//   links         → Optional. Shown in the footer of the project page.
+//                   links: [{ label: "Behance", url: "https://..." }]
 //
 // ═════════════════════════════════════════════════════════════════════════════
 
@@ -90,27 +109,32 @@ const projects = [
   // {
   //   slug: "project-slug",
   //   title: "Project Title",
-  //   category: "Category / Sub-category",
+  //   category: "Category Label",
+  //   tags: ["illustration-design"],   // "illustration-design" | "brand-identity" | "motion-design"
+  //   year: "2024",
   //   mainMediaType: "image",
   //   // mainVideo: "YOUTUBE_VIDEO_ID",   ← only if mainMediaType is "video"
-  //   // thumbnailImage: "/static/img/project-slug-thumb.jpg",  ← optional grid-card override
-  //   intro: "Project description goes here.",
+  //   // thumbnailImage: "/static/img/project-slug-thumb.jpg",  ← optional grid override
+  //   description: [
+  //     "First paragraph about this project.",
+  //     "Second paragraph with more detail.",
+  //   ],
   //
-  //   // heroMedia is optional — add it to turn the hero into a clickable slider.
-  //   // Leave it out to show a single hero image as normal.
-  //   // Images derive from: project-slug-hero-slide-1.jpg, -slide-2.jpg, etc.
+  //   // heroMedia is optional — add it to turn the hero into a slider.
   //   // heroMedia: [
   //   //   { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Caption." },
   //   //   { type: "image", caption: "Caption for slide 1." },
-  //   //   { type: "image", caption: "Caption for slide 2." },
-  //   //   { type: "image", caption: "Caption for slide 3." },
   //   // ],
   //
   //   gallery: [
-  //     { type: "image", caption: "Caption for gallery image 1." },
-  //     { type: "image", caption: "Caption for gallery image 2." },
-  //     { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Caption for this video." },
+  //     { type: "image", caption: "Caption.", size: "full" },
+  //     { type: "image", caption: "Caption." },                   // half (default)
+  //     { type: "image", caption: "Caption.", size: "third" },
+  //     { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Caption.", size: "full" },
   //   ],
+  //
+  //   credits: { lines: ["Ejuan Henderson", "Illustration & Design"] },
+  //   links: [{ label: "Instagram", url: "https://www.instagram.com/ohhej" }],
   // },
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -121,17 +145,23 @@ const projects = [
     slug: "mf-doom-art-print",
     title: "MF DOOM Illustration",
     category: "Print Illustration",
+    tags: ["illustration-design"],  // Illustration
+    year: "2021",
     mainMediaType: "image",
-    intro:
-      "What started as a personal tribute to the late MF DOOM, became something much bigger. The print spread on its own, the internet did its thing. This piece was copied onto walls in Colorado and New York, tattooed on strangers and shared across the internet without a single dollar behind it. Just a piece made out of respect for a legend (if you know you know). The fact that I could contribute something like that to the world and have it impact people at all means the world to me. ",
+    description: [
+      "What started as a personal tribute to the late MF DOOM became something much bigger. The print spread on its own — the internet did its thing. This piece was copied onto walls in Colorado and New York, tattooed on strangers, and shared across the internet without a single dollar behind it. Just a piece made out of respect for a legend. If you know, you know.",
+      "The fact that I could contribute something like that to the world and have it impact people at all means everything to me.",
+    ],
     gallery: [
-      { type: "video", src: "0IShJ_xxbaY", caption: "Quick Proccess video of the initial idea from sketch." },
-      { type: "image", caption: "Close up / Detailed view. My goal was to imitate a vintage print effect to sell the comic aesthetic." },
-      { type: "image", caption: "Art prints and the Album that inspired everything." },
+      { type: "video", src: "0IShJ_xxbaY", caption: "Quick process video of the initial idea from sketch.", size: "full" },
+      { type: "image", caption: "Close up / detailed view. My goal was to imitate a vintage print effect to sell the comic aesthetic." },
+      { type: "image", caption: "Art prints and the album that inspired everything." },
       { type: "image", caption: "Inspired graffiti mural in Colorado Springs, Colorado at What's Left Records." },
       { type: "image", caption: "Inspired graffiti mural in Brooklyn, New York." },
-      { type: "image", caption: "Inspired Tattoo of my MF DOOM piece." },
+      { type: "image", caption: "Inspired tattoo of my MF DOOM piece." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Print Illustration"] },
+    links: [{ label: "Instagram", url: "https://www.instagram.com/ohhej" }],
   },
 
   // ─── AFUEGO51 ──────────────────────────────────────────────────────────────
@@ -139,14 +169,18 @@ const projects = [
     slug: "afuego51",
     title: "AFUEGO51 — Food Truck Design",
     category: "Brand Identity & Large Format Design",
+    tags: ["brand-identity"],  // Design
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Process walkthrough." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Brand Identity & Large Format Design"] },
   },
 
   // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
@@ -154,14 +188,18 @@ const projects = [
     slug: "hold-it-down-cover-art",
     title: "Hold It Down — Animated Cover Art",
     category: "Album Art & Motion",
+    tags: ["illustration-design", "motion-design"],  // Illustration + Motion
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Animated canvas in action." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Album Art & Motion"] },
   },
 
   // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
@@ -169,14 +207,18 @@ const projects = [
     slug: "bar-k-event-backdrop",
     title: "BAR-K Event Backdrop",
     category: "Large Format Illustration",
+    tags: ["illustration-design"],  // Illustration
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Time-lapse of the install." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Large Format Illustration"] },
   },
 
   // ─── BOOK COVERS ──────────────────────────────────────────────────────────
@@ -184,14 +226,18 @@ const projects = [
     slug: "book-covers",
     title: "Book Cover Illustration",
     category: "Editorial Illustration",
+    tags: ["illustration-design", "brand-identity"],  // Illustration + Design
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Cover design process." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Editorial Illustration"] },
   },
 
   // ─── LEVEE x HALLOWEEN ────────────────────────────────────────────────────
@@ -199,14 +245,18 @@ const projects = [
     slug: "levee-x-halloween",
     title: "LEVEE x Halloween — Event",
     category: "Motion & Campaign Design",
+    tags: ["brand-identity", "motion-design"],  // Design + Motion
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Campaign animation." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
   },
 
   // ─── LEVEE — VINTAGE MARKET ───────────────────────────────────────────────
@@ -214,14 +264,18 @@ const projects = [
     slug: "levee-vintage-market",
     title: "LEVEE — Vintage Market Event",
     category: "Motion & Campaign Design",
+    tags: ["brand-identity", "motion-design"],  // Design + Motion
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Vintage Market campaign animation." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
   },
 
   // ─── CUTIE ─────────────────────────────────────────────────────────────────
@@ -229,16 +283,19 @@ const projects = [
     slug: "cutie-lyric-music-video",
     title: "CUTIE — Lyric Music Video",
     category: "Motion Graphics",
+    tags: ["motion-design"],  // Motion
+    year: "",
     mainMediaType: "image",
-    mainImage: "/static/img/cutie-lyric-music-video-hero.gif", // GIF hero — kept explicit so .gif extension is used
-    // mainVideo: "YOUTUBE_VIDEO_ID",  // ← uncomment + set mainMediaType: "video" to show the full video as the hero
-    intro: "(Coming Soon)",
+    mainImage: "/static/img/cutie-lyric-music-video-hero.gif",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", src: "/static/img/cutie-lyric-music-video-hero.gif", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Full lyric video." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
   },
 
   // ─── K-STATE WILDCATS ─────────────────────────────────────────────────────
@@ -246,14 +303,18 @@ const projects = [
     slug: "kstate-wildcats-tshirt",
     title: "K-State Wildcats T-Shirt Design",
     category: "Apparel Design",
+    tags: ["illustration-design", "brand-identity"],  // Illustration + Design
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Design process walkthrough." },
     ],
+    credits: { lines: ["Ejuan Henderson", "Apparel Design"] },
   },
 
   // ─── DEMO REEL ────────────────────────────────────────────────────────────
@@ -261,13 +322,15 @@ const projects = [
     slug: "demo-reel",
     title: "Demo Reel",
     category: "Motion Graphics",
+    tags: ["illustration-design", "brand-identity", "motion-design"],  // Illustration + Design + Motion
+    year: "",
     mainMediaType: "video",
-    mainVideo: "YOUTUBE_VIDEO_ID",                 // ← paste the YouTube video ID here
-    intro: "(Coming Soon)",
-    gallery: [
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Description of this clip." },
-      // { type: "image", caption: "Still from the reel." },
+    mainVideo: "YOUTUBE_VIDEO_ID",
+    description: [
+      "(Coming Soon)",
     ],
+    gallery: [],
+    credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
   },
 
   // ─── VARIOUS PROJECTS ─────────────────────────────────────────────────────
@@ -275,12 +338,14 @@ const projects = [
     slug: "various-projects",
     title: "Various Projects",
     category: "Mixed Work",
+    tags: ["illustration-design", "brand-identity", "motion-design"],  // Illustration + Design + Motion
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
-    gallery: [
-      // { type: "image", caption: "Description." },
-      // { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Description." },
+    description: [
+      "(Coming Soon)",
     ],
+    gallery: [],
+    credits: { lines: ["Ejuan Henderson"] },
   },
 
   // ─── K.H.A.S.H FOUNDATION ────────────────────────────────────────────────
@@ -288,13 +353,18 @@ const projects = [
     slug: "khash-foundation",
     title: "K.H.A.S.H Foundation",
     category: "Brand Identity",
+    tags: ["brand-identity"],  // Design
+    year: "",
     mainMediaType: "image",
-    intro: "(Coming Soon)",
+    description: [
+      "(Coming Soon)",
+    ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
     ],
+    credits: { lines: ["Ejuan Henderson", "Brand Identity"] },
   },
 
 ];

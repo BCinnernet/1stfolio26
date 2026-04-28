@@ -2,37 +2,24 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "@/src/layouts/Layout";
 import projects from "@/src/data/projects";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 
-// ── Hero media slider (used when project.heroMedia is defined) ────────────────
-const HeroSlider = ({ slides, title }) => (
-  <Swiper
-    className="hero-slider"
-    modules={[Pagination]}
-    pagination={{ clickable: true }}
-    loop={slides.length > 1}
-    speed={500}
-  >
-    {slides.map((item, i) =>
-      item.type === "video" ? (
-        <SwiperSlide key={i}>
-          <div className="gallery-video-wrap">
-            <iframe
-              src={`https://www.youtube.com/embed/${item.src}`}
-              title={item.caption || title}
-              allowFullScreen
-              sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-            />
-          </div>
-        </SwiperSlide>
-      ) : (
-        <SwiperSlide key={i}>
-          <img src={item.src} alt={item.caption || title} className="hero-slider-img" />
-        </SwiperSlide>
-      )
-    )}
-  </Swiper>
+const TAG_LABELS = {
+  "illustration-design": "Illustration & Design",
+  "brand-identity":      "Brand & Identity",
+  "motion-design":       "Motion Design",
+};
+
+// ── Video embed ───────────────────────────────────────────────────────────────
+const VideoEmbed = ({ src, title }) => (
+  <div className="editorial-item-video">
+    <iframe
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none", display: "block" }}
+      src={`https://www.youtube.com/embed/${src}`}
+      title={title}
+      allowFullScreen
+      sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
+    />
+  </div>
 );
 
 
@@ -41,23 +28,16 @@ const ProjectDetail = () => {
   const router = useRouter();
   const { slug } = router.query;
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  const [scrollY, setScrollY] = useState(0);
 
-  const project = projects.find((item) => item.slug === slug);
+  const project = projects.find((p) => p.slug === slug);
 
-  useEffect(() => {
-    const onScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
+  // Lock scroll when lightbox is open
   useEffect(() => {
     document.body.style.overflow = lightboxIndex !== null ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [lightboxIndex]);
 
+  // Escape key closes lightbox
   useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") setLightboxIndex(null); };
     window.addEventListener("keydown", onKey);
@@ -66,7 +46,7 @@ const ProjectDetail = () => {
 
   if (!project) {
     return (
-      <Layout headerColor={"dark"}>
+      <Layout headerColor="dark">
         <section style={{ paddingTop: "140px", paddingBottom: "80px", background: "#edeae4" }}>
           <div className="container">
             <h2>Project not found</h2>
@@ -77,163 +57,176 @@ const ProjectDetail = () => {
     );
   }
 
-  const gallery = (() => {
-    let imgCount = 0;
-    return (project.gallery ?? []).map((item) => {
-      if (item.type !== "image") return item;
-      imgCount++;
-      return {
-        ...item,
-        src: item.src || `/static/img/${project.slug}-gallery-${imgCount}.jpg`,
-      };
-    });
-  })();
-
-  // Build a map: gallery index → image-only index (for lightbox prev/next)
-  const galleryToImageIndex = {};
+  // Resolve gallery image srcs from slug (numbering must happen before hero is prepended)
   let imgCount = 0;
-  gallery.forEach((item, i) => {
-    if (item.type !== "video") galleryToImageIndex[i] = imgCount++;
+  const resolvedGallery = (project.gallery ?? []).map((item) => {
+    if (item.type !== "image") return item;
+    imgCount++;
+    return {
+      ...item,
+      src: item.src || `/static/img/${project.slug}-gallery-${imgCount}.jpg`,
+    };
   });
-  const totalImages = imgCount;
 
-  const lightboxImageIndex =
-    lightboxIndex !== null ? galleryToImageIndex[lightboxIndex] ?? null : null;
-
-  const goToImageIndex = (imgIdx) => {
-    const galleryIdx = Object.keys(galleryToImageIndex).find(
-      (k) => galleryToImageIndex[k] === imgIdx
-    );
-    if (galleryIdx !== undefined) setLightboxIndex(Number(galleryIdx));
-  };
-
+  // Hero image src (same image shown on the works page)
   const heroSrc =
     project.mainImage ||
     (project.mainMediaType === "video"
       ? `/static/img/${project.slug}-thumb.jpg`
       : `/static/img/${project.slug}-hero.jpg`);
 
-  const singleHeroEl =
-    project.mainMediaType === "video" && project.mainVideo ? (
-      <div className="gallery-video-wrap">
-        <iframe
-          src={`https://www.youtube.com/embed/${project.mainVideo}`}
-          title={project.title}
-          allowFullScreen
-          sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-        />
-      </div>
-    ) : (
-      <div className="hero-parallax-wrap">
-        <img
-          src={heroSrc}
-          alt={project.title}
-          className="hero-parallax-img"
-          style={{ transform: `translateY(${scrollY * 0.12}px)` }}
-        />
-      </div>
-    );
+  // Insert hero as the first image tile — videos in the data stay ahead of it
+  const firstImageIdx = resolvedGallery.findIndex((item) => item.type === "image");
+  const gallery =
+    firstImageIdx === -1
+      ? [...resolvedGallery, { type: "image", src: heroSrc }]
+      : [
+          ...resolvedGallery.slice(0, firstImageIdx),
+          { type: "image", src: heroSrc },
+          ...resolvedGallery.slice(firstImageIdx),
+        ];
 
-  // Derive hero slide image srcs from slug when no explicit src is provided
-  const heroSlides = project.heroMedia?.length > 0
-    ? (() => {
-        let imgCount = 0;
-        return project.heroMedia.map((item) => {
-          if (item.type !== "image") return item;
-          imgCount++;
-          return {
-            ...item,
-            src: item.src || `/static/img/${project.slug}-hero-slide-${imgCount}.jpg`,
-          };
-        });
-      })()
-    : null;
+  // Image-only index map for lightbox prev/next
+  const galleryToImageIdx = {};
+  let imageCount = 0;
+  gallery.forEach((item, i) => {
+    if (item.type !== "video") galleryToImageIdx[i] = imageCount++;
+  });
+  const totalImages = imageCount;
+
+  const lightboxImgIdx =
+    lightboxIndex !== null ? galleryToImageIdx[lightboxIndex] ?? null : null;
+
+  const goToImageIdx = (imgIdx) => {
+    const gi = Object.keys(galleryToImageIdx).find(
+      (k) => galleryToImageIdx[k] === imgIdx
+    );
+    if (gi !== undefined) setLightboxIndex(Number(gi));
+  };
+
+  // Description — supports both new array and legacy string
+  const descriptions = Array.isArray(project.description)
+    ? project.description
+    : project.intro
+    ? [project.intro]
+    : [];
+
+  // Size class for editorial gallery items
+  const sizeClass = (size) => {
+    if (size === "full")       return "editorial-item editorial-item--full";
+    if (size === "third")      return "editorial-item editorial-item--third";
+    if (size === "two-thirds") return "editorial-item editorial-item--two-thirds";
+    return "editorial-item";
+  };
 
   return (
-    <Layout headerColor={"dark"}>
+    <Layout headerColor="dark">
 
-      {/* ── Header ── */}
-      <section style={{ background: "#edeae4", paddingBottom: 0 }}>
+      {/* ── Title and description ── */}
+      <section className="project-info-section">
         <div className="container">
-          <div className="row align-items-end">
-            <div
-              className="col-lg-5 project-header-text"
-              style={{ paddingTop: "140px", paddingBottom: "60px" }}
-            >
-              <p
-                className="text-uppercase"
-                style={{ fontSize: "11px", letterSpacing: "0.12em", opacity: 0.55, marginBottom: "16px" }}
-              >
-                {project.category}
-              </p>
-              <h2 className="dark-color text-uppercase" style={{ marginBottom: "28px" }}>
-                {project.title}
-              </h2>
-              <p style={{ fontSize: "17px", lineHeight: "1.9", opacity: 0.85, marginBottom: 0 }}>
-                {project.intro}
-              </p>
+          <a className="project-back-link" href="/#work">← Back to Work</a>
+          <div className="project-info-grid">
+            <div className="project-info-left">
+              <span className="project-info-category">{project.category}</span>
+              <h1 className="project-info-title">{project.title}</h1>
             </div>
-            <div
-              className="col-lg-7 project-header-image"
-              style={{ paddingTop: "80px", paddingBottom: 0, lineHeight: 0 }}
-            >
-              <div style={{ borderRadius: "8px 8px 0 0", overflow: "hidden" }}>
-                {heroSlides
-                  ? <HeroSlider slides={heroSlides} title={project.title} />
-                  : singleHeroEl
-                }
+            <div className="project-info-right">
+              <div className="project-info-desc">
+                {descriptions.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Gallery grid ── */}
+      {/* ── Editorial gallery ── */}
       {gallery.length > 0 && (
-        <section style={{ paddingTop: "100px", paddingBottom: "120px", background: "#f5f3ef" }}>
-          <div className="container">
-            <div className="gallery-grid">
-              {gallery.map((item, i) => (
-                <div
-                  key={i}
-                  className={`gallery-grid-item${item.type === "video" ? " gallery-grid-item--video" : ""}`}
-                >
-                  {item.type === "video" ? (
-                    <div className="gallery-video-wrap">
-                      <iframe
-                        src={`https://www.youtube.com/embed/${item.src}`}
-                        title={item.caption || project.title}
-                        allowFullScreen
-                        sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="gallery-grid-img-wrap"
-                      onClick={() => setLightboxIndex(i)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => e.key === "Enter" && setLightboxIndex(i)}
-                    >
-                      <img
-                        src={item.src}
-                        alt={item.caption || project.title}
-                        className="gallery-grid-img"
-                      />
-                    </div>
-                  )}
+        <section className="editorial-gallery-section">
+          <div className="editorial-gallery">
+            {gallery.map((item, i) => (
+              item.type === "video" ? (
+                <div key={i} className={`${sizeClass(item.size)} editorial-item--video`}>
+                  <VideoEmbed src={item.src} title={item.caption || project.title} />
                   {item.caption && (
-                    <p className="gallery-grid-caption">{item.caption}</p>
+                    <p className="editorial-item-caption">{item.caption}</p>
                   )}
                 </div>
-              ))}
-            </div>
-            <div style={{ marginTop: "60px" }}>
-              <a className="m-btn m-btn-theme" href="/#work">← Back to Work</a>
-            </div>
+              ) : (
+                <div key={i} className={sizeClass(item.size)}>
+                  <img
+                    src={item.src}
+                    alt={item.caption || project.title}
+                    onClick={() => setLightboxIndex(i)}
+                  />
+                  {item.caption && (
+                    <div className="editorial-caption-overlay">{item.caption}</div>
+                  )}
+                </div>
+              )
+            ))}
           </div>
         </section>
       )}
+
+      {/* ── Footer: credits, links, tags ── */}
+      <section className="project-footer">
+        <div className="container">
+          <div className="project-footer-grid">
+
+            {/* Credits */}
+            <div>
+              <p className="project-footer-label">Credits</p>
+              {project.credits?.lines?.length > 0 ? (
+                <div className="project-footer-text">
+                  {project.credits.lines.map((line, i) => (
+                    <div key={i}>{line}</div>
+                  ))}
+                </div>
+              ) : (
+                <p className="project-footer-text">—</p>
+              )}
+            </div>
+
+            {/* Links */}
+            <div>
+              <p className="project-footer-label">Links</p>
+              {project.links?.length > 0 ? (
+                project.links.map((link, i) => (
+                  <a
+                    key={i}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-footer-link"
+                  >
+                    {link.label}
+                  </a>
+                ))
+              ) : (
+                <p className="project-footer-text">—</p>
+              )}
+            </div>
+
+            {/* Tags */}
+            <div>
+              <p className="project-footer-label">Tags</p>
+              {project.tags?.length > 0 ? (
+                project.tags.map((tag) => (
+                  <span key={tag} className="project-tag-pill">
+                    {TAG_LABELS[tag] || tag}
+                  </span>
+                ))
+              ) : (
+                <p className="project-footer-text">—</p>
+              )}
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* ── Lightbox ── */}
       {lightboxIndex !== null && gallery[lightboxIndex]?.type !== "video" && (
@@ -253,10 +246,10 @@ const ProjectDetail = () => {
             <img
               src={gallery[lightboxIndex].src}
               alt={gallery[lightboxIndex].caption || project.title}
-              style={{ maxWidth: "88vw", maxHeight: "75vh", objectFit: "contain", borderRadius: "4px", display: "block" }}
+              style={{ maxWidth: "88vw", maxHeight: "78vh", objectFit: "contain", borderRadius: "4px", display: "block" }}
             />
             {gallery[lightboxIndex].caption && (
-              <p style={{ marginTop: "16px", color: "rgba(255,255,255,0.6)", fontSize: "14px", letterSpacing: "0.04em", lineHeight: "1.6", textAlign: "center", maxWidth: "560px" }}>
+              <p style={{ marginTop: "16px", color: "rgba(255,255,255,0.55)", fontSize: "13px", letterSpacing: "0.04em", lineHeight: "1.6", textAlign: "center", maxWidth: "540px" }}>
                 {gallery[lightboxIndex].caption}
               </p>
             )}
@@ -264,27 +257,27 @@ const ProjectDetail = () => {
 
           <button
             onClick={() => setLightboxIndex(null)}
-            style={{ position: "absolute", top: "20px", right: "24px", background: "none", border: "none", color: "#fff", fontSize: "32px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+            style={{ position: "absolute", top: "20px", right: "24px", background: "none", border: "none", color: "#fff", fontSize: "32px", lineHeight: 1, cursor: "pointer", opacity: 0.7 }}
           >✕</button>
 
-          {lightboxImageIndex > 0 && (
+          {lightboxImgIdx > 0 && (
             <button
-              onClick={(e) => { e.stopPropagation(); goToImageIndex(lightboxImageIndex - 1); }}
-              style={{ position: "absolute", left: "20px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+              onClick={(e) => { e.stopPropagation(); goToImageIdx(lightboxImgIdx - 1); }}
+              style={{ position: "absolute", left: "20px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.7 }}
             >‹</button>
           )}
 
-          {lightboxImageIndex < totalImages - 1 && (
+          {lightboxImgIdx < totalImages - 1 && (
             <button
-              onClick={(e) => { e.stopPropagation(); goToImageIndex(lightboxImageIndex + 1); }}
-              style={{ position: "absolute", right: "20px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.8 }}
+              onClick={(e) => { e.stopPropagation(); goToImageIdx(lightboxImgIdx + 1); }}
+              style={{ position: "absolute", right: "20px", top: "50%", transform: "translateY(-50%)", background: "none", border: "none", color: "#fff", fontSize: "56px", lineHeight: 1, cursor: "pointer", opacity: 0.7 }}
             >›</button>
           )}
 
           <span
-            style={{ position: "absolute", bottom: "24px", left: "50%", transform: "translateX(-50%)", color: "rgba(255,255,255,0.4)", fontSize: "13px", letterSpacing: "0.08em" }}
+            style={{ position: "absolute", bottom: "24px", left: "50%", transform: "translateX(-50%)", color: "rgba(255,255,255,0.35)", fontSize: "12px", letterSpacing: "0.1em" }}
           >
-            {lightboxImageIndex + 1} / {totalImages}
+            {lightboxImgIdx + 1} / {totalImages}
           </span>
         </div>
       )}

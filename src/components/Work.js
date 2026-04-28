@@ -1,23 +1,29 @@
-import Isotope from "isotope-layout";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import SlideChars from "@/src/components/SlideChars";
 import projects from "@/src/data/projects";
 
+const FILTERS = [
+  { key: "all",                label: "All" },
+  { key: "illustration-design", label: "Illustration & Design" },
+  { key: "brand-identity",      label: "Brand & Identity" },
+  { key: "motion-design",       label: "Motion Design" },
+];
+
+const TAG_LABELS = {
+  "illustration-design": "Illustration",
+  "brand-identity":      "Design",
+  "motion-design":       "Motion",
+};
+
 const Work = () => {
-  const isotope = useRef();
+  const [activeFilter, setActiveFilter] = useState("all");
   const sectionRef = useRef();
 
-  useEffect(() => {
-    setTimeout(() => {
-      isotope.current = new Isotope(".portfolio-content", {
-        itemSelector: ".grid-item",
-        percentPosition: true,
-        masonry: { columnWidth: ".grid-item" },
-        animationOptions: { duration: 750, easing: "linear", queue: false },
-      });
-    }, 1000);
-  }, []);
+  const visible =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((p) => p.tags?.includes(activeFilter));
 
   useEffect(() => {
     const els = sectionRef.current?.querySelectorAll(".sr");
@@ -35,76 +41,77 @@ const Work = () => {
     );
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [activeFilter]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="section"
-      style={{ paddingTop: "16px", paddingBottom: "80px", scrollMarginTop: "110px" }}
-    >
-      <div className="container">
-        <div className="row sm-m-25px-b m-35px-b">
-          <div className="col-md-12">
-            <div className="section-title">
-              <h3
-                className="dark-color text-uppercase sr"
-                style={{ "--sr-delay": "0ms" }}
-              >
-                Selected Work & Projects
-              </h3>
-              <p
-                className="text-uppercase sr"
-                style={{ fontSize: "15px", letterSpacing: "0.08em", "--sr-delay": "120ms" }}
-              >
-                Selected work across brand, motion, and illustration.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section ref={sectionRef} style={{ paddingBottom: "80px" }}>
 
-      <div className="container">
-        <div className="portfolio-content lightbox-gallery">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="grid-item product branding sr"
-              style={{ "--sr-delay": `${120 + index * 60}ms` }}
+      {/* ── Dark header: title + filter tabs ── */}
+      <div className="work-section-header">
+        <h2 className="work-section-title sr" style={{ "--sr-delay": "0ms" }}>
+          Selected Works & Projects
+        </h2>
+        <div className="work-filter-tabs sr" style={{ "--sr-delay": "80ms" }}>
+          {FILTERS.map((f) => (
+            <button
+              key={f.key}
+              className={`work-filter-btn${activeFilter === f.key ? " active" : ""}`}
+              onClick={() => setActiveFilter(f.key)}
             >
-              <div className="portfolio-box-01">
-                <div className="project-thumb-frame" style={{ position: "relative" }}>
-                  <Image
-                    fill
-                    className="project-thumb-media"
-                    src={
-                      project.thumbnailImage ||
-                      project.mainImage ||
-                      (project.mainMediaType === "video"
-                        ? `/static/img/${project.slug}-thumb.jpg`
-                        : `/static/img/${project.slug}-hero.jpg`)
-                    }
-                    alt={project.title}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <a
-                  className="link-overlay"
-                  href={`/projects/${project.slug}`}
-                  aria-label={project.title}
-                />
-              </div>
-
-              <div className="project-card-copy">
-                <h5 className="project-card-title">
-                  <SlideChars text={project.title} stagger={50} by="word" />
-                </h5>
-                <span className="project-card-category">{project.category}</span>
-              </div>
-            </div>
+              <SlideChars text={f.label} stagger={20} />
+            </button>
           ))}
         </div>
       </div>
+
+      {/* ── Project grid ── */}
+      <div className="work-grid">
+        {visible.map((project, index) => (
+          <div
+            key={project.slug}
+            className="work-grid-item sr"
+            style={{ "--sr-delay": `${index * 50}ms` }}
+          >
+            <a
+              href={`/projects/${project.slug}`}
+              className="work-grid-link"
+              aria-label={project.title}
+            >
+              <div className="work-grid-img-wrap">
+                <Image
+                  fill
+                  className="work-grid-img"
+                  src={
+                    project.thumbnailImage ||
+                    project.mainImage ||
+                    (project.mainMediaType === "video"
+                      ? `/static/img/${project.slug}-thumb.jpg`
+                      : `/static/img/${project.slug}-hero.jpg`)
+                  }
+                  alt={project.title}
+                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+                />
+                <div className="work-grid-overlay">
+                  <span className="work-grid-overlay-title">{project.title}</span>
+                  <span className="work-grid-overlay-cat">{project.category}</span>
+                </div>
+              </div>
+            </a>
+            <div className="work-grid-copy">
+              <h5 className="work-grid-title">
+                <SlideChars text={project.title} stagger={40} by="word" />
+              </h5>
+              <span className="work-grid-cat">{project.category}</span>
+              {project.tags?.length > 0 && (
+                <span className="work-grid-tags">
+                  {project.tags.map((t) => TAG_LABELS[t] || t).join(" · ")}
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
     </section>
   );
 };
