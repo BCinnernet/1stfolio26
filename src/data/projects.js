@@ -179,6 +179,9 @@ const projects = [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Brand Identity & Large Format Design"] },
   },
@@ -191,6 +194,7 @@ const projects = [
     tags: ["illustration-design", "motion-design"],  // Illustration + Motion
     year: "",
     mainMediaType: "image",
+    mainImage: "/static/img/hold-it-down-cover-art-hero.gif",
     description: [
       "(Coming Soon)",
     ],
@@ -199,7 +203,7 @@ const projects = [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
     ],
-    credits: { lines: ["Ejuan Henderson", "Album Art & Motion"] },
+    credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
   },
 
   // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
@@ -310,6 +314,10 @@ const projects = [
       "(Coming Soon)",
     ],
     gallery: [
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
