@@ -6874,7 +6874,7 @@ body {
   line-height: 1;
   color: #f1ebdf !important;
   transition: 0.25s ease;
-  font-size: 25px; /* 👈 CONTROL ICON SIZE HERE */
+  font-size: 25px; /* CONTROL ICON SIZE HERE */
 }
 
 .nav-socials svg {

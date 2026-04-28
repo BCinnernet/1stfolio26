@@ -43,6 +43,50 @@
   transition-duration: 0.06s;
 }
 
+/* ── Skills ticker behind Work button ───────────────────────────────────── */
+.work-reveal-trigger {
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-ticker {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.skills-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: skillsTicker 30s linear infinite;
+}
+
+.skills-ticker-track span {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(20, 16, 19, 0.03);
+  padding-right: 0;
+}
+
+@keyframes skillsTicker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Keep the button above the ticker */
+.work-reveal-trigger > button {
+  position: relative;
+  z-index: 1;
+}
+
 /* ── Scroll nav blobs (up + down) ─────────────────────────────────────────── */
 .scroll-btns {
   position: fixed;

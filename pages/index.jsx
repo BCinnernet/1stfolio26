@@ -118,6 +118,15 @@ const Index3 = () => {
           The button label uses SlideChars for the rolling text animation.
           On open, the page scrolls down to show the grid.                 */}
       <div ref={triggerRef} id="work" className="work-reveal-trigger">
+
+        {/* Skills ticker — large faint text scrolling behind the button */}
+        <div className="skills-ticker" aria-hidden="true">
+          <div className="skills-ticker-track">
+            <span>ILLUSTRATION — POSTER DESIGN — CORPORATE DESIGN — SOCIAL MEDIA — 2D MOTION DESIGN — TEXTILE ART — </span>
+            <span>ILLUSTRATION — POSTER DESIGN — CORPORATE DESIGN — SOCIAL MEDIA — 2D MOTION DESIGN — TEXTILE ART — </span>
+          </div>
+        </div>
+
         <button
           className={`work-reveal-btn${workOpen ? " is-open" : ""}`}
           onClick={() => {
