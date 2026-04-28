@@ -246,7 +246,7 @@ const ProjectDetail = () => {
             <img
               src={gallery[lightboxIndex].src}
               alt={gallery[lightboxIndex].caption || project.title}
-              style={{ maxWidth: "88vw", maxHeight: "78vh", objectFit: "contain", borderRadius: "4px", display: "block" }}
+              style={{ width: "88vw", height: "78vh", objectFit: "contain", borderRadius: "4px", display: "block" }}
             />
             {gallery[lightboxIndex].caption && (
               <p style={{ marginTop: "16px", color: "rgba(255,255,255,0.55)", fontSize: "13px", letterSpacing: "0.04em", lineHeight: "1.6", textAlign: "center", maxWidth: "540px" }}>
