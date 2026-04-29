@@ -13,23 +13,40 @@
   background: #141013;
 }
 
-/* ── Work/Projects button — flat extrude ─────────────────────────────────── */
+/* ── Work/Projects button — flat tan ─────────────────────────────────────── */
 .work-reveal-btn {
-  background: #252130;           /* lighter face so the dark extrude reads as depth */
-  border: 1.5px solid #000000;  /* hard stroke — draws the seam between face and side */
+  background: #edeae4;
+  border: 1.5px solid #141013;
+  color: #141013;
   transform-style: flat;
   overflow: visible;
-  box-shadow: 0 5px 0 0 #000000;
-  transition:
-    color      0.15s ease,
-    transform  0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.18s ease;
-  will-change: transform, box-shadow;
+  box-shadow: none;
+  transition: color 0.15s ease, background 0.15s ease;
+  will-change: auto;
 }
 
-.work-reveal-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 0 0 #000000;
+/* is-open: invert to dark so the active state reads clearly */
+.work-reveal-btn.is-open {
+  background: #141013;
+  color: #f1ebdf;
+}
+
+/* Desktop hover: invert to dark */
+@media (hover: hover) {
+  .work-reveal-btn:hover {
+    transform: none;
+    box-shadow: none;
+    background: #141013;
+    color: #f1ebdf;
+  }
+}
+
+/* Mobile: block scroll from firing the slide-char roll */
+@media (hover: none) {
+  .work-reveal-btn:hover .slide-char-a,
+  .work-reveal-btn:hover .slide-char-b {
+    transform: translateY(0) !important;
+  }
 }
 
 .work-reveal-btn:focus {
@@ -37,9 +54,9 @@
 }
 
 .work-reveal-btn:active {
-  transform: translateY(4px) !important;
-  box-shadow: 0 1px 0 0 #000000 !important;
-  filter: none;
+  filter: brightness(0.85);
+  transform: none !important;
+  box-shadow: none !important;
   transition-duration: 0.06s;
 }
 
