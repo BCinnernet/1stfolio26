@@ -58,7 +58,7 @@ const Work = () => {
   }, [activeFilter]);
 
   return (
-    <section ref={sectionRef} style={{ paddingBottom: "80px" }}>
+    <section ref={sectionRef} style={{ paddingBottom: "80px", background: "#141013" }}>
 
       {/* ── Dark header: title + filter tabs ── */}
       <div className="work-section-header">
