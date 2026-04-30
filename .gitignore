@@ -12,3 +12,10 @@ yarn-error.log*
 pnpm-debug.log*
 .DS_Store
 public/static/img/raw/
+
+# Source/unprocessed files accidentally placed in img/ instead of raw/
+# All legitimate files use slug-based names: {slug}-{role}.ext (lowercase, hyphens, no spaces)
+public/static/img/Swaptober*.gif
+public/static/img/TTC-*.gif
+public/static/img/hold it down*.gif
+public/static/img/vintage market*.gif
