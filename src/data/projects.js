@@ -265,6 +265,7 @@ const projects = [
     tags: ["brand-identity", "motion-design"],
     year: "",
     mainMediaType: "image",
+    mainImage: "/static/img/levee-x-halloween-hero.gif",
     description: [
       "(Coming Soon)",
     ],
@@ -291,11 +292,12 @@ const projects = [
     tags: ["brand-identity", "motion-design"],
     year: "",
     mainMediaType: "image",
+    mainImage: "/static/img/levee-vintage-market-hero.gif",
     description: [
       "(Coming Soon)",
     ],
     gallery: [
-      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
@@ -314,6 +316,7 @@ const projects = [
     tags: ["motion-design"],
     year: "",
     mainMediaType: "image",
+    thumbnailImage: "/static/img/cutie-lyric-music-video-hero.gif",
     description: [
       "(Coming Soon)",
     ],
