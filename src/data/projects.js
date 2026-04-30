@@ -286,7 +286,7 @@ const projects = [
   // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
   {
     slug: "bar-k-event-backdrop",
-    title: "BAR-K Event Backdrop",
+    title: "STL BAR-K Event Backdrop",
     category: "Large Format Illustration",
     tags: ["illustration-design"],  // Illustration
     year: "",
