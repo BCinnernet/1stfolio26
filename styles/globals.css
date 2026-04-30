@@ -294,7 +294,18 @@ html {
   color: #f1ebdf;
   letter-spacing: -0.02em;
   line-height: 1;
-  margin: 0 0 32px;
+  margin: 0 0 16px;
+}
+
+.work-construction-note {
+  font-size: 13px;
+  color: rgba(241, 235, 223, 0.45);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  margin: 0 0 28px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .work-filter-tabs {

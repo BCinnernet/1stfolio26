@@ -51,6 +51,9 @@ const Work = () => {
         <h2 className="work-section-title sr" style={{ "--sr-delay": "0ms" }}>
           Selected Works & Projects
         </h2>
+        <p className="work-construction-note sr" style={{ "--sr-delay": "40ms" }}>
+          Website is currently under heavy construction — learning to code this thing and manage the back end is a beast of a project! Thanks for visiting and stay tuned!
+        </p>
         <div className="work-filter-tabs sr" style={{ "--sr-delay": "80ms" }}>
           {FILTERS.map((f) => (
             <button
