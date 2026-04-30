@@ -272,6 +272,7 @@ const projects = [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
   },
