@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import SlideChars from "@/src/components/SlideChars";
 import projects from "@/src/data/projects";
@@ -23,8 +23,15 @@ const mainProjects    = projects.filter((p) => p.slug !== "various-projects");
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("all");
-  const [titleTapped, setTitleTapped] = useState(false);
   const sectionRef = useRef();
+  const titleRef   = useRef(null);
+
+  const handleTitleTouch = useCallback(() => {
+    const el = titleRef.current;
+    if (!el) return;
+    el.classList.add("tapped");
+    setTimeout(() => el.classList.remove("tapped"), 620);
+  }, []);
 
   const visible =
     activeFilter === "all"
@@ -64,9 +71,10 @@ const Work = () => {
       {/* ── Dark header: title + filter tabs ── */}
       <div className="work-section-header">
         <h2
-          className={`work-section-title sr${titleTapped ? " tapped" : ""}`}
+          ref={titleRef}
+          className="work-section-title sr"
           style={{ "--sr-delay": "0ms" }}
-          onTouchStart={() => { setTitleTapped(true); setTimeout(() => setTitleTapped(false), 600); }}
+          onTouchStart={handleTitleTouch}
         >
           {"Featured Work".split("").map((char, i) => (
             <span
