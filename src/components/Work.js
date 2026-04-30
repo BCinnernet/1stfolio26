@@ -8,6 +8,7 @@ const FILTERS = [
   { key: "illustration-design", label: "Illustration & Design" },
   { key: "brand-identity",      label: "Brand & Identity" },
   { key: "motion-design",       label: "Animation / Motion & VFX" },
+  { key: "various",            label: "Other Works" },
 ];
 
 const TAG_LABELS = {
@@ -16,14 +17,27 @@ const TAG_LABELS = {
   "motion-design":       "Motion",
 };
 
+// Separate the various-projects entry from the main portfolio list
+const variousProject  = projects.find((p) => p.slug === "various-projects");
+const mainProjects    = projects.filter((p) => p.slug !== "various-projects");
+
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const sectionRef = useRef();
 
   const visible =
     activeFilter === "all"
-      ? projects
-      : projects.filter((p) => p.tags?.includes(activeFilter));
+      ? mainProjects
+      : activeFilter === "various"
+      ? (variousProject?.items ?? []).map((item, i) => ({
+          ...item,
+          // give each item a unique key and wire it to the various-projects page
+          _key:          `various-${i}`,
+          slug:          "various-projects",
+          mainImage:     item.src,
+          mainMediaType: "image",
+        }))
+      : mainProjects.filter((p) => p.tags?.includes(activeFilter));
 
   useEffect(() => {
     const els = sectionRef.current?.querySelectorAll(".sr");
@@ -69,9 +83,12 @@ const Work = () => {
 
       {/* ── Project grid ── */}
       <div className="work-grid">
+        {visible.length === 0 && (
+          <p className="work-empty-state">More coming soon — check back!</p>
+        )}
         {visible.map((project, index) => (
           <div
-            key={project.slug}
+            key={project._key || project.slug}
             className="work-grid-item sr"
             style={{ "--sr-delay": `${index * 50}ms` }}
           >

@@ -308,6 +308,15 @@ html {
   margin-right: auto;
 }
 
+.work-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: rgba(241, 235, 223, 0.35);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  padding: 60px 0;
+}
+
 .work-filter-tabs {
   display: flex;
   gap: 8px;

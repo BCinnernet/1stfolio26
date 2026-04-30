@@ -365,7 +365,7 @@ const projects = [
     slug: "various-projects",
     title: "Various Projects",
     category: "Mixed Work",
-    tags: ["illustration-design", "brand-identity", "motion-design"],
+    tags: [],  // no direct filter tags — individual items below carry their own
     year: "",
     mainMediaType: "image",
     denseGrid: true,
@@ -374,6 +374,24 @@ const projects = [
     ],
     gallery: [],
     credits: { lines: ["Ejuan Henderson"] },
+
+    // ── Individual items shown as separate cards when a filter is active ──
+    // Each item needs:
+    //   title    — card title
+    //   category — card subtitle
+    //   tags     — which filter(s) it appears under
+    //   src      — image path (put the optimized file in public/static/img/)
+    //
+    // Example:
+    // items: [
+    //   {
+    //     title: "Swaptober5 Event Poster",
+    //     category: "Poster Design",
+    //     tags: ["illustration-design", "brand-identity"],
+    //     src: "/static/img/various-swaptober5-poster.jpg",
+    //   },
+    // ],
+    items: [],
   },
 
   // ─── K.H.A.S.H FOUNDATION ────────────────────────────────────────────────
