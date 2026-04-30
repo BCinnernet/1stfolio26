@@ -63,7 +63,15 @@ const Work = () => {
       {/* ── Dark header: title + filter tabs ── */}
       <div className="work-section-header">
         <h2 className="work-section-title sr" style={{ "--sr-delay": "0ms" }}>
-          Featured Work
+          {"Featured Work".split("").map((char, i) => (
+            <span
+              key={i}
+              className="work-title-char"
+              style={{ "--char-delay": `${i * 28}ms` }}
+            >
+              {char === " " ? " " : char}
+            </span>
+          ))}
         </h2>
         <p className="work-construction-note sr" style={{ "--sr-delay": "40ms" }}>
           Website is currently under heavy construction — learning to code this thing and manage the back end is a beast of a project! Thanks for visiting and stay tuned!

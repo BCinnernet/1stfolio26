@@ -214,8 +214,10 @@ const Index3 = () => {
                     To change the greeting text, edit the string below.         */}
                 <h2 className="home-teaser-name sr" style={{ "--sr-delay": "120ms" }}>
                   WHAT'S UP, I'M
-                  <span
+                  <a
+                    href="/about"
                     className="home-name-hover-wrap"
+                    style={{ textDecoration: "none", color: "inherit" }}
                     onMouseEnter={() => setNameHovered((h) => !h)}
                     onTouchEnd={(e) => { e.preventDefault(); setNameHovered((h) => !h); }}
                   >
@@ -225,7 +227,7 @@ const Index3 = () => {
                       stagger={22}
                       animateIn
                     />
-                  </span>
+                  </a>
                 </h2>
 
                 {/* ── Role line ─────────────────────────────────────────────

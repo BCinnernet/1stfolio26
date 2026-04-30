@@ -8,6 +8,41 @@
   background: #141013;
 }
 
+/* ── Social links hover (header + footer) ────────────────────────────────── */
+.footer-socials a:hover,
+.header-logo-socials a:hover,
+.nav-socials a:hover {
+  color: #c5d400 !important;
+}
+
+/* ── Contact / about page "Lets make something" label ────────────────────── */
+.contact-card-label {
+  color: #c5d400 !important;
+}
+
+/* ── Footer marquee — override template green to match site lime ─────────── */
+.marquee-track span {
+  color: #c5d400;
+  font-size: 12px;
+}
+.footer-marquee {
+  border-bottom-color: #c5d400;
+}
+.marquee-break-btn {
+  color: #c5d400 !important;
+  font-size: 12px !important;
+  text-decoration-color: rgba(197, 212, 0, 0.4) !important;
+}
+.marquee-break-btn:hover {
+  text-decoration-color: #c5d400 !important;
+}
+.footer-marquee::before {
+  background: linear-gradient(to right, #141013, transparent) !important;
+}
+.footer-marquee::after {
+  background: linear-gradient(to left, #141013, transparent) !important;
+}
+
 .fixed-header .header-dark,
 .fixed-header .header-dark.header-transparent {
   background: #141013;
@@ -24,11 +59,11 @@
 
 /* ── Work/Projects button — 3D extrude ───────────────────────────────────── */
 .work-reveal-btn {
-  background: #c5d400;
-  border: 1.5px solid #a8b500;
-  color: #2b2b2b;
+  background: #c5d400 !important;
+  border: 1.5px solid #a8b500 !important;
+  color: #2b2b2b !important;
   /* hard 7px extrude, no blur */
-  box-shadow: 0 7px 0 0 #8a9b00;
+  box-shadow: 0 7px 0 0 #8a9b00 !important;
   transform: translateY(0);
   transition:
     transform 0.08s ease,
@@ -115,6 +150,10 @@
 .work-reveal-trigger > button {
   position: relative;
   z-index: 1;
+}
+
+.work-reveal-label {
+  font-weight: 700;
 }
 
 /* ── Scroll nav blobs (up + down) ─────────────────────────────────────────── */
@@ -309,6 +348,25 @@ body {
   letter-spacing: -0.02em;
   line-height: 1;
   margin: 0 0 16px;
+  cursor: default;
+}
+
+.work-title-char {
+  display: inline-block;
+  transition:
+    transform 0.12s ease calc(var(--char-delay, 0ms)),
+    text-shadow 0.12s ease calc(var(--char-delay, 0ms));
+}
+
+@media (hover: hover) {
+  .work-section-title:hover .work-title-char {
+    transform: translateY(-8px);
+    text-shadow:
+      0 2px 0 #c5d400,
+      0 4px 0 #c5d400,
+      0 6px 0 #c5d400,
+      0 8px 0 #c5d400;
+  }
 }
 
 .work-construction-note {
@@ -344,7 +402,7 @@ body {
   color: rgba(241, 235, 223, 0.5);
   padding: 9px 22px;
   border-radius: 100px;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -353,8 +411,8 @@ body {
 }
 
 .work-filter-btn:hover {
-  border-color: rgba(241, 235, 223, 0.6);
-  color: rgba(241, 235, 223, 0.9);
+  border-color: rgba(197, 212, 0, 0.6);
+  color: #c5d400;
 }
 
 .work-filter-btn:hover .slide-char-a,

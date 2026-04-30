@@ -11,8 +11,8 @@ const Footer = () => {
       {/* Scrolling marquee text */}
       <div className="footer-marquee">
         <div className="marquee-track">
-          <span>EJUAN HENDERSON — MULTIMEDIA ARTIST — <button className="marquee-break-btn" onClick={() => window.dispatchEvent(new Event("breaksite"))}>YOUR CHEAT CODE: ↑↑↓↓←→←→BA</button> — KANSAS CITY, MISSOURI — A CREATIVE SWISS ARMY KNIFE — EXPERIMENTATION AND DISCOVERY — I JUST WANT TO MAKE COOL STUFF — A RESOURCEFUL RESOURCE — </span>
-          <span>EJUAN HENDERSON — MULTIMEDIA ARTIST — <button className="marquee-break-btn" onClick={() => window.dispatchEvent(new Event("breaksite"))}>YOUR CHEAT CODE: ↑↑↓↓←→←→BA</button> — KANSAS CITY, MISSOURI — A CREATIVE SWISS ARMY KNIFE — EXPERIMENTATION AND DISCOVERY — I JUST WANT TO MAKE COOL STUFF — A RESOURCEFUL RESOURCE — </span>
+          <span><strong>EJUAN HENDERSON</strong> — <strong>MULTIMEDIA ARTIST</strong> — <button className="marquee-break-btn" onClick={() => window.dispatchEvent(new Event("breaksite"))}>[ DO NOT PRESS THIS BUTTON ]</button> — <strong>KANSAS CITY, MISSOURI</strong> — A CREATIVE SWISS ARMY KNIFE — <strong>ILLUSTRATION</strong> — <strong>POSTER DESIGN</strong> — <strong>CORPORATE DESIGN</strong> — <strong>SOCIAL MEDIA</strong> — <strong>2D MOTION DESIGN</strong> — <strong>TEXTILE ART</strong> — </span>
+          <span><strong>EJUAN HENDERSON</strong> — <strong>MULTIMEDIA ARTIST</strong> — <button className="marquee-break-btn" onClick={() => window.dispatchEvent(new Event("breaksite"))}>[ DO NOT PRESS THIS BUTTON ]</button> — <strong>KANSAS CITY, MISSOURI</strong> — A CREATIVE SWISS ARMY KNIFE — <strong>ILLUSTRATION</strong> — <strong>POSTER DESIGN</strong> — <strong>CORPORATE DESIGN</strong> — <strong>SOCIAL MEDIA</strong> — <strong>2D MOTION DESIGN</strong> — <strong>TEXTILE ART</strong> — </span>
         </div>
       </div>
 
