@@ -307,7 +307,7 @@ const projects = [
       "(Coming Soon)",
     ],
     gallery: [
-      { type: "video", src: "-ZMA5H8jpKc", caption: "(Coming Soon)" },
+      { type: "video", src: "-ZMA5H8jpKc", caption: "(Coming Soon)", size: "full" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-hero.jpg", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
