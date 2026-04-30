@@ -186,29 +186,6 @@ const projects = [
     credits: { lines: ["Ejuan Henderson", "Brand Identity & Large Format Design"] },
   },
 
-  // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
-  {
-    slug: "hold-it-down-cover-art",
-    title: "Hold It Down — Animated Cover Art",
-    category: "Album Art & Motion",
-    tags: ["illustration-design", "motion-design"],  // Illustration + Motion
-    year: "",
-    mainMediaType: "image",
-    mainImage: "/static/img/hold-it-down-cover-art-hero.gif",
-    description: [
-      "(Coming Soon)",
-    ],
-    gallery: [
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-5.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-6.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-7.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-8.jpg", caption: "(Coming Soon)" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
-  },
-
   // ─── CUTIE ─────────────────────────────────────────────────────────────────
   {
     slug: "cutie-lyric-music-video",
@@ -233,25 +210,6 @@ const projects = [
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-8.gif", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
-  },
-
-  // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
-  {
-    slug: "bar-k-event-backdrop",
-    title: "BAR-K Event Backdrop",
-    category: "Large Format Illustration",
-    tags: ["illustration-design"],  // Illustration
-    year: "",
-    mainMediaType: "image",
-    description: [
-      "(Coming Soon)",
-    ],
-    gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Large Format Illustration"] },
   },
 
   // ─── BOOK COVERS ──────────────────────────────────────────────────────────
@@ -286,6 +244,93 @@ const projects = [
     credits: { lines: ["Ejuan Henderson", "Editorial Illustration"] },
   },
 
+  // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
+  {
+    slug: "hold-it-down-cover-art",
+    title: "Hold It Down — Animated Cover Art",
+    category: "Album Art & Motion",
+    tags: ["illustration-design", "motion-design"],  // Illustration + Motion
+    year: "",
+    mainMediaType: "image",
+    mainImage: "/static/img/hold-it-down-cover-art-hero.gif",
+    description: [
+      "(Coming Soon)",
+    ],
+    gallery: [
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-5.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-6.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-7.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-8.jpg", caption: "(Coming Soon)" },
+    ],
+    credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
+  },
+
+  // ─── K-STATE WILDCATS ─────────────────────────────────────────────────────
+  {
+    slug: "kstate-wildcats-tshirt",
+    title: "K-State Wildcats T-Shirt Design",
+    category: "Apparel Design",
+    tags: ["illustration-design", "brand-identity"],  // Illustration + Design
+    year: "",
+    mainMediaType: "image",
+    description: [
+      "(Coming Soon)",
+    ],
+    gallery: [
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+    ],
+    credits: { lines: ["Ejuan Henderson", "Apparel Design"] },
+  },
+
+  // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
+  {
+    slug: "bar-k-event-backdrop",
+    title: "BAR-K Event Backdrop",
+    category: "Large Format Illustration",
+    tags: ["illustration-design"],  // Illustration
+    year: "",
+    mainMediaType: "image",
+    description: [
+      "(Coming Soon)",
+    ],
+    gallery: [
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+    ],
+    credits: { lines: ["Ejuan Henderson", "Large Format Illustration"] },
+  },
+
+  // ─── LEVEE — VINTAGE MARKET ───────────────────────────────────────────────
+  {
+    slug: "levee-vintage-market",
+    title: "LEVEE — Vintage Market Event",
+    category: "Motion & Campaign Design",
+    tags: ["brand-identity", "motion-design"],
+    year: "",
+    mainMediaType: "image",
+    mainImage: "/static/img/levee-vintage-market-hero.gif",
+    description: [
+      "(Coming Soon)",
+    ],
+    gallery: [
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-5.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "(Coming Soon)" },
+    ],
+    credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
+  },
+
   // ─── LEVEE x HALLOWEEN ────────────────────────────────────────────────────
   {
     slug: "levee-x-halloween",
@@ -311,51 +356,6 @@ const projects = [
       { type: "image", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
-  },
-
-  // ─── LEVEE — VINTAGE MARKET ───────────────────────────────────────────────
-  {
-    slug: "levee-vintage-market",
-    title: "LEVEE — Vintage Market Event",
-    category: "Motion & Campaign Design",
-    tags: ["brand-identity", "motion-design"],
-    year: "",
-    mainMediaType: "image",
-    mainImage: "/static/img/levee-vintage-market-hero.gif",
-    description: [
-      "(Coming Soon)",
-    ],
-    gallery: [
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-5.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "(Coming Soon)" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
-  },
-
-  // ─── K-STATE WILDCATS ─────────────────────────────────────────────────────
-  {
-    slug: "kstate-wildcats-tshirt",
-    title: "K-State Wildcats T-Shirt Design",
-    category: "Apparel Design",
-    tags: ["illustration-design", "brand-identity"],  // Illustration + Design
-    year: "",
-    mainMediaType: "image",
-    description: [
-      "(Coming Soon)",
-    ],
-    gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Apparel Design"] },
   },
 
   // ─── DEMO REEL ────────────────────────────────────────────────────────────
