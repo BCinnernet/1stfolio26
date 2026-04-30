@@ -262,13 +262,19 @@ const projects = [
     slug: "levee-x-halloween",
     title: "LEVEE x Halloween — Event",
     category: "Motion & Campaign Design",
-    tags: ["brand-identity", "motion-design"],  // Design + Motion
+    tags: ["brand-identity", "motion-design"],
     year: "",
     mainMediaType: "image",
     description: [
       "(Coming Soon)",
     ],
     gallery: [
+      { type: "image", src: "/static/img/levee-x-halloween-gallery-1.gif", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
@@ -282,13 +288,17 @@ const projects = [
     slug: "levee-vintage-market",
     title: "LEVEE — Vintage Market Event",
     category: "Motion & Campaign Design",
-    tags: ["brand-identity", "motion-design"],  // Design + Motion
+    tags: ["brand-identity", "motion-design"],
     year: "",
     mainMediaType: "image",
     description: [
       "(Coming Soon)",
     ],
     gallery: [
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
@@ -301,7 +311,7 @@ const projects = [
     slug: "cutie-lyric-music-video",
     title: "CUTIE — Lyric Music Video",
     category: "Motion Graphics",
-    tags: ["motion-design"],  // Motion
+    tags: ["motion-design"],
     year: "",
     mainMediaType: "image",
     description: [
