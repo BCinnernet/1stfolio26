@@ -217,6 +217,7 @@ const projects = [
     tags: ["motion-design"],
     year: "",
     mainMediaType: "image",
+    thumbnailImage: "/static/img/cutie-lyric-music-video-hero.gif",
     description: [
       "(Coming Soon)",
     ],
@@ -229,6 +230,7 @@ const projects = [
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-4.jpg", caption: "(Coming Soon)" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-6.jpg", caption: "(Coming Soon)" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-7.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-8.gif", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
   },
