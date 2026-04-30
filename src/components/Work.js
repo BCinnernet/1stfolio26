@@ -7,7 +7,7 @@ const FILTERS = [
   { key: "all",                label: "All" },
   { key: "illustration-design", label: "Illustration & Design" },
   { key: "brand-identity",      label: "Brand & Identity" },
-  { key: "motion-design",       label: "Motion Design" },
+  { key: "motion-design",       label: "Animation / Motion & VFX" },
 ];
 
 const TAG_LABELS = {
