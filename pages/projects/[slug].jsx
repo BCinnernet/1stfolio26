@@ -123,7 +123,10 @@ const ProjectDetail = () => {
     return "editorial-item";
   };
 
-  const pageDesc = project.description?.[0] ?? `${project.title} — ${project.category} by ${name}.`;
+  const rawDesc  = project.description?.[0];
+  const pageDesc = (!rawDesc || rawDesc.includes("Coming Soon"))
+    ? `${project.title} — ${project.category} by ${name}. Based in Kansas City, Missouri.`
+    : rawDesc;
   const ogImage  = `${siteUrl}/static/img/${project.slug}-hero.jpg`;
   const pageUrl  = `${siteUrl}/projects/${project.slug}`;
 
