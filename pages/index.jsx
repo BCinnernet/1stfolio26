@@ -172,7 +172,7 @@ const Index3 = () => {
       <section
         ref={aboutRef}
         className="section slant-top"
-        style={{ paddingTop: "80px", paddingBottom: "50px", background: "#d0cfc6" }}
+        style={{ paddingTop: "80px", paddingBottom: "50px", background: "#c5d400" }}
       >
         <div className="container">
           <div className="row align-items-center">

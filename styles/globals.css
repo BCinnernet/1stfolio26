@@ -13,13 +13,22 @@
   background: #141013;
 }
 
+/* Nav link text → lime green */
+.header-dark .navbar-nav .nav-link {
+  color: #c5d400 !important;
+}
+.header-dark .navbar-nav .nav-link.active,
+.header-dark .navbar-nav .nav-link:hover {
+  color: #ffffff !important;
+}
+
 /* ── Work/Projects button — 3D extrude ───────────────────────────────────── */
 .work-reveal-btn {
-  background: #2a2729;
-  border: 1.5px solid #5a5558;
-  color: #f1ebdf;
+  background: #c5d400;
+  border: 1.5px solid #a8b500;
+  color: #2b2b2b;
   /* hard 7px extrude, no blur */
-  box-shadow: 0 7px 0 0 #0d0b0e;
+  box-shadow: 0 7px 0 0 #8a9b00;
   transform: translateY(0);
   transition:
     transform 0.08s ease,
@@ -28,19 +37,19 @@
   will-change: transform, box-shadow;
 }
 
-/* open state: stays dark, depth unchanged */
+/* open state: slightly darker lime, depth unchanged */
 .work-reveal-btn.is-open {
-  background: #1a1719;
-  color: #f1ebdf;
+  background: #b0bc00;
+  color: #2b2b2b;
 }
 
 /* Desktop hover: no change to depth, just slight brighten */
 @media (hover: hover) {
   .work-reveal-btn:hover {
-    background: #3a3538;
-    color: #f1ebdf;
+    background: #cee400;
+    color: #2b2b2b;
     transform: translateY(0);
-    box-shadow: 0 7px 0 0 #0d0b0e;
+    box-shadow: 0 7px 0 0 #8a9b00;
   }
 }
 
@@ -59,7 +68,7 @@
 /* click-in: push down 7px, extrude collapses to nothing */
 .work-reveal-btn:active {
   transform: translateY(7px) !important;
-  box-shadow: 0 0 0 0 #0d0b0e !important;
+  box-shadow: 0 0 0 0 #8a9b00 !important;
   transition-duration: 0.06s;
 }
 
@@ -67,6 +76,7 @@
 .work-reveal-trigger {
   position: relative;
   overflow: hidden;
+  background: #f0edd6;
 }
 
 .skills-ticker {
@@ -92,7 +102,7 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(20, 16, 19, 0.03);
+  color: rgba(197, 212, 0, 0.18);
   padding-right: 0;
 }
 
@@ -132,7 +142,7 @@
 .scroll-btn {
   width: 44px;
   height: 44px;
-  background: #141013;
+  background: #2b2b2b;
   border: none;
   border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
   cursor: pointer;
@@ -180,6 +190,10 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f0edd6;
 }
 .video-bg-container {
   position: absolute;
@@ -348,9 +362,9 @@ html {
 }
 
 .work-filter-btn.active {
-  background: #f1ebdf;
-  color: #141013;
-  border-color: #f1ebdf;
+  background: #c5d400;
+  color: #2b2b2b;
+  border-color: #c5d400;
   font-weight: 700;
 }
 
@@ -502,8 +516,8 @@ html {
   top: 20px;
   left: 24px;
   z-index: 10;
-  background: #141013;
-  color: #f1ebdf;
+  background: #2b2b2b;
+  color: #f0edd6;
   border: none;
   border-radius: 100px;
   padding: 9px 20px;
@@ -517,8 +531,8 @@ html {
 }
 
 .project-back-btn:hover {
-  background: #f1ebdf;
-  color: #141013;
+  background: #c5d400;
+  color: #2b2b2b;
 }
 
 .project-back-link {
@@ -565,7 +579,7 @@ html {
   display: block;
   font-size: 17px;
   font-weight: 600;
-  color: #5b6af5;
+  color: #7a8800;
   margin-bottom: 28px;
 }
 
@@ -728,7 +742,7 @@ html {
 .project-footer-link {
   display: block;
   font-size: 14px;
-  color: #5b6af5;
+  color: #7a8800;
   text-decoration: underline;
   text-underline-offset: 3px;
   margin-bottom: 6px;
@@ -744,8 +758,8 @@ html {
   display: inline-block;
   padding: 7px 18px;
   border-radius: 100px;
-  background: #141013;
-  color: #f1ebdf;
+  background: #2b2b2b;
+  color: #f0edd6;
   font-size: 11px;
   letter-spacing: 0.08em;
   font-weight: 600;
