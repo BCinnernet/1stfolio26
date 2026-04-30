@@ -209,6 +209,30 @@ const projects = [
     credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
   },
 
+  // ─── CUTIE ─────────────────────────────────────────────────────────────────
+  {
+    slug: "cutie-lyric-music-video",
+    title: "CUTIE — Lyric Music Video",
+    category: "Motion Graphics",
+    tags: ["motion-design"],
+    year: "",
+    mainMediaType: "image",
+    description: [
+      "(Coming Soon)",
+    ],
+    gallery: [
+      { type: "video", src: "-ZMA5H8jpKc", caption: "(Coming Soon)", size: "full" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-1.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-2.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-3.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-4.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-6.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-7.jpg", caption: "(Coming Soon)" },
+    ],
+    credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
+  },
+
   // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
   {
     slug: "bar-k-event-backdrop",
@@ -307,30 +331,6 @@ const projects = [
       { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
-  },
-
-  // ─── CUTIE ─────────────────────────────────────────────────────────────────
-  {
-    slug: "cutie-lyric-music-video",
-    title: "CUTIE — Lyric Music Video",
-    category: "Motion Graphics",
-    tags: ["motion-design"],
-    year: "",
-    mainMediaType: "image",
-    description: [
-      "(Coming Soon)",
-    ],
-    gallery: [
-      { type: "video", src: "-ZMA5H8jpKc", caption: "(Coming Soon)", size: "full" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-1.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-2.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-3.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-4.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-6.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-7.jpg", caption: "(Coming Soon)" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
   },
 
   // ─── K-STATE WILDCATS ─────────────────────────────────────────────────────

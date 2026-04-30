@@ -63,7 +63,7 @@ const Work = () => {
       {/* ── Dark header: title + filter tabs ── */}
       <div className="work-section-header">
         <h2 className="work-section-title sr" style={{ "--sr-delay": "0ms" }}>
-          Selected Works & Projects
+          Featured Work
         </h2>
         <p className="work-construction-note sr" style={{ "--sr-delay": "40ms" }}>
           Website is currently under heavy construction — learning to code this thing and manage the back end is a beast of a project! Thanks for visiting and stay tuned!
