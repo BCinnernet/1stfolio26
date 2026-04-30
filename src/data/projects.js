@@ -201,6 +201,10 @@ const projects = [
     gallery: [
       { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "(Coming Soon)" },
       { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-5.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-6.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-7.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-8.jpg", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
   },
