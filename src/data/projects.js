@@ -240,6 +240,19 @@ const projects = [
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Editorial Illustration"] },
   },
@@ -290,12 +303,17 @@ const projects = [
     tags: ["motion-design"],  // Motion
     year: "",
     mainMediaType: "image",
-    mainImage: "/static/img/cutie-lyric-music-video-hero.gif",
     description: [
       "(Coming Soon)",
     ],
     gallery: [
-      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.gif", caption: "(Coming Soon)" },
+      { type: "video", src: "-ZMA5H8jpKc", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.jpg", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
       { type: "image", caption: "(Coming Soon)" },
     ],
@@ -326,29 +344,30 @@ const projects = [
   },
 
   // ─── DEMO REEL ────────────────────────────────────────────────────────────
-  {
-    slug: "demo-reel",
-    title: "Demo Reel",
-    category: "Motion Graphics",
-    tags: ["illustration-design", "brand-identity", "motion-design"],  // Illustration + Design + Motion
-    year: "",
-    mainMediaType: "video",
-    mainVideo: "YOUTUBE_VIDEO_ID",
-    description: [
-      "(Coming Soon)",
-    ],
-    gallery: [],
-    credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
-  },
+  // Hidden — uncomment to restore
+  // {
+  //   slug: "demo-reel",
+  //   title: "Demo Reel",
+  //   category: "Motion Graphics",
+  //   tags: ["illustration-design", "brand-identity", "motion-design"],
+  //   year: "",
+  //   mainMediaType: "video",
+  //   mainVideo: "YOUTUBE_VIDEO_ID",
+  //   description: ["(Coming Soon)"],
+  //   gallery: [],
+  //   credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
+  // },
 
-  // ─── VARIOUS PROJECTS ─────────────────────────────────────────────────────
+  // ─── VARIOUS PROJECTS / THE LAB ───────────────────────────────────────────
+  // Rename slug/title once the concept is locked in.
   {
     slug: "various-projects",
     title: "Various Projects",
     category: "Mixed Work",
-    tags: ["illustration-design", "brand-identity", "motion-design"],  // Illustration + Design + Motion
+    tags: ["illustration-design", "brand-identity", "motion-design"],
     year: "",
     mainMediaType: "image",
+    denseGrid: true,
     description: [
       "(Coming Soon)",
     ],
@@ -357,23 +376,22 @@ const projects = [
   },
 
   // ─── K.H.A.S.H FOUNDATION ────────────────────────────────────────────────
-  {
-    slug: "khash-foundation",
-    title: "K.H.A.S.H Foundation",
-    category: "Brand Identity",
-    tags: ["brand-identity"],  // Design
-    year: "",
-    mainMediaType: "image",
-    description: [
-      "(Coming Soon)",
-    ],
-    gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Brand Identity"] },
-  },
+  // Hidden — uncomment to restore
+  // {
+  //   slug: "khash-foundation",
+  //   title: "K.H.A.S.H Foundation",
+  //   category: "Brand Identity",
+  //   tags: ["brand-identity"],
+  //   year: "",
+  //   mainMediaType: "image",
+  //   description: ["(Coming Soon)"],
+  //   gallery: [
+  //     { type: "image", caption: "(Coming Soon)" },
+  //     { type: "image", caption: "(Coming Soon)" },
+  //     { type: "image", caption: "(Coming Soon)" },
+  //   ],
+  //   credits: { lines: ["Ejuan Henderson", "Brand Identity"] },
+  // },
 
 ];
 

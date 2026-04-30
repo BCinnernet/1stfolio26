@@ -145,17 +145,17 @@ const ProjectDetail = () => {
       {/* ── Editorial gallery ── */}
       {gallery.length > 0 && (
         <section className="editorial-gallery-section">
-          <div className="editorial-gallery">
+          <div className={`editorial-gallery${project.denseGrid ? " editorial-gallery--dense" : ""}`}>
             {gallery.map((item, i) => (
               item.type === "video" ? (
-                <div key={i} className={`${sizeClass(item.size)} editorial-item--video`}>
+                <div key={i} className={`${project.denseGrid ? "editorial-item editorial-item--full" : sizeClass(item.size)} editorial-item--video`}>
                   <VideoEmbed src={item.src} title={item.caption || project.title} />
                   {item.caption && (
                     <p className="editorial-item-caption">{item.caption}</p>
                   )}
                 </div>
               ) : (
-                <div key={i} className={sizeClass(item.size)}>
+                <div key={i} className={project.denseGrid ? "editorial-item" : sizeClass(item.size)}>
                   <img
                     src={item.src}
                     alt={item.caption || project.title}
