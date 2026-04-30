@@ -199,8 +199,7 @@ const projects = [
       "(Coming Soon)",
     ],
     gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "(Coming Soon)" },
       { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "(Coming Soon)" },
     ],
     credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
