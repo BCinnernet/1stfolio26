@@ -16,12 +16,10 @@
 /* ── Work/Projects button — 3D extrude ───────────────────────────────────── */
 .work-reveal-btn {
   background: #2a2729;
-  border: none;
+  border: 1.5px solid #5a5558;
   color: #f1ebdf;
-  /* resting 3D extrude — bottom+right shadow stack gives the "depth" face */
-  box-shadow:
-    0 4px 0 0 #0d0b0e,
-    0 5px 6px 0 rgba(0,0,0,0.45);
+  /* hard 7px extrude, no blur */
+  box-shadow: 0 7px 0 0 #0d0b0e;
   transform: translateY(0);
   transition:
     transform 0.08s ease,
@@ -36,15 +34,13 @@
   color: #f1ebdf;
 }
 
-/* Desktop hover: lift slightly */
+/* Desktop hover: no change to depth, just slight brighten */
 @media (hover: hover) {
   .work-reveal-btn:hover {
     background: #3a3538;
-    transform: translateY(-1px);
-    box-shadow:
-      0 5px 0 0 #0d0b0e,
-      0 7px 8px 0 rgba(0,0,0,0.4);
     color: #f1ebdf;
+    transform: translateY(0);
+    box-shadow: 0 7px 0 0 #0d0b0e;
   }
 }
 
@@ -60,12 +56,10 @@
   outline: none;
 }
 
-/* click-in: push down into the surface, shadow collapses */
+/* click-in: push down 7px, extrude collapses to nothing */
 .work-reveal-btn:active {
-  transform: translateY(4px) !important;
-  box-shadow:
-    0 0 0 0 #0d0b0e,
-    0 1px 2px 0 rgba(0,0,0,0.3) !important;
+  transform: translateY(7px) !important;
+  box-shadow: 0 0 0 0 #0d0b0e !important;
   transition-duration: 0.06s;
 }
 
