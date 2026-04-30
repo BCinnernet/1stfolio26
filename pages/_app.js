@@ -56,6 +56,9 @@ export default function App({ Component, pageProps }) {
       dragAbortRef.current = abort;
       const { signal } = abort;
 
+      // Shared z-index counter — grabbing any pill brings it to the top
+      let pillTopZ = 19100;
+
       targets.forEach((el, i) => {
         const rect = el.getBoundingClientRect();
         const origStyle = {
@@ -213,7 +216,7 @@ export default function App({ Component, pageProps }) {
           pillState.prevY        = e.clientY;
           pillState.vx           = 0;
           pillState.vy           = 0;
-          pill.style.zIndex      = "20000";
+          pill.style.zIndex      = (++pillTopZ).toString();
           pill.style.cursor      = "grabbing";
         }, { signal });
 
@@ -227,6 +230,7 @@ export default function App({ Component, pageProps }) {
           pillState.prevY        = t.clientY;
           pillState.vx           = 0;
           pillState.vy           = 0;
+          pill.style.zIndex      = (++pillTopZ).toString();
         }, { signal, passive: true });
       });
 

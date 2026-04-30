@@ -48,6 +48,19 @@
   background: #141013;
 }
 
+/* ── Mobile hamburger button + header bar ────────────────────────────────── */
+.mob-header {
+  background: #141013 !important;
+}
+.navbar-toggler,
+.toggler-menu {
+  background: #c5d400 !important;
+  border-radius: 6px !important;
+}
+.mob-header .navbar-brand a {
+  color: #c5d400 !important;
+}
+
 /* Nav link text → lime green */
 .header-dark .navbar-nav .nav-link {
   color: #c5d400 !important;
@@ -342,13 +355,14 @@ body {
 }
 
 .work-section-title {
-  font-size: clamp(52px, 9vw, 104px);
+  font-size: clamp(30px, 8.5vw, 104px);
   font-weight: 900;
   color: #f1ebdf;
   letter-spacing: -0.02em;
   line-height: 1;
   margin: 0 0 16px;
   cursor: default;
+  white-space: nowrap;
 }
 
 .work-title-char {
@@ -367,6 +381,16 @@ body {
       0 6px 0 #c5d400,
       0 8px 0 #c5d400;
   }
+}
+
+/* Mobile tap: same extrude triggered by .tapped class */
+.work-section-title.tapped .work-title-char {
+  transform: translateY(-8px);
+  text-shadow:
+    0 2px 0 #c5d400,
+    0 4px 0 #c5d400,
+    0 6px 0 #c5d400,
+    0 8px 0 #c5d400;
 }
 
 .work-construction-note {

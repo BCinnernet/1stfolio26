@@ -23,6 +23,7 @@ const mainProjects    = projects.filter((p) => p.slug !== "various-projects");
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [titleTapped, setTitleTapped] = useState(false);
   const sectionRef = useRef();
 
   const visible =
@@ -62,7 +63,11 @@ const Work = () => {
 
       {/* ── Dark header: title + filter tabs ── */}
       <div className="work-section-header">
-        <h2 className="work-section-title sr" style={{ "--sr-delay": "0ms" }}>
+        <h2
+          className={`work-section-title sr${titleTapped ? " tapped" : ""}`}
+          style={{ "--sr-delay": "0ms" }}
+          onTouchStart={() => { setTitleTapped(true); setTimeout(() => setTitleTapped(false), 600); }}
+        >
           {"Featured Work".split("").map((char, i) => (
             <span
               key={i}
