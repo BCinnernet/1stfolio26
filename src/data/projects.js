@@ -169,7 +169,7 @@ const projects = [
     slug: "afuego51",
     title: "AFUEGO51 — Food Truck Design",
     category: "Brand Identity & Large Format Design",
-    tags: ["brand-identity"],  // Design
+    tags: ["brand-identity", "illustration-design"],
     year: "",
     mainMediaType: "image",
     description: [

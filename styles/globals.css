@@ -13,30 +13,37 @@
   background: #141013;
 }
 
-/* ── Work/Projects button — flat tan ─────────────────────────────────────── */
+/* ── Work/Projects button — 3D extrude ───────────────────────────────────── */
 .work-reveal-btn {
-  background: #edeae4;
-  border: 1.5px solid #141013;
-  color: #141013;
-  transform-style: flat;
-  overflow: visible;
-  box-shadow: none;
-  transition: color 0.15s ease, background 0.15s ease;
-  will-change: auto;
+  background: #2a2729;
+  border: none;
+  color: #f1ebdf;
+  /* resting 3D extrude — bottom+right shadow stack gives the "depth" face */
+  box-shadow:
+    0 4px 0 0 #0d0b0e,
+    0 5px 6px 0 rgba(0,0,0,0.45);
+  transform: translateY(0);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background 0.08s ease;
+  will-change: transform, box-shadow;
 }
 
-/* is-open: invert to dark so the active state reads clearly */
+/* open state: stays dark, depth unchanged */
 .work-reveal-btn.is-open {
-  background: #141013;
+  background: #1a1719;
   color: #f1ebdf;
 }
 
-/* Desktop hover: invert to dark */
+/* Desktop hover: lift slightly */
 @media (hover: hover) {
   .work-reveal-btn:hover {
-    transform: none;
-    box-shadow: none;
-    background: #141013;
+    background: #3a3538;
+    transform: translateY(-1px);
+    box-shadow:
+      0 5px 0 0 #0d0b0e,
+      0 7px 8px 0 rgba(0,0,0,0.4);
     color: #f1ebdf;
   }
 }
@@ -53,10 +60,12 @@
   outline: none;
 }
 
+/* click-in: push down into the surface, shadow collapses */
 .work-reveal-btn:active {
-  filter: brightness(0.85);
-  transform: none !important;
-  box-shadow: none !important;
+  transform: translateY(4px) !important;
+  box-shadow:
+    0 0 0 0 #0d0b0e,
+    0 1px 2px 0 rgba(0,0,0,0.3) !important;
   transition-duration: 0.06s;
 }
 
