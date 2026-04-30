@@ -1,4 +1,3 @@
-import Preloader from "@/src/layouts/Preloader";
 import "@/styles/globals.css";
 import { Fragment, useEffect, useState, useRef } from "react";
 import SlideChars from "@/src/components/SlideChars";
@@ -9,9 +8,7 @@ const BOUNCE     = 0.18;
 const FLOOR_FRIC = 0.78;
 
 export default function App({ Component, pageProps }) {
-  const [loading, setLoading] = useState(true);
-  const [content, setContent] = useState(false);
-  const [broken,  setBroken]  = useState(false);
+  const [broken, setBroken] = useState(false);
 
   const konamiProgress = useRef([]);
   const brokenRef      = useRef(false);
@@ -20,11 +17,10 @@ export default function App({ Component, pageProps }) {
   const activeDragRef  = useRef(null);
   const dragAbortRef   = useRef(null);
 
+  // Remove any pills left over from a hot-reload during dev
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1500);
-    setTimeout(() => setContent(true),  1000);
+    document.querySelectorAll(".easter-pill").forEach((el) => el.remove());
   }, []);
-
 
   useEffect(() => {
     const onKey = (e) => {
@@ -134,6 +130,106 @@ export default function App({ Component, pageProps }) {
         }, { signal, passive: true });
       });
 
+      // ── Spawn falling service pills ──────────────────────────────────────
+      const PILLS = [
+        { label: "🎨  Illustration",     bg: "#c5d400", color: "#2b2b2b" },
+        { label: "🎬  Motion Design",    bg: "#ff6b4a", color: "#ffffff" },
+        { label: "🖨️  Print Design",     bg: "#4da6ff", color: "#ffffff" },
+        { label: "📱  Social Media",     bg: "#ffd600", color: "#2b2b2b" },
+        { label: "✂️  Textile Art",      bg: "#b86bff", color: "#ffffff" },
+        { label: "🏙️  Brand Identity",   bg: "#ff4da6", color: "#ffffff" },
+        { label: "🖼️  Poster Design",    bg: "#00d4c5", color: "#2b2b2b" },
+        { label: "💼  Corporate Design", bg: "#f0edd6", color: "#2b2b2b" },
+      ];
+
+      PILLS.forEach(({ label, bg, color }, i) => {
+        const pill = document.createElement("div");
+        pill.className = "easter-pill";
+        pill.textContent = label;
+        Object.assign(pill.style, {
+          position:        "fixed",
+          top:             "-160px",
+          left:            "0px",
+          zIndex:          (19000 + i).toString(),
+          background:      bg,
+          color:           color,
+          fontFamily:      "inherit",
+          fontSize:        "26px",
+          fontWeight:      "900",
+          padding:         "20px 44px",
+          borderRadius:    "999px",
+          whiteSpace:      "nowrap",
+          cursor:          "grab",
+          userSelect:      "none",
+          boxShadow:       "0 8px 28px rgba(0,0,0,0.45)",
+          transformOrigin: "center center",
+          pointerEvents:   "auto",
+          letterSpacing:   "0.02em",
+          transition:      "none",
+        });
+        document.body.appendChild(pill);
+
+        // Measure the real rendered size before setting physics state
+        const pr      = pill.getBoundingClientRect();
+        const pw      = pr.width  || 220;
+        const ph      = pr.height || 56;
+        const startX  = Math.random() * Math.max(window.innerWidth - pw, 0);
+        pill.style.left = startX + "px";
+
+        const pillState = {
+          el:         pill,
+          origStyle:  null,
+          origX:      startX,
+          origY:      -160 - i * 100,
+          x:          startX,
+          y:          -160 - i * 100,
+          vx:         (Math.random() - 0.5) * 5,
+          vy:         Math.random() * 2,
+          rotation:   (Math.random() - 0.5) * 30,
+          angularVel: (Math.random() - 0.5) * 8,
+          width:      pw,
+          height:     ph,
+          hardBound:  true,
+          scaleX:     1,
+          scaleY:     1,
+          scaleVX:    0,
+          scaleVY:    0,
+          dragging:   false,
+          dragOffX:   0,
+          dragOffY:   0,
+          prevX:      0,
+          prevY:      0,
+        };
+
+        physicsRef.current.push(pillState);
+
+        pill.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          activeDragRef.current  = pillState;
+          pillState.dragging     = true;
+          pillState.dragOffX     = e.clientX - pillState.x;
+          pillState.dragOffY     = e.clientY - pillState.y;
+          pillState.prevX        = e.clientX;
+          pillState.prevY        = e.clientY;
+          pillState.vx           = 0;
+          pillState.vy           = 0;
+          pill.style.zIndex      = "20000";
+          pill.style.cursor      = "grabbing";
+        }, { signal });
+
+        pill.addEventListener("touchstart", (e) => {
+          const t                = e.touches[0];
+          activeDragRef.current  = pillState;
+          pillState.dragging     = true;
+          pillState.dragOffX     = t.clientX - pillState.x;
+          pillState.dragOffY     = t.clientY - pillState.y;
+          pillState.prevX        = t.clientX;
+          pillState.prevY        = t.clientY;
+          pillState.vx           = 0;
+          pillState.vy           = 0;
+        }, { signal, passive: true });
+      });
+
       const moveState = (cx, cy) => {
         const s = activeDragRef.current;
         if (!s) return;
@@ -179,8 +275,18 @@ export default function App({ Component, pageProps }) {
           s.angularVel *= 0.985;
           s.vx         *= 0.998;
 
-          // Soft walls — bounce before element goes fully off-screen
-          const margin = Math.min(s.width * 0.5, 120);
+          // Squash/stretch spring (pills only)
+          if (s.scaleX !== undefined) {
+            s.scaleVX += (1 - s.scaleX) * 0.22;
+            s.scaleVY += (1 - s.scaleY) * 0.22;
+            s.scaleVX *= 0.72;
+            s.scaleVY *= 0.72;
+            s.scaleX  += s.scaleVX;
+            s.scaleY  += s.scaleVY;
+          }
+
+          // Walls — pills stay fully on screen; sections get a soft off-screen margin
+          const margin = s.hardBound ? 0 : Math.min(s.width * 0.5, 120);
           if (s.x < -margin) {
             s.x  = -margin;
             s.vx = Math.abs(s.vx) * BOUNCE;
@@ -192,19 +298,30 @@ export default function App({ Component, pageProps }) {
             s.angularVel *= 0.8;
           }
 
-          // Floor — keep elements fully visible and reachable
-          const floor = wh - s.height - 16;
+          // Floor — pills land 50px above viewport edge so they're never obscured
+          const floor = s.hardBound ? wh - s.height - 80 : wh - s.height - 16;
           if (s.y >= floor) {
-            s.y           = floor;
+            s.y  = floor;
+            const impact = Math.abs(s.vy);
             s.vy         *= -BOUNCE;
             s.vx         *= FLOOR_FRIC;
             s.angularVel *= FLOOR_FRIC;
             if (Math.abs(s.vy) < 0.4) s.vy = 0;
+            // Squash on impact — bigger hit = more squash
+            if (s.scaleX !== undefined && impact > 1.5) {
+              const squash  = Math.min(impact * 0.045, 0.45);
+              s.scaleX      = 1 + squash * 1.1;
+              s.scaleY      = 1 - squash;
+              s.scaleVX     = 0;
+              s.scaleVY     = 0;
+            }
           }
 
-          s.el.style.left      = s.x + "px";
-          s.el.style.top       = s.y + "px";
-          s.el.style.transform = `rotate(${s.rotation}deg)`;
+          s.el.style.left = s.x + "px";
+          s.el.style.top  = s.y + "px";
+          s.el.style.transform = s.scaleX !== undefined
+            ? `rotate(${s.rotation}deg) scaleX(${s.scaleX.toFixed(3)}) scaleY(${s.scaleY.toFixed(3)})`
+            : `rotate(${s.rotation}deg)`;
         });
 
         physicsRafRef.current = requestAnimationFrame(tick);
@@ -220,6 +337,10 @@ export default function App({ Component, pageProps }) {
     activeDragRef.current = null;
 
     physicsRef.current.forEach(({ el, origX, origY, origStyle }) => {
+      if (el.classList.contains("easter-pill")) {
+        el.remove();
+        return;
+      }
       el.style.transition = "left 0.65s cubic-bezier(0.165,0.84,0.44,1), top 0.65s cubic-bezier(0.165,0.84,0.44,1), transform 0.65s cubic-bezier(0.165,0.84,0.44,1)";
       el.style.left       = origX + "px";
       el.style.top        = origY + "px";
