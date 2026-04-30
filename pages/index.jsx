@@ -11,10 +11,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState, useEffect, useRef } from "react";
+import Head from "next/head";
 import Layout from "@/src/layouts/Layout";
 import dynamic from "next/dynamic";
 import SlideChars from "@/src/components/SlideChars";
 import ProximityText from "@/src/components/ProximityText";
+import siteConfig from "@/src/data/siteConfig";
+
+const { siteUrl, name } = siteConfig;
+const HOME_DESC = "Multimedia artist based in Kansas City — illustration, motion design, brand identity, poster design, apparel, and more. Eclectic on purpose.";
 
 // Work is loaded only in the browser (ssr: false) because Isotope (the grid
 // layout library it uses) doesn't work on the server side.
@@ -89,6 +94,39 @@ const Index3 = () => {
 
   return (
     <Layout headerColor={"dark"}>
+      <Head>
+        <title>{name} — Multimedia Artist</title>
+        <meta name="description" content={HOME_DESC} />
+        <link rel="canonical" href={siteUrl} />
+
+        {/* Open Graph */}
+        <meta property="og:type"        content="website" />
+        <meta property="og:url"         content={siteUrl} />
+        <meta property="og:title"       content={`${name} — Multimedia Artist`} />
+        <meta property="og:description" content={HOME_DESC} />
+        <meta property="og:image"       content={`${siteUrl}/static/img/mf-doom-art-print-hero.jpg`} />
+
+        {/* Twitter / X card */}
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:title"       content={`${name} — Multimedia Artist`} />
+        <meta name="twitter:description" content={HOME_DESC} />
+        <meta name="twitter:image"       content={`${siteUrl}/static/img/mf-doom-art-print-hero.jpg`} />
+
+        {/* JSON-LD Person schema */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": name,
+          "url": siteUrl,
+          "jobTitle": "Multimedia Artist",
+          "description": HOME_DESC,
+          "address": { "@type": "PostalAddress", "addressLocality": "Kansas City", "addressRegion": "MO", "addressCountry": "US" },
+          "sameAs": [
+            "https://www.instagram.com/ohhej",
+            "https://bsky.app/profile/becausetheinnernet.com",
+          ],
+        })}} />
+      </Head>
 
       {/* ── SECTION 1: Video Hero Banner ──────────────────────────────────
           Full-width video background at the top of the page.

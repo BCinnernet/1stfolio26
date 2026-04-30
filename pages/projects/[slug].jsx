@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Layout from "@/src/layouts/Layout";
 import projects from "@/src/data/projects";
+import siteConfig from "@/src/data/siteConfig";
+
+const { siteUrl, name } = siteConfig;
 
 const TAG_LABELS = {
   "illustration-design": "Illustration & Design",
@@ -119,8 +123,28 @@ const ProjectDetail = () => {
     return "editorial-item";
   };
 
+  const pageDesc = project.description?.[0] ?? `${project.title} — ${project.category} by ${name}.`;
+  const ogImage  = `${siteUrl}/static/img/${project.slug}-hero.jpg`;
+  const pageUrl  = `${siteUrl}/projects/${project.slug}`;
+
   return (
     <Layout headerColor="dark">
+      <Head>
+        <title>{project.title} — {name}</title>
+        <meta name="description" content={pageDesc} />
+        <link rel="canonical" href={pageUrl} />
+
+        <meta property="og:type"        content="article" />
+        <meta property="og:url"         content={pageUrl} />
+        <meta property="og:title"       content={`${project.title} — ${name}`} />
+        <meta property="og:description" content={pageDesc} />
+        <meta property="og:image"       content={ogImage} />
+
+        <meta name="twitter:card"        content="summary_large_image" />
+        <meta name="twitter:title"       content={`${project.title} — ${name}`} />
+        <meta name="twitter:description" content={pageDesc} />
+        <meta name="twitter:image"       content={ogImage} />
+      </Head>
 
       {/* ── Title and description ── */}
       <section className="project-info-section">

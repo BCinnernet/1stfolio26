@@ -11,9 +11,6 @@ export default function Document() {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <meta name="keywords" content="Ejuan Henderson, graphic designer, illustrator, motion graphics, brand identity, Kansas City, portfolio, print design, apparel design" />
-        <meta name="description" content="Ejuan Henderson — Graphic designer and illustrator based in Kansas City, Missouri. Specializing in brand identity, illustration, motion graphics, and apparel design." />
-
         <link rel="icon" href="/E-favicon.ico?v=1" />
 
         <link
