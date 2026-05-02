@@ -149,22 +149,21 @@ const ProjectDetail = () => {
         <meta name="twitter:image"       content={ogImage} />
       </Head>
 
+      {/* ── Accent banner ── */}
+      <div className="project-accent-banner-outer">
+        <div className="project-accent-banner" style={{ background: project.accentColor || "#141013" }} />
+      </div>
+
       {/* ── Title and description ── */}
       <section className="project-info-section">
         <div className="container">
           <a className="project-back-link" href="/#work">← Back to Work</a>
-          <div className="project-info-grid">
-            <div className="project-info-left">
-              <span className="project-info-category">{project.category}</span>
-              <h1 className="project-info-title">{project.title}</h1>
-            </div>
-            <div className="project-info-right">
-              <div className="project-info-desc">
-                {descriptions.map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
-              </div>
-            </div>
+          <h1 className="project-info-title">{project.title}</h1>
+          <span className="project-info-category">{project.category}</span>
+          <div className="project-info-desc">
+            {descriptions.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
           </div>
         </div>
       </section>

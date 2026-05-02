@@ -53,6 +53,9 @@
 //
 //   slug          → URL path and image filename base. Use lowercase-with-dashes.
 //
+//   accentColor   → Hex color for the thin banner strip at the top of the project page.
+//                   Example: accentColor: "#512888"
+//
 //   title         → Shown on the grid card and project page.
 //
 //   category      → Short label shown on the card. e.g. "Print Illustration"
@@ -147,6 +150,7 @@ const projects = [
     category: "Print Illustration",
     tags: ["illustration-design"],  // Illustration
     year: "2021",
+    accentColor: "#2a2a2a",
     mainMediaType: "image",
     description: [
       "What started as a personal tribute to the late MF DOOM became something much bigger. The print spread on its own — the internet did its thing. This piece was copied onto walls in Colorado and New York, tattooed on strangers, and shared across the internet without a single dollar behind it. Just a piece made out of respect for a legend. If you know, you know.",
@@ -171,9 +175,11 @@ const projects = [
     category: "Brand Identity & Large Format Design",
     tags: ["brand-identity", "illustration-design"],
     year: "",
+    accentColor: "#c93c20",
     mainMediaType: "image",
     description: [
-      "(Coming Soon)",
+      "AFUEGO51 is a new and successful up-and-coming Peruvian rotisserie chicken food truck in Kansas City, built around bold flavor and a strong visual identity. The goal was to create something modern and eye-catching while pulling inspiration from Peruvian culture, with a look that stands out and works across menus and branding.",
+      "I handled the full brand identity including logo design, illustration, and menu layout. I explored directions inspired by elements like the Nazca lines, mountains, and traditional patterns, then refined them into something clean but expressive. The flame in the logo was inspired by the cooking process itself, tying the visuals back to the food. The system is built to expand as the brand continues to grow.",
     ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
@@ -193,10 +199,12 @@ const projects = [
     category: "Motion Graphics",
     tags: ["motion-design"],
     year: "",
+    accentColor: "#e07515",
     mainMediaType: "image",
     thumbnailImage: "/static/img/cutie-lyric-music-video-hero.gif",
     description: [
-      "(Coming Soon)",
+      "This lyric music video was created for A'Sean, a creative musician based between Kansas City and New York, for his track \"Cutie\" featuring Scorpio Szn. The song has a light, playful energy, so the goal was to match that visually while leaning into the double meaning of \"cutie\" as both a romantic term and the fruit. That led to a bright, orange-themed direction that felt fun, soft, and a little whimsical.",
+      "I handled the full concept, storyboarding, and animation. I built everything by hand with no AI, focusing on keeping the visuals engaging through movement and transitions that guide the eye. I also worked in subtle references to his identity as a traveling artist to give the video a bit more personality and narrative. The typography and pacing were designed to feel light and effortless, while still keeping the viewer locked in from start to finish.",
     ],
     gallery: [
       { type: "video", src: "-ZMA5H8jpKc", caption: "(Coming Soon)", size: "full" },
@@ -219,9 +227,11 @@ const projects = [
     category: "Editorial Illustration",
     tags: ["illustration-design", "brand-identity"],  // Illustration + Design
     year: "",
+    accentColor: "#7a4528",
     mainMediaType: "image",
     description: [
-      "(Coming Soon)",
+      "These book covers were created for author Rochinda Chism-Pickens, for her titles \"The Life I Love\" and \"The Seeds of Hope\". The goal was to visually capture the tone and message of each book in a way that felt thoughtful, warm, and inviting.",
+      "I handled the full process from illustration to cover design and dust jacket layout. I explored a range of directions early on, working through different visual approaches before landing on final designs that felt aligned with the author's vision. Both books went on to become national bestsellers!",
     ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
@@ -244,10 +254,12 @@ const projects = [
     category: "Album Art & Motion",
     tags: ["illustration-design", "motion-design"],  // Illustration + Motion
     year: "",
+    accentColor: "#1e3a5f",
     mainMediaType: "image",
     mainImage: "/static/img/hold-it-down-cover-art-hero.gif",
     description: [
-      "(Coming Soon)",
+      "\"Hold It Down\" was created for rapper and DJ Dom Chronicles in collaboration with Sir Michael Rocks. The concept centered around placing both artists in a world surrounded by the things that inspire them. Dom came in with references and ideas, and we explored a few directions before landing on a visual that felt personal and expressive.",
+      "From there, I took the lead on illustration and animation. I created the artwork and brought it to life for use across social media and Spotify's canvas feature. The visuals were designed to feel dynamic while still working as a strong standalone cover. The illustration also extended into merchandise, including t-shirts, giving the project a life beyond just the digital release.",
     ],
     gallery: [
       { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "(Coming Soon)" },
@@ -267,9 +279,11 @@ const projects = [
     category: "Apparel Design",
     tags: ["illustration-design", "brand-identity"],  // Illustration + Design
     year: "",
+    accentColor: "#512888",
     mainMediaType: "image",
     description: [
-      "(Coming Soon)",
+      "This project was a t-shirt design created in partnership with Kansas State University through Commerce Bank, focused on building something that felt true to the school's identity while still standing out. The goal was to create a design students would actually want to wear, not just something that checked the box.",
+      "I handled the full illustration and design, working within K-State's brand guidelines while exploring ways to push things visually. I developed multiple concepts before landing on a direction that centered around their vintage mascot, giving it a more expressive and slightly updated feel. The final design was selected and produced, with the shirt worn and shared by students.",
     ],
     gallery: [
       { type: "image", caption: "(Coming Soon)" },
@@ -290,6 +304,7 @@ const projects = [
     category: "Large Format Illustration",
     tags: ["illustration-design"],  // Illustration
     year: "",
+    accentColor: "#3b6b45",
     mainMediaType: "image",
     description: [
       "(Coming Soon)",
@@ -309,6 +324,7 @@ const projects = [
     category: "Motion & Campaign Design",
     tags: ["brand-identity", "motion-design"],
     year: "",
+    accentColor: "#5a4520",
     mainMediaType: "image",
     mainImage: "/static/img/levee-vintage-market-hero.gif",
     description: [
@@ -331,6 +347,7 @@ const projects = [
     category: "Motion & Campaign Design",
     tags: ["brand-identity", "motion-design"],
     year: "",
+    accentColor: "#b84010",
     mainMediaType: "image",
     mainImage: "/static/img/levee-x-halloween-hero.gif",
     description: [
@@ -374,6 +391,7 @@ const projects = [
     category: "Mixed Work",
     tags: [],  // no direct filter tags — individual items below carry their own
     year: "",
+    accentColor: "#141013",
     mainMediaType: "image",
     denseGrid: true,
     description: [

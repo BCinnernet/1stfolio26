@@ -633,10 +633,27 @@ body {
   color: #141013;
 }
 
+/* Accent banner */
+.project-accent-banner-outer {
+  background: #ffffff;
+}
+
+.project-accent-banner {
+  height: 12px;
+}
+
 /* Info section — title, year, description */
 .project-info-section {
-  padding: 60px 0 52px;
+  padding: 48px 0 52px;
   background: #ffffff;
+}
+
+.project-info-title {
+  font-size: clamp(42px, 6vw, 88px);
+  font-weight: 900;
+  color: #141013;
+  line-height: 1.02;
+  margin: 0;
 }
 
 .project-info-category {
@@ -645,17 +662,10 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.55;
-  margin-bottom: 12px;
   display: block;
   color: #141013;
-}
-
-.project-info-title {
-  font-size: clamp(36px, 5.5vw, 72px);
-  font-weight: 900;
-  color: #141013;
-  line-height: 1.05;
-  margin: 0 0 10px;
+  margin-top: 10px;
+  margin-bottom: 36px;
 }
 
 .project-info-year {
@@ -666,11 +676,8 @@ body {
   margin-bottom: 28px;
 }
 
-.project-info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 56px;
-  align-items: start;
+.project-info-desc {
+  max-width: 720px;
 }
 
 .project-info-desc p {
@@ -851,15 +858,8 @@ body {
 }
 
 @media (max-width: 991px) {
-  .project-info-section {
+  .project-accent-banner-outer {
     padding-top: 96px;
-  }
-}
-
-@media (max-width: 767px) {
-  .project-info-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
   }
 }
 
