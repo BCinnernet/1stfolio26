@@ -1,6 +1,6 @@
 import { useRef, useCallback } from "react";
 
-const RADIUS = 80;
+const RADIUS = 130;
 
 const ProximityText = ({ segments, className, style }) => {
   const spanRefs = useRef([]);
@@ -20,10 +20,10 @@ const ProximityText = ({ segments, className, style }) => {
       const dist = Math.hypot(cx - ex, cy - ey);
       if (dist < RADIUS) {
         const t = 1 - dist / RADIUS;
-        const scale = 1 + t * 0.18;
-        const lift  = t * 3;
+        const scale = 1 + t * 0.55;
+        const lift  = t * 10;
         el.style.transform = `scale(${scale}) translateY(${-lift}px)`;
-        el.style.fontWeight = Math.round(400 + t * 300).toString();
+        el.style.fontWeight = Math.round(400 + t * 500).toString();
       } else {
         el.style.transform  = "";
         el.style.fontWeight = "";
