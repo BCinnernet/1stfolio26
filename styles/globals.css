@@ -153,13 +153,13 @@
     padding: 16px 24px;
   }
   .scatter-hello-letter {
-    font-size: 15.5vw !important;
+    font-size: 13.5vw !important;
   }
   .scatter-hello-section .scatter-hello-letter {
     -webkit-text-stroke: 1.25px #f1ebdf;
   }
   .site-header .scatter-hello-section {
-    padding: 8px 0 18px;
+    padding: 16px 0 32px;
     overflow: hidden;
   }
 }
