@@ -697,11 +697,14 @@ body {
   gap: 8px;
   justify-content: flex-start;
   flex-wrap: nowrap;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 10px;
   scrollbar-width: thin;
-  scrollbar-color: rgba(197, 212, 0, 0.6) rgba(255,255,255,0.08);
+  scrollbar-color: rgba(241, 235, 223, 0.35) rgba(255,255,255,0.06);
 }
 
 .work-filter-tabs::-webkit-scrollbar {
@@ -714,7 +717,7 @@ body {
 }
 
 .work-filter-tabs::-webkit-scrollbar-thumb {
-  background: rgba(197, 212, 0, 0.6);
+  background: rgba(241, 235, 223, 0.35);
   border-radius: 4px;
 }
 
