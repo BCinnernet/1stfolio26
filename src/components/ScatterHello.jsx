@@ -4,7 +4,7 @@ import Link from "next/link";
 const LETTERS         = ["E", "J", "U", "A", "N", ".", "S", "T", "U", "D", "I", "O"];
 const BASE_ROTATE     = [-12, 10, -8, 10, 8, 0, 0, 0, 0, 0, 12, -10];
 const REPEL_RADIUS    = 160;
-const REPEL_FORCE     = 22;
+const REPEL_FORCE     = 14;
 const SPRING          = 0.065;
 const DAMPING         = 0.74;
 const VELOCITY_SCALE  = 0.04;  // cursor speed → extra force multiplier
@@ -133,8 +133,8 @@ export default function ScatterHello({ inHeader = false }) {
             ref={(el) => (letterRefs.current[i] = el)}
             className={`scatter-hello-letter${i >= 5 ? " scatter-hello-letter--outline" : ""}`}
             style={{
-              ...(i < 5  && { fontFamily: "'Climate Crisis', sans-serif" }),
-              ...(i === 1  && { marginLeft: "0.12em" }),
+              ...(i < 5  && { fontFamily: "'BBH Hegarty', sans-serif" }),
+              ...(i === 1  && { marginLeft: "0.04em" }),
               ...(i === 5  && { marginLeft: "0.18em" }),
               ...(i === 6  && { fontSize: "clamp(38px, 8.5vw, 118px)" }),
               ...(i === 7  && { marginLeft: "-0.12em" }),
