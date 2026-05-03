@@ -263,7 +263,7 @@ const projects = [
   // ─── BOOK COVERS ──────────────────────────────────────────────────────────
   {
     slug: "book-covers",
-    title: "Book Cover Illustration",
+    title: "Best Seller Book Cover Illustrations & Design",
     category: "Editorial Illustration",
     tags: ["illustration-design", "brand-identity"],  // Illustration + Design
     year: "",
