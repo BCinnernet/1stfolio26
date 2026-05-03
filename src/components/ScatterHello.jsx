@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 
 const LETTERS      = ["E", "J", "U", "A", "N", ".", "S", "T", "U", "D", "I", "O"];
 const BASE_ROTATE  = [-12, 10, -8, 10, 8, 0, 0, 0, 0, 0, 12, -10];
@@ -85,7 +86,8 @@ export default function ScatterHello({ inHeader = false }) {
     : "scatter-hello-section slant-bottom";
 
   return (
-    <div
+    <Link
+      href="/"
       id="home"
       className={sectionClass}
       onMouseMove={onMouseMove}
@@ -93,6 +95,7 @@ export default function ScatterHello({ inHeader = false }) {
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
+      style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none", cursor: "pointer" }}
     >
       <div className="scatter-hello-row">
         {LETTERS.map((char, i) => (
@@ -113,6 +116,6 @@ export default function ScatterHello({ inHeader = false }) {
           </span>
         ))}
       </div>
-    </div>
+    </Link>
   );
 }
