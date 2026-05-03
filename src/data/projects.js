@@ -367,6 +367,7 @@ const projects = [
     accentColor: "#fff200",
     mainMediaType: "image",
     mainImage: "/static/img/levee-vintage-market-hero.gif",
+    noHeroInGallery: true,
     description: [
       "The Levee Vintage Market was a community-driven event created in partnership with Swap Studios and The Levee KC, bringing together vendors selling vintage clothing and custom goods.",
       "I worked on the promotional visuals for the event, building around the idea of clothing that has already been lived in. The concept leaned into pieces holding their own presence, with imagery that suggested form and movement without showing a person directly. It gave the visuals a slightly surreal feel while still highlighting the individuality of the clothing and the people behind it.",
@@ -374,10 +375,11 @@ const projects = [
     gallery: [
       { type: "video", src: "xFjM7kuseiI", caption: "Levee Vintage Market Promo", vertical: true },
       { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "" },
       { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-hero.jpg",      caption: "" },
       { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "" },
       { type: "image", src: "/static/img/levee-vintage-market-gallery-5.jpg", caption: "" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
   },

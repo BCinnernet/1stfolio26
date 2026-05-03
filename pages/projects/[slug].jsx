@@ -92,10 +92,12 @@ const ProjectDetail = () => {
   // Default: same as heroSrc (panel and gallery tile show the same file).
   const heroPanelSrc = project.heroPanelImage || heroSrc;
 
-  // Insert hero as the first image tile — videos in the data stay ahead of it
+  // Insert hero as the first image tile — videos in the data stay ahead of it.
+  // Set noHeroInGallery: true in projects.js to skip auto-insert and control placement manually.
   const firstImageIdx = resolvedGallery.findIndex((item) => item.type === "image");
-  const gallery =
-    firstImageIdx === -1
+  const gallery = project.noHeroInGallery
+    ? resolvedGallery
+    : firstImageIdx === -1
       ? [...resolvedGallery, { type: "image", src: heroSrc }]
       : [
           ...resolvedGallery.slice(0, firstImageIdx),
