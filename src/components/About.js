@@ -51,10 +51,13 @@ const About = () => {
                 I'm Ejuan Henderson (EJ is cool too), a multimedia artist working across mostly illustration, design, and motion, but don't get me wrong, I can't stick to one lane if I tried, so I don't. It's a lot of fun bringing ideas to life in whatever form they need to take, combining creative instinct with technicality.
               </p>
               <p>
-                I'm naturally curious and into a lot of different things, which ends up shaping how I work. Part of that means staying intentional about keeping up with where tech and creativity intersect — knowing what's possible changes what we can reach for. I believe we are at a point where if we can dream it, we can build it, so we <em>have</em> to play and have fun!
+                I'm naturally curious and into a lot of different things, which ends up shaping how I work. Part of that means staying intentional about keeping up with where tech and creativity intersect — knowing what's possible changes what we can reach for. I believe we are at a point where if we can dream it, we can build it, so we <em>have</em> to play and explore!
               </p>
               <p>
-                Alongside my creative work, I have a background in marketing, social media, and communication work.
+                Alongside my creative work, I have a background in marketing, social media, and communication work. We do a lot around here, a creative swiss army knife if you will.
+              </p>
+              <p>
+                <em>A jack of all trades is a master of none, but oftentimes better than a master of one.. is what they say right?</em>
               </p>
             </div>
           </div>
