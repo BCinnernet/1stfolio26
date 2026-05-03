@@ -176,29 +176,6 @@ const ProjectDetail = () => {
         <meta name="twitter:image"       content={ogImage} />
       </Head>
 
-      {/* ── ACCENT BANNER ───────────────────────────────────────────────────────
-           Color → accentColor in src/data/projects.js.
-           Size → BW / BH / BULGE / SPREAD constants above the component.
-           The bottom edge bulges toward the cursor on hover.
-           ─────────────────────────────────────────────────────────────────── */}
-      {(() => {
-        const bx = bannerCursor.nx * BW;
-        const by = bannerCursor.active ? BH + BULGE : BH;
-        const lx = Math.max(bx - SPREAD, 0);
-        const rx = Math.min(bx + SPREAD, BW);
-        const d  = `M 0 0 L ${BW} 0 L ${BW} ${BH} L ${rx} ${BH} Q ${bx} ${by} ${lx} ${BH} L 0 ${BH} Z`;
-        return (
-          <svg
-            viewBox={`0 0 ${BW} ${BH}`}
-            preserveAspectRatio="none"
-            style={{ display: "block", width: "100%", height: `${BH}px`, overflow: "visible", position: "relative", zIndex: 1, background: "#c5d400" }}
-            onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); setBannerCursor({ nx: (e.clientX - r.left) / r.width, active: true }); }}
-            onMouseLeave={() => setBannerCursor(p => ({ ...p, active: false }))}
-          >
-            <path d={d} fill="#c5d400" style={{ transition: "d 0.18s ease-out" }} />
-          </svg>
-        );
-      })()}
 
       {/* ── PROJECT HERO — text left, artwork right ─────────────────────────
            Left column: back link, title, category label, description.
