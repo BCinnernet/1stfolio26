@@ -46,9 +46,9 @@ const Index3 = () => {
   const triggerRef = useRef(null); // the wrapper div around the button (used for scroll)
   const aboutRef   = useRef(null); // the about teaser section (used for scroll reveal)
 
-  // ── Auto-open work panel after 2 seconds on first load ──────────────────
+  // ── Auto-open work panel after 1.5 seconds on first load ────────────────
   useEffect(() => {
-    const t = setTimeout(() => setWorkOpen(true), 2000);
+    const t = setTimeout(() => setWorkOpen(true), 1500);
     return () => clearTimeout(t);
   }, []);
 
@@ -128,27 +128,6 @@ const Index3 = () => {
         })}} />
       </Head>
 
-      {/* ── SECTION 1: Video Hero Banner ──────────────────────────────────
-          Full-width video background at the top of the page.
-          Replace the video file at /public/static/video/hero-video.mp4
-          to swap the hero video. The overlay div dims it slightly.        */}
-      <section
-        id="home"
-        className="home-banner-01 video-hero slant-bottom"
-        style={{ paddingTop: "100px", paddingBottom: "120px" }}
-      >
-        <video className="hero-video" autoPlay loop muted playsInline>
-          <source src="/static/video/hero-video.mp4" type="video/mp4" />
-        </video>
-        <div className="hero-video-overlay" />
-        <div className="container">
-          <div className="row align-items-center p-50px-tb">
-            <div className="col-12">
-              <div className="ht-text" />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── SECTION 2: Work / Projects Toggle Button ──────────────────────
           Clicking this button opens/closes the project grid below it.
@@ -167,15 +146,7 @@ const Index3 = () => {
 
         <button
           className={`work-reveal-btn${workOpen ? " is-open" : ""}`}
-          onClick={() => {
-            const opening = !workOpen;
-            setWorkOpen(opening);
-            if (opening) {
-              setTimeout(() => {
-                triggerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }, 300);
-            }
-          }}
+          onClick={() => setWorkOpen(o => !o)}
           aria-expanded={workOpen}
         >
           <span className="work-folder-icon">
@@ -285,23 +256,14 @@ const Index3 = () => {
                   className="home-teaser-body sr"
                   style={{ "--sr-delay": "270ms", marginBottom: "0" }}
                   segments={[
-                    { text: "Illustration, design, motion, and whatever else the work calls for.", italic: false },
+                    { text: "I can't stick to one lane if I tried... So I don't. Curiosity drives my work, and that's what keeps it eclectic.", italic: false },
                   ]}
                 />
                 <ProximityText
                   className="home-teaser-body sr"
                   style={{ "--sr-delay": "300ms" }}
                   segments={[
-                    { text: "I couldn't stick to one lane if I tried, so I don't! I am too curious and love too many things, my work is eclectic on purpose.", italic: false },
-                  ]}
-                />
-                <ProximityText
-                  className="home-teaser-body sr"
-                  style={{ "--sr-delay": "320ms" }}
-                  segments={[
-                    { text: "I enjoy working and collaborating with those who have a vision and need someone who is a ", italic: false },
-                    { text: "resourceful resource", italic: true },
-                    { text: ". At the intersection of creative instinct and technicality, is the space I operate in.", italic: false },
+                    { text: "I work at the intersection of creative instinct and technicality, bringing ideas to life in whatever form they need to take!", italic: false },
                   ]}
                 />
 

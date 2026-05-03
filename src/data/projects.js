@@ -97,6 +97,38 @@
 //                     size: "third"      → one third width
 //                     size: "two-thirds" → two thirds width
 //
+//   title         → To force a line break inside the title, use \n:
+//                   title: "First Line\nSecond Line"
+//
+// ─── HERO PANEL (right column on the project page) ───────────────────────────
+//
+//   By default the hero panel shows {slug}-hero.jpg, and that same image is
+//   automatically inserted as the FIRST TILE in the gallery below so visitors
+//   can see the full uncropped version.
+//
+//   heroPanelImage → Optional. Point this at a different/tighter crop to show
+//                   in the panel without affecting the gallery tile.
+//                   The gallery first tile will still use the regular hero image.
+//                   Example:
+//                     heroPanelImage: "/static/img/my-project-hero-panel.jpg"
+//                   Drop the file in raw/ and run npm run optimize as usual,
+//                   naming it  {slug}-hero-panel.jpg  (or any name you choose
+//                   since you're setting the path explicitly).
+//
+//   heroType      → Controls what FORMAT the hero panel displays.
+//                   Leave it out (or set "image") to use a photo (default).
+//                     heroType: "gif"     → shows {slug}-hero.gif
+//                     heroType: "video"   → plays {slug}-hero.mp4 from /static/video/
+//                     heroType: "youtube" → shows a YouTube embed (set heroYoutubeId too)
+//
+//   heroYoutubeId → YouTube video ID for the panel. Only used when heroType: "youtube".
+//                   Example: heroYoutubeId: "-ZMA5H8jpKc"
+//
+//   heroVideoSrc  → Custom video file path. Only used when heroType: "video".
+//                   Defaults to /static/video/{slug}-hero.mp4 if not set.
+//
+// ─── OTHER OPTIONAL FIELDS ───────────────────────────────────────────────────
+//
 //   credits       → Optional. Shown in the footer of the project page.
 //                   credits: { lines: ["Studio / Name", "Role"] }
 //
@@ -111,28 +143,37 @@ const projects = [
   //
   // {
   //   slug: "project-slug",
-  //   title: "Project Title",
+  //   title: "Project Title",          // use \n to force a line break: "Line One\nLine Two"
   //   category: "Category Label",
   //   tags: ["illustration-design"],   // "illustration-design" | "brand-identity" | "motion-design"
   //   year: "2024",
+  //   accentColor: "#512888",          // thin color strip at the top of the project page
   //   mainMediaType: "image",
   //   // mainVideo: "YOUTUBE_VIDEO_ID",   ← only if mainMediaType is "video"
-  //   // thumbnailImage: "/static/img/project-slug-thumb.jpg",  ← optional grid override
+  //   // thumbnailImage: "/static/img/project-slug-thumb.jpg",  ← optional grid card override
   //   description: [
   //     "First paragraph about this project.",
   //     "Second paragraph with more detail.",
   //   ],
   //
-  //   // heroMedia is optional — add it to turn the hero into a slider.
-  //   // heroMedia: [
-  //   //   { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Caption." },
-  //   //   { type: "image", caption: "Caption for slide 1." },
-  //   // ],
+  //   // ── Hero panel options (right column on the project page) ──────────────
+  //   //
+  //   // Default: panel shows {slug}-hero.jpg and that same image leads the gallery.
+  //   //
+  //   // Use heroPanelImage to show a tighter crop in the panel while keeping
+  //   // the full hero image as the gallery's first tile:
+  //   // heroPanelImage: "/static/img/project-slug-hero-panel.jpg",
+  //   //
+  //   // Use heroType to change the panel format:
+  //   // heroType: "gif",                          // shows {slug}-hero.gif
+  //   // heroType: "video",                        // plays {slug}-hero.mp4
+  //   // heroVideoSrc: "/static/video/custom.mp4", // custom video path (optional)
+  //   // heroType: "youtube",                      // YouTube embed
+  //   // heroYoutubeId: "YOUTUBE_VIDEO_ID",        // required with heroType: "youtube"
   //
   //   gallery: [
-  //     { type: "image", caption: "Caption.", size: "full" },
-  //     { type: "image", caption: "Caption." },                   // half (default)
-  //     { type: "image", caption: "Caption.", size: "third" },
+  //     // The hero image is automatically inserted here as the first tile — no need to add it.
+  //     { type: "image", caption: "Caption." },
   //     { type: "video", src: "YOUTUBE_VIDEO_ID", caption: "Caption.", size: "full" },
   //   ],
   //
@@ -146,11 +187,11 @@ const projects = [
   // ─── MF DOOM ───────────────────────────────────────────────────────────────
   {
     slug: "mf-doom-art-print",
-    title: "MF DOOM Illustration",
+    title: "MF DOOM — Tribute Print",
     category: "Print Illustration",
     tags: ["illustration-design"],  // Illustration
     year: "2021",
-    accentColor: "#2a2a2a",
+    accentColor: "#4CAF50",
     mainMediaType: "image",
     description: [
       "What started as a personal tribute to the late MF DOOM became something much bigger. The print spread on its own — the internet did its thing. This piece was copied onto walls in Colorado and New York, tattooed on strangers, and shared across the internet without a single dollar behind it. Just a piece made out of respect for a legend. If you know, you know.",
@@ -182,12 +223,12 @@ const projects = [
       "I handled the full brand identity including logo design, illustration, and menu layout. I explored directions inspired by elements like the Nazca lines, mountains, and traditional patterns, then refined them into something clean but expressive. The flame in the logo was inspired by the cooking process itself, tying the visuals back to the food. The system is built to expand as the brand continues to grow.",
     ],
     gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Brand Identity & Large Format Design"] },
   },
@@ -199,23 +240,24 @@ const projects = [
     category: "Motion Graphics",
     tags: ["motion-design"],
     year: "",
-    accentColor: "#e07515",
+    accentColor: "#ffb347",
     mainMediaType: "image",
     thumbnailImage: "/static/img/cutie-lyric-music-video-hero.gif",
+    heroType: "youtube",
+    heroYoutubeId: "-ZMA5H8jpKc",
     description: [
       "This lyric music video was created for A'Sean, a creative musician based between Kansas City and New York, for his track \"Cutie\" featuring Scorpio Szn. The song has a light, playful energy, so the goal was to match that visually while leaning into the double meaning of \"cutie\" as both a romantic term and the fruit. That led to a bright, orange-themed direction that felt fun, soft, and a little whimsical.",
       "I handled the full concept, storyboarding, and animation. I built everything by hand with no AI, focusing on keeping the visuals engaging through movement and transitions that guide the eye. I also worked in subtle references to his identity as a traveling artist to give the video a bit more personality and narrative. The typography and pacing were designed to feel light and effortless, while still keeping the viewer locked in from start to finish.",
     ],
     gallery: [
-      { type: "video", src: "-ZMA5H8jpKc", caption: "(Coming Soon)", size: "full" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-1.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-2.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-3.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-4.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-6.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-7.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-8.gif", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.jpg", caption: "" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-1.jpg", caption: "" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-2.jpg", caption: "" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-3.jpg", caption: "" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-4.jpg", caption: "" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-6.jpg", caption: "" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-7.jpg", caption: "" },
+      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-8.gif", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
   },
@@ -227,22 +269,22 @@ const projects = [
     category: "Editorial Illustration",
     tags: ["illustration-design", "brand-identity"],  // Illustration + Design
     year: "",
-    accentColor: "#7a4528",
+    accentColor: "#87ceeb",
     mainMediaType: "image",
     description: [
       "These book covers were created for author Rochinda Chism-Pickens, for her titles \"The Life I Love\" and \"The Seeds of Hope\". The goal was to visually capture the tone and message of each book in a way that felt thoughtful, warm, and inviting.",
       "I handled the full process from illustration to cover design and dust jacket layout. I explored a range of directions early on, working through different visual approaches before landing on final designs that felt aligned with the author's vision. Both books went on to become national bestsellers!",
     ],
     gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Editorial Illustration"] },
   },
@@ -254,7 +296,7 @@ const projects = [
     category: "Album Art & Motion",
     tags: ["illustration-design", "motion-design"],  // Illustration + Motion
     year: "",
-    accentColor: "#1e3a5f",
+    accentColor: "#39ff14",
     mainMediaType: "image",
     mainImage: "/static/img/hold-it-down-cover-art-hero.gif",
     description: [
@@ -262,12 +304,12 @@ const projects = [
       "From there, I took the lead on illustration and animation. I created the artwork and brought it to life for use across social media and Spotify's canvas feature. The visuals were designed to feel dynamic while still working as a strong standalone cover. The illustration also extended into merchandise, including t-shirts, giving the project a life beyond just the digital release.",
     ],
     gallery: [
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-5.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-6.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-7.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-8.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-5.gif", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-6.gif", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-7.jpg", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-8.jpg", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
   },
@@ -279,20 +321,20 @@ const projects = [
     category: "Apparel Design",
     tags: ["illustration-design", "brand-identity"],  // Illustration + Design
     year: "",
-    accentColor: "#512888",
+    accentColor: "#c9a0dc",
     mainMediaType: "image",
     description: [
       "This project was a t-shirt design created in partnership with Kansas State University through Commerce Bank, focused on building something that felt true to the school's identity while still standing out. The goal was to create a design students would actually want to wear, not just something that checked the box.",
       "I handled the full illustration and design, working within K-State's brand guidelines while exploring ways to push things visually. I developed multiple concepts before landing on a direction that centered around their vintage mascot, giving it a more expressive and slightly updated feel. The final design was selected and produced, with the shirt worn and shared by students.",
     ],
     gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Apparel Design"] },
   },
@@ -304,15 +346,16 @@ const projects = [
     category: "Large Format Illustration",
     tags: ["illustration-design"],  // Illustration
     year: "",
-    accentColor: "#3b6b45",
+    accentColor: "#add8e6",
     mainMediaType: "image",
     description: [
-      "(Coming Soon)",
+      "This project was created for Bar K in Kansas City and St. Louis through a partnership with Commerce Bank. I handled the illustration and overall design, developing graphics that were deployed across both locations over a two-year span.",
+      "The work had to hold up at large format scale while feeling at home in Bar K's lively, community-driven environment. It was a great opportunity to create something with real staying power — work that people would walk past, interact with, and actually live alongside.",
     ],
     gallery: [
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Large Format Illustration"] },
   },
@@ -320,22 +363,23 @@ const projects = [
   // ─── LEVEE — VINTAGE MARKET ───────────────────────────────────────────────
   {
     slug: "levee-vintage-market",
-    title: "LEVEE — Vintage Market Event",
+    title: "The Levee KC",
     category: "Motion & Campaign Design",
     tags: ["brand-identity", "motion-design"],
     year: "",
-    accentColor: "#5a4520",
+    accentColor: "#fff200",
     mainMediaType: "image",
     mainImage: "/static/img/levee-vintage-market-hero.gif",
     description: [
-      "(Coming Soon)",
+      "The Levee Vintage Market was a community-driven event created in partnership with Swap Studios and The Levee KC, bringing together vendors selling vintage clothing and custom goods.",
+      "I worked on the promotional visuals for the event, building around the idea of clothing that has already been lived in. The concept leaned into pieces holding their own presence, with imagery that suggested form and movement without showing a person directly. It gave the visuals a slightly surreal feel while still highlighting the individuality of the clothing and the people behind it.",
     ],
     gallery: [
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-5.jpg", caption: "(Coming Soon)" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-5.jpg", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
   },
@@ -343,27 +387,28 @@ const projects = [
   // ─── LEVEE x HALLOWEEN ────────────────────────────────────────────────────
   {
     slug: "levee-x-halloween",
-    title: "LEVEE x Halloween — Event",
+    title: "The Levee KC x Halloween Event",
     category: "Motion & Campaign Design",
     tags: ["brand-identity", "motion-design"],
     year: "",
-    accentColor: "#b84010",
+    accentColor: "#9932cc",
     mainMediaType: "image",
     mainImage: "/static/img/levee-x-halloween-hero.gif",
     description: [
-      "(Coming Soon)",
+      "Swaptober is a community Halloween event hosted at The Levee KC in collaboration with Swap Studios. For its fifth year, I partnered with both teams to help bring the event to life visually and build excitement around it.",
+      "I handled the promotional design and created a promo video for the event, along with motion graphics and GIF content for social media. The goal was to create something that felt fun and engaging while capturing the overall energy of a Swaptober event.",
     ],
     gallery: [
-      { type: "image", src: "/static/img/levee-x-halloween-gallery-1.gif", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
-      { type: "image", caption: "(Coming Soon)" },
+      { type: "image", src: "/static/img/levee-x-halloween-gallery-1.gif", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
+      { type: "image", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
   },
@@ -395,7 +440,7 @@ const projects = [
     mainMediaType: "image",
     denseGrid: true,
     description: [
-      "(Coming Soon)",
+      "A collection of one-off pieces I wanted to share. Some personal, some professional, some collaborative — just work I like that doesn't belong to a single project.",
     ],
     gallery: [],
     credits: { lines: ["Ejuan Henderson"] },
@@ -430,9 +475,9 @@ const projects = [
   //   mainMediaType: "image",
   //   description: ["(Coming Soon)"],
   //   gallery: [
-  //     { type: "image", caption: "(Coming Soon)" },
-  //     { type: "image", caption: "(Coming Soon)" },
-  //     { type: "image", caption: "(Coming Soon)" },
+  //     { type: "image", caption: "" },
+  //     { type: "image", caption: "" },
+  //     { type: "image", caption: "" },
   //   ],
   //   credits: { lines: ["Ejuan Henderson", "Brand Identity"] },
   // },

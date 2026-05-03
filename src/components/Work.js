@@ -105,7 +105,7 @@ const Work = () => {
       {/* ── Project grid ── */}
       <div className="work-grid">
         {visible.length === 0 && (
-          <p className="work-empty-state">More coming soon — check back!</p>
+          <p className="work-empty-state">WE'RE WORKIN' ON IT! HANG TIGHT!</p>
         )}
         {visible.map((project, index) => (
           <div

@@ -1,21 +1,45 @@
+import { useCallback, useRef } from "react";
 import PixelatedImage from "@/src/components/PixelatedImage";
 import useSectionReveal from "@/src/hooks/useSectionReveal";
 
 const About = () => {
   const ref = useSectionReveal(0.08);
+  const titleRef = useRef(null);
+
+  const handleTitleTouch = useCallback(() => {
+    const el = titleRef.current;
+    if (!el) return;
+    el.classList.add("tapped");
+    setTimeout(() => el.classList.remove("tapped"), 620);
+  }, []);
 
   return (
     <section
       ref={ref}
       id="about"
       className="section gray-bg"
-      style={{ paddingTop: "180px", paddingBottom: "10px" }}
+      style={{ paddingTop: "60px", paddingBottom: "10px" }}
     >
       <div className="container">
 
         <div className="row">
           <div className="col-lg-5 offset-lg-1">
-            <h2 className="about-page-title sr" style={{ "--sr-delay": "0ms" }}>About</h2>
+            <h2
+              ref={titleRef}
+              className="about-page-title sr"
+              style={{ "--sr-delay": "0ms" }}
+              onTouchStart={handleTitleTouch}
+            >
+              {"About".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="about-title-char"
+                  style={{ "--char-delay": `${i * 28}ms` }}
+                >
+                  {char === " " ? " " : char}
+                </span>
+              ))}
+            </h2>
           </div>
         </div>
 
@@ -24,16 +48,13 @@ const About = () => {
           <div className="col-lg-5 offset-lg-1 about-text-col sr" style={{ "--sr-delay": "100ms" }}>
             <div className="about-me">
               <p>
-                I'm Ejuan, EJ works too. A multimedia artist working across illustration, design, motion, and whatever direction an idea wants to go. I couldn't stick to one lane if I tried, so I don't.
+                I'm Ejuan Henderson (EJ is cool too), a multimedia artist working across mostly illustration, design, and motion, but don't get me wrong, I can't stick to one lane if I tried, so I don't. It's a lot of fun bringing ideas to life in whatever form they need to take, combining creative instinct with technicality.
               </p>
               <p>
-                I'm naturally curious and into a lot of things, which shows up in my work. I like bringing ideas to life in whatever form they need to take, combining creative instinct with actually building and shaping the work as it comes together.
+                I'm naturally curious and into a lot of different things, which ends up shaping how I work. This site is a good example. I could've used a template, but instead I treated it like a side quest and learned how to build it myself using modern tools. Not exactly plug and play, but that was kind of the point.
               </p>
               <p>
-                I've got a background in marketing and enjoy being part of a team just as much as working independently. I enjoy working and collaborating with people who have a vision and helping push it further.
-              </p>
-              <p>
-                At the end of the day, I'm here to make things that people can connect with.
+                Alongside my creative work, I have a background in marketing, social media, and communication work.
               </p>
             </div>
           </div>

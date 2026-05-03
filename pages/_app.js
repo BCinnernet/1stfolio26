@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Fragment, useEffect, useState, useRef } from "react";
+import { useRouter } from "next/router";
 import SlideChars from "@/src/components/SlideChars";
 
 const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
@@ -8,7 +9,21 @@ const BOUNCE     = 0.18;
 const FLOOR_FRIC = 0.78;
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
   const [broken, setBroken] = useState(false);
+
+  // Disable the browser's built-in scroll restoration so it doesn't
+  // jump back to where you were on the previous page.
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
+
+  // Scroll to top on every page navigation (including browser back/forward)
+  useEffect(() => {
+    const onRouteChange = () => window.scrollTo(0, 0);
+    router.events.on("routeChangeComplete", onRouteChange);
+    return () => router.events.off("routeChangeComplete", onRouteChange);
+  }, [router]);
 
   const konamiProgress = useRef([]);
   const brokenRef      = useRef(false);
