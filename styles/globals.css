@@ -169,10 +169,15 @@
     padding: 16px 24px;
   }
   .scatter-hello-letter {
-    font-size: clamp(44px, 13vw, 72px);
+    font-size: 7vw;
+  }
+  .scatter-hello-row {
+    transform: scale(1.8);
+    transform-origin: center center;
   }
   .site-header .scatter-hello-section {
-    padding: 28px 0 36px;
+    padding: 40px 0 50px;
+    overflow: hidden;
   }
 }
 
