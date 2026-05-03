@@ -263,7 +263,7 @@ const projects = [
   // ─── CUTIE ─────────────────────────────────────────────────────────────────
   {
     slug: "cutie-lyric-music-video",
-    title: "CUTIE — Lyric Music Video",
+    title: "Lyric Music Video — CUTIE",
     category: "Motion Graphics",
     tags: ["motion-design"],
     year: "",
@@ -290,7 +290,7 @@ const projects = [
   // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
   {
     slug: "hold-it-down-cover-art",
-    title: "Hold It Down — Animated Cover Art",
+    title: "Animated Cover Art & Illustration — Hold It Down",
     category: "Album Art & Motion",
     tags: ["illustration-design", "motion-design"],  // Illustration + Motion
     year: "",
@@ -341,7 +341,7 @@ const projects = [
   // ─── K-STATE WILDCATS ─────────────────────────────────────────────────────
   {
     slug: "kstate-wildcats-tshirt",
-    title: "K-State Wildcats T-Shirt Design",
+    title: "Kansas State Wildcats — T-Shirt Design",
     category: "Apparel Design",
     tags: ["illustration-design", "brand-identity"],  // Illustration + Design
     year: "",
@@ -366,7 +366,7 @@ const projects = [
   // ─── BAR-K EVENT BACKDROP ─────────────────────────────────────────────────
   {
     slug: "bar-k-event-backdrop",
-    title: "STL BAR-K Event Backdrop",
+    title: "Bar K Dog Park — Event Backdrop",
     category: "Large Format Illustration",
     tags: ["illustration-design"],  // Illustration
     year: "",
@@ -387,7 +387,7 @@ const projects = [
   // ─── LEVEE x HALLOWEEN ────────────────────────────────────────────────────
   {
     slug: "levee-x-halloween",
-    title: "The Levee KC x Halloween Event",
+    title: "The Levee KC — Halloween Event",
     category: "Motion & Campaign Design",
     tags: ["brand-identity", "motion-design"],
     year: "",
