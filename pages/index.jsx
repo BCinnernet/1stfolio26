@@ -119,6 +119,7 @@ const Index3 = () => {
         <meta name="twitter:title"       content={`${name} — Multimedia Artist`} />
         <meta name="twitter:description" content={HOME_DESC} />
         <meta name="twitter:image"       content={`${siteUrl}/static/img/mf-doom-art-print-hero.jpg`} />
+        <meta name="twitter:creator"     content="@ohhej" />
 
         {/* JSON-LD Person schema */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({

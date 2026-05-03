@@ -7,12 +7,6 @@ import siteConfig from "@/src/data/siteConfig";
 
 const { siteUrl, name } = siteConfig;
 
-const TAG_LABELS = {
-  "illustration-design": "Illustration & Design",
-  "brand-identity":      "Brand & Identity",
-  "motion-design":       "Motion Design",
-};
-
 // ── Video embed ───────────────────────────────────────────────────────────────
 const VideoEmbed = ({ src, title }) => (
   <div className="editorial-item-video">
@@ -27,18 +21,10 @@ const VideoEmbed = ({ src, title }) => (
 );
 
 
-// ── Project page ──────────────────────────────────────────────────────────────
-// ── Banner bulge constants ────────────────────────────────────────────────────
-const BW     = 1000; // SVG viewBox width (maps to 100% of screen)
-const BH     = 16;   // Banner base height in px. Increase to show more color strip.
-const BULGE  = 10;   // How many px the bulge extends below the base height.
-const SPREAD = 140;  // How wide the bulge is (in viewBox units, 0–1000).
-
 const ProjectDetail = () => {
   const router = useRouter();
   const { slug } = router.query;
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  const [bannerCursor, setBannerCursor] = useState({ nx: 0.5, active: false });
 
   const project = projects.find((p) => p.slug === slug);
 
@@ -174,6 +160,22 @@ const ProjectDetail = () => {
         <meta name="twitter:title"       content={`${project.title} — ${name}`} />
         <meta name="twitter:description" content={pageDesc} />
         <meta name="twitter:image"       content={ogImage} />
+        <meta name="twitter:creator"     content="@ohhej" />
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": project.title,
+          "description": pageDesc,
+          "url": pageUrl,
+          "image": ogImage,
+          "creator": {
+            "@type": "Person",
+            "name": name,
+            "url": siteUrl,
+          },
+          "keywords": project.tags ? project.tags.join(", ") : project.category,
+        })}} />
       </Head>
 
 

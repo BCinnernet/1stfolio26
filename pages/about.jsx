@@ -19,12 +19,13 @@ const AboutPage = () => {
         <meta property="og:url"         content={`${siteUrl}/about`} />
         <meta property="og:title"       content={`About — ${name}`} />
         <meta property="og:description" content={ABOUT_DESC} />
-        <meta property="og:image"       content={`${siteUrl}/static/img/Body_scan_01_Test.gif`} />
+        <meta property="og:image"       content={`${siteUrl}/static/img/about-photo.jpg`} />
 
         <meta name="twitter:card"        content="summary_large_image" />
         <meta name="twitter:title"       content={`About — ${name}`} />
         <meta name="twitter:description" content={ABOUT_DESC} />
-        <meta name="twitter:image"       content={`${siteUrl}/static/img/Body_scan_01_Test.gif`} />
+        <meta name="twitter:image"       content={`${siteUrl}/static/img/about-photo.jpg`} />
+        <meta name="twitter:creator"     content="@ohhej" />
       </Head>
       <About />
       <Contact />
