@@ -250,11 +250,9 @@ const projects = [
       "I handled the full concept, storyboarding, and animation. I built everything by hand with no AI, focusing on keeping the visuals engaging through movement and transitions that guide the eye. I also worked in subtle references to his identity as a traveling artist to give the video a bit more personality and narrative. The typography and pacing were designed to feel light and effortless, while still keeping the viewer locked in from start to finish.",
     ],
     gallery: [
-      { type: "image", src: "/static/img/cutie-lyric-music-video-hero.jpg", caption: "" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-1.jpg", caption: "" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-2.jpg", caption: "" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-3.jpg", caption: "" },
-      { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-4.jpg", caption: "" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-6.jpg", caption: "" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-7.jpg", caption: "" },
       { type: "image", src: "/static/img/cutie-lyric-music-video-gallery-8.gif", caption: "" },
