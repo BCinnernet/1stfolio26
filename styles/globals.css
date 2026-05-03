@@ -473,7 +473,14 @@ html {
 @media (max-width: 767px) {
   .about-page-title {
     font-size: 18vw;
-    margin-bottom: 16px;
+    margin-bottom: 0;
+  }
+  #about .about-text-col {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  #about .about-me {
+    margin-top: 0;
   }
 }
 
