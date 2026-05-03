@@ -52,24 +52,31 @@
 }
 
 
-.site-header-under-socials {
+.site-header-bar-socials {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 22px;
-  padding: 0 0 28px;
+  gap: 20px;
+  margin-left: 32px;
   color: rgba(241, 235, 223, 0.5);
-  font-size: 17px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  font-family: sans-serif;
 }
 
-.site-header-under-socials a {
+.site-header-bar-socials a {
   color: inherit;
   display: flex;
   align-items: center;
+  gap: 6px;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.site-header-under-socials a:hover {
+.site-header-bar-socials a .fab.fa-instagram {
+  font-size: 24px;
+}
+
+.site-header-bar-socials a:hover {
   color: #c5d400;
 }
 
@@ -128,7 +135,17 @@
 
 .site-mobile-socials a {
   color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  font-family: sans-serif;
   transition: color 0.2s ease;
+}
+
+.site-mobile-socials a .fab.fa-instagram {
+  font-size: 20px;
 }
 
 .site-mobile-socials a:hover {
@@ -137,13 +154,13 @@
 
 /* Header-mode scatter — tighter padding, extra bottom clears the clip */
 .site-header .scatter-hello-section {
-  padding: 16px 0 8px;
+  padding: 16px 0 48px;
 }
 
 @media (max-width: 767px) {
   .site-header-nav,
   .site-header-socials,
-  .site-header-under-socials {
+  .site-header-bar-socials {
     display: none;
   }
   .site-header-hamburger {
@@ -169,6 +186,11 @@
 .header-logo-socials a:hover,
 .nav-socials a:hover {
   color: #c5d400 !important;
+}
+
+/* ── Footer social icon sizing ───────────────────────────────────────────── */
+.footer-socials .fab.fa-instagram {
+  font-size: 26px;
 }
 
 /* ── Contact / about page "Lets make something" label ────────────────────── */

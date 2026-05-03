@@ -66,6 +66,18 @@ const Header = ({ headerColor }) => {
           ))}
         </nav>
 
+        {/* Desktop social icons — right of nav */}
+        <div className="site-header-bar-socials">
+          <a href={instagram.url} target="_blank" rel="noreferrer" aria-label={instagram.label}>
+            <i className="fab fa-instagram" />
+            <span>{instagram.label}</span>
+          </a>
+          <a href={bluesky.url} target="_blank" rel="noreferrer" aria-label={bluesky.label}>
+            <BlueskyIcon size={24} />
+            <span>{bluesky.label}</span>
+          </a>
+        </div>
+
         {/* Mobile hamburger */}
         <button
           className="site-header-hamburger"
@@ -95,9 +107,11 @@ const Header = ({ headerColor }) => {
           <div className="site-mobile-socials">
             <a href={instagram.url} target="_blank" rel="noreferrer" aria-label={instagram.label}>
               <i className="fab fa-instagram" />
+              <span>{instagram.label}</span>
             </a>
             <a href={bluesky.url} target="_blank" rel="noreferrer" aria-label={bluesky.label}>
-              <BlueskyIcon size={18} />
+              <BlueskyIcon size={20} />
+              <span>{bluesky.label}</span>
             </a>
           </div>
         </div>
@@ -105,16 +119,6 @@ const Header = ({ headerColor }) => {
 
       {/* ── EJUAN.STUDIO interactive branding ── */}
       <ScatterHello inHeader />
-
-      {/* ── Social icons under scatter ── */}
-      <div className="site-header-under-socials">
-        <a href={instagram.url} target="_blank" rel="noreferrer" aria-label={instagram.label}>
-          <i className="fab fa-instagram" />
-        </a>
-        <a href={bluesky.url} target="_blank" rel="noreferrer" aria-label={bluesky.label}>
-          <BlueskyIcon size={16} />
-        </a>
-      </div>
 
     </header>
   );

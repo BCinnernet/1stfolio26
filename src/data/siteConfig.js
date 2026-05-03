@@ -12,11 +12,11 @@ const siteConfig = {
   social: {
     instagram: {
       url: "https://www.instagram.com/ohhej",
-      label: "Instagram",
+      label: "IG",
     },
     bluesky: {
       url: "https://bsky.app/profile/becausetheinnernet.com",
-      label: "Bluesky",
+      label: "BSKY",
     },
   },
 };

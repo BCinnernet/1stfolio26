@@ -26,7 +26,7 @@ const Footer = () => {
               <span>{instagram.label}</span>
             </a>
             <a href={bluesky.url} target="_blank" rel="noreferrer" aria-label={bluesky.label}>
-              <BlueskyIcon size={20} />
+              <BlueskyIcon size={26} />
               <span>{bluesky.label}</span>
             </a>
           </div>
