@@ -722,7 +722,8 @@ body {
   flex-shrink: 0;
 }
 
-@media (max-width: 767px) {
+/* Hide scrollbar on touch devices (phones/tablets) — they swipe instead */
+@media (hover: none) {
   .work-filter-tabs {
     scrollbar-width: none;
   }
