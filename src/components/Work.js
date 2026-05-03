@@ -5,10 +5,10 @@ import projects from "@/src/data/projects";
 
 const FILTERS = [
   { key: "all",                label: "All" },
+  { key: "various",            label: "Other Works" },
   { key: "illustration-design", label: "Illustration & Design" },
   { key: "brand-identity",      label: "Brand & Identity" },
   { key: "motion-design",       label: "Animation / Motion & VFX" },
-  { key: "various",            label: "Other Works" },
 ];
 
 const TAG_LABELS = {
