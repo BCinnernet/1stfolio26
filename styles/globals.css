@@ -168,6 +168,12 @@
   .site-header-bar {
     padding: 16px 24px;
   }
+  .scatter-hello-letter {
+    font-size: clamp(44px, 13vw, 72px);
+  }
+  .site-header .scatter-hello-section {
+    padding: 28px 0 36px;
+  }
 }
 
 /* ── Social links hover (header + footer) ────────────────────────────────── */
