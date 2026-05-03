@@ -600,10 +600,11 @@ body {
   color: #141013;
   letter-spacing: -0.02em;
   line-height: 1;
-  margin: 0 0 40px;
+  margin: 0 0 10px;
   cursor: default;
   white-space: nowrap;
 }
+
 
 .about-title-char {
   display: inline-block;
