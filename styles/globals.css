@@ -469,6 +469,10 @@ html {
   }
 }
 
+#about .about-me p {
+  font-size: 15px;
+}
+
 body {
   background-color: #f0edd6;
 }
