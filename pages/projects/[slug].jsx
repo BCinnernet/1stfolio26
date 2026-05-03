@@ -30,8 +30,8 @@ const VideoEmbed = ({ src, title }) => (
 // ── Project page ──────────────────────────────────────────────────────────────
 // ── Banner bulge constants ────────────────────────────────────────────────────
 const BW     = 1000; // SVG viewBox width (maps to 100% of screen)
-const BH     = 120;  // Banner base height in px. Increase to show more color strip.
-const BULGE  = 36;   // How many px the bulge extends below the base height.
+const BH     = 16;   // Banner base height in px. Increase to show more color strip.
+const BULGE  = 10;   // How many px the bulge extends below the base height.
 const SPREAD = 140;  // How wide the bulge is (in viewBox units, 0–1000).
 
 const ProjectDetail = () => {
@@ -191,11 +191,11 @@ const ProjectDetail = () => {
           <svg
             viewBox={`0 0 ${BW} ${BH}`}
             preserveAspectRatio="none"
-            style={{ display: "block", width: "100%", height: `${BH}px`, overflow: "visible", position: "relative", zIndex: 1 }}
+            style={{ display: "block", width: "100%", height: `${BH}px`, overflow: "visible", position: "relative", zIndex: 1, background: "#c5d400" }}
             onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); setBannerCursor({ nx: (e.clientX - r.left) / r.width, active: true }); }}
             onMouseLeave={() => setBannerCursor(p => ({ ...p, active: false }))}
           >
-            <path d={d} fill="transparent" style={{ transition: "d 0.18s ease-out" }} />
+            <path d={d} fill="#c5d400" style={{ transition: "d 0.18s ease-out" }} />
           </svg>
         );
       })()}
