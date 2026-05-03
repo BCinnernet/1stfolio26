@@ -470,6 +470,13 @@ html {
   }
 }
 
+@media (max-width: 767px) {
+  #about .about-me p {
+    font-size: 17px;
+    line-height: 1.85;
+  }
+}
+
 body {
   background-color: #f0edd6;
 }
