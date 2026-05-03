@@ -9,7 +9,7 @@ const ScatterHello = dynamic(() => import("@/src/components/ScatterHello"), { ss
 
 const { instagram, bluesky } = siteConfig.social;
 
-const Header = ({ headerColor, isTransparent }) => {
+const Header = ({ headerColor }) => {
   const router = useRouter();
   const [activeHash, setActiveHash] = useState("");
   const [menuOpen, setMenuOpen]     = useState(false);
@@ -65,15 +65,6 @@ const Header = ({ headerColor, isTransparent }) => {
             </a>
           ))}
         </nav>
-
-        <div className="site-header-socials">
-          <a href={instagram.url} target="_blank" rel="noreferrer" aria-label={instagram.label}>
-            <i className="fab fa-instagram" />
-          </a>
-          <a href={bluesky.url} target="_blank" rel="noreferrer" aria-label={bluesky.label}>
-            <BlueskyIcon size={16} />
-          </a>
-        </div>
 
         {/* Mobile hamburger */}
         <button
