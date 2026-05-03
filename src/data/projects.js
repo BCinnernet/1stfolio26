@@ -392,15 +392,16 @@ const projects = [
     tags: ["brand-identity", "motion-design"],
     year: "",
     accentColor: "#9932cc",
-    mainMediaType: "image",
+    heroType: "youtube",
+    heroYoutubeId: "KcW96-hpFHk",
     mainImage: "/static/img/levee-x-halloween-hero.gif",
     description: [
       "Swaptober is a community Halloween event hosted at The Levee KC in collaboration with Swap Studios. For its fifth year, I partnered with both teams to help bring the event to life visually and build excitement around it.",
       "I handled the promotional design and created a promo video for the event, along with motion graphics and GIF content for social media. The goal was to create something that felt fun and engaging while capturing the overall energy of a Swaptober event.",
     ],
     gallery: [
+      { type: "video", src: "KcW96-hpFHk", caption: "Swaptober Promo" },
       { type: "image", src: "/static/img/levee-x-halloween-gallery-1.gif", caption: "" },
-      { type: "image", caption: "" },
       { type: "image", caption: "" },
       { type: "image", caption: "" },
       { type: "image", caption: "" },
