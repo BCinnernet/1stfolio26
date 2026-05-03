@@ -33,11 +33,19 @@ const Header = ({ headerColor, isTransparent }) => {
     }
   };
 
+  const handleContactClick = (e) => {
+    setActiveHash("#contact");
+    if (router.pathname === "/about") {
+      e.preventDefault();
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const navLinks = [
-    { label: "Home",    href: "/",           active: router.pathname === "/" },
-    { label: "Work",    href: "/?work=open", active: false, onClick: handleWorkClick },
-    { label: "About",   href: "/about",      active: router.pathname === "/about" && activeHash !== "#contact", onClick: () => setActiveHash("") },
-    { label: "Contact", href: "/about",      active: router.pathname === "/about" && activeHash === "#contact",  onClick: () => setActiveHash("#contact") },
+    { label: "Home",    href: "/",              active: router.pathname === "/" },
+    { label: "Work",    href: "/?work=open",    active: false, onClick: handleWorkClick },
+    { label: "About",   href: "/about",         active: router.pathname === "/about" && activeHash !== "#contact", onClick: () => setActiveHash("") },
+    { label: "Contact", href: "/about#contact", active: router.pathname === "/about" && activeHash === "#contact", onClick: handleContactClick },
   ];
 
   return (
