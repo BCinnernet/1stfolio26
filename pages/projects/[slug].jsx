@@ -189,7 +189,7 @@ const ProjectDetail = () => {
       <section className="project-hero-section">
         {/* Text column */}
         <div className="project-hero-text">
-          <a className="project-back-link" href="/">← Back to Work</a>
+          <a className="project-back-link" href="/?work=open">← Back to Work</a>
           <h1 className="project-info-title">{project.title}</h1>
           {/* Category label — edit "category" field in src/data/projects.js */}
           <span className="project-info-category">{project.category}</span>
