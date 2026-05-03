@@ -696,7 +696,19 @@ body {
   display: flex;
   gap: 8px;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.work-filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.work-filter-btn {
+  flex-shrink: 0;
 }
 
 .work-filter-btn {
