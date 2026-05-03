@@ -1087,6 +1087,10 @@ body {
   break-inside: avoid;
 }
 
+.editorial-item--vertical-video .editorial-item-video {
+  padding-bottom: 177.78%; /* 9:16 for vertical Shorts */
+}
+
 .editorial-item-video {
   position: relative;
   width: 100%;

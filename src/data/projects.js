@@ -372,6 +372,7 @@ const projects = [
       "I worked on the promotional visuals for the event, building around the idea of clothing that has already been lived in. The concept leaned into pieces holding their own presence, with imagery that suggested form and movement without showing a person directly. It gave the visuals a slightly surreal feel while still highlighting the individuality of the clothing and the people behind it.",
     ],
     gallery: [
+      { type: "video", src: "xFjM7kuseiI", caption: "Levee Vintage Market Promo", vertical: true },
       { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "" },
       { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "" },
       { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "" },
