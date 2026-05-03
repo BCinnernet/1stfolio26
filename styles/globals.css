@@ -595,8 +595,16 @@ body {
 }
 
 
+@keyframes about-extrude {
+  0%   { transform: translateY(0);    text-shadow: none; }
+  45%  { transform: translateY(-8px); text-shadow: 0 2px 0 #c5d400, 0 4px 0 #c5d400, 0 6px 0 #c5d400, 0 8px 0 #c5d400; }
+  75%  { transform: translateY(-8px); text-shadow: 0 2px 0 #c5d400, 0 4px 0 #c5d400, 0 6px 0 #c5d400, 0 8px 0 #c5d400; }
+  100% { transform: translateY(0);    text-shadow: none; }
+}
+
 .about-title-char {
   display: inline-block;
+  animation: about-extrude 1.1s ease calc(350ms + var(--char-delay, 0ms)) backwards;
   transition:
     transform 0.12s ease calc(var(--char-delay, 0ms)),
     text-shadow 0.12s ease calc(var(--char-delay, 0ms));
