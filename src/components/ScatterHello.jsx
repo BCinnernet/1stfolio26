@@ -133,7 +133,7 @@ export default function ScatterHello({ inHeader = false }) {
             ref={(el) => (letterRefs.current[i] = el)}
             className={`scatter-hello-letter${i >= 5 ? " scatter-hello-letter--outline" : ""}`}
             style={{
-              ...(i < 5  && { fontFamily: "'Gasoek One', sans-serif" }),
+              ...(i < 5  && { fontFamily: "'Climate Crisis', sans-serif" }),
               ...(i === 1  && { marginLeft: "0.12em" }),
               ...(i === 5  && { marginLeft: "0.18em" }),
               ...(i === 6  && { fontSize: "clamp(38px, 8.5vw, 118px)" }),

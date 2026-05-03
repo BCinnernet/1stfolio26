@@ -41,7 +41,7 @@ export default function Document() {
         {/* Preconnect + load Google Fonts reliably on all devices including iOS */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Covered+By+Your+Grace&display=block" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Covered+By+Your+Grace&display=block" rel="stylesheet" />
       </Head>
       <body>
         <Main />
