@@ -57,7 +57,7 @@ const About = () => {
                 Alongside my creative work, I have a background in marketing, social media, and communication work. We do a lot around here, a creative swiss army knife if you will.
               </p>
               <p>
-                <em>A jack of all trades is a master of none, but oftentimes better than a master of one.. is what they say right?</em>
+                <em>"A jack of all trades is a master of none, but oftentimes better than a master of one." That's what they say right?</em>
               </p>
             </div>
           </div>
