@@ -20,7 +20,7 @@ import ProximityText from "@/src/components/ProximityText";
 import siteConfig from "@/src/data/siteConfig";
 
 const { siteUrl, name } = siteConfig;
-const HOME_DESC = "Multimedia artist based in Kansas City — illustration, motion design, brand identity, poster design, apparel, and more. Eclectic on purpose.";
+const HOME_DESC = "Multimedia artist based in Kansas City — Motion designer, illustrator, graphic design. Illustration, apparel, social media, marketing and more.";
 
 // Work is loaded only in the browser (ssr: false) because Isotope (the grid
 // layout library it uses) doesn't work on the server side.
