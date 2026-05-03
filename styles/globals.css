@@ -1052,6 +1052,13 @@ body {
   columns: 4;
 }
 
+/* Smaller tile: image renders at 55% of column width, centered */
+.editorial-item--third img {
+  width: 55%;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Each tile breaks cleanly — no splitting an image across columns */
 .editorial-item {
   break-inside: avoid;
