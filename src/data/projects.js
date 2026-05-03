@@ -233,6 +233,33 @@ const projects = [
     credits: { lines: ["Ejuan Henderson", "Brand Identity & Large Format Design"] },
   },
 
+  // ─── LEVEE — VINTAGE MARKET ───────────────────────────────────────────────
+  {
+    slug: "levee-vintage-market",
+    title: "The Levee KC — Vintage Market",
+    category: "Motion & Campaign Design",
+    tags: ["brand-identity", "motion-design"],
+    year: "",
+    accentColor: "#fff200",
+    mainMediaType: "image",
+    mainImage: "/static/img/levee-vintage-market-hero.gif",
+    noHeroInGallery: true,
+    description: [
+      "The Levee Vintage Market was a community-driven event created in partnership with Swap Studios and The Levee KC, bringing together vendors selling vintage clothing and custom goods.",
+      "I worked on the promotional visuals for the event, building around the idea of clothing that has already been lived in. The concept leaned into pieces holding their own presence, with imagery that suggested form and movement without showing a person directly. It gave the visuals a slightly surreal feel while still highlighting the individuality of the clothing and the people behind it.",
+    ],
+    gallery: [
+      { type: "video", src: "xFjM7kuseiI", caption: "Levee Vintage Market Promo", vertical: true },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-hero.jpg",      caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "" },
+      { type: "image", src: "/static/img/levee-vintage-market-gallery-5.jpg", caption: "" },
+    ],
+    credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
+  },
+
   // ─── CUTIE ─────────────────────────────────────────────────────────────────
   {
     slug: "cutie-lyric-music-video",
@@ -260,6 +287,31 @@ const projects = [
     credits: { lines: ["Ejuan Henderson", "Motion Graphics"] },
   },
 
+  // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
+  {
+    slug: "hold-it-down-cover-art",
+    title: "Hold It Down — Animated Cover Art",
+    category: "Album Art & Motion",
+    tags: ["illustration-design", "motion-design"],  // Illustration + Motion
+    year: "",
+    accentColor: "#39ff14",
+    mainMediaType: "image",
+    mainImage: "/static/img/hold-it-down-cover-art-hero.gif",
+    description: [
+      "\"Hold It Down\" was created for rapper and DJ Dom Chronicles in collaboration with Sir Michael Rocks. The concept centered around placing both artists in a world surrounded by the things that inspire them. Dom came in with references and ideas, and we explored a few directions before landing on a visual that felt personal and expressive.",
+      "From there, I took the lead on illustration and animation. I created the artwork and brought it to life for use across social media and Spotify's canvas feature. The visuals were designed to feel dynamic while still working as a strong standalone cover. The illustration also extended into merchandise, including t-shirts, giving the project a life beyond just the digital release.",
+    ],
+    gallery: [
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-6.gif", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-7.jpg", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-8.jpg", caption: "" },
+      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-5.gif", caption: "" },
+    ],
+    credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
+  },
+
   // ─── BOOK COVERS ──────────────────────────────────────────────────────────
   {
     slug: "book-covers",
@@ -284,31 +336,6 @@ const projects = [
       { type: "image", src: "/static/img/book-covers-gallery-9.jpg", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Editorial Illustration"] },
-  },
-
-  // ─── HOLD IT DOWN ─────────────────────────────────────────────────────────
-  {
-    slug: "hold-it-down-cover-art",
-    title: "Hold It Down — Animated Cover Art",
-    category: "Album Art & Motion",
-    tags: ["illustration-design", "motion-design"],  // Illustration + Motion
-    year: "",
-    accentColor: "#39ff14",
-    mainMediaType: "image",
-    mainImage: "/static/img/hold-it-down-cover-art-hero.gif",
-    description: [
-      "\"Hold It Down\" was created for rapper and DJ Dom Chronicles in collaboration with Sir Michael Rocks. The concept centered around placing both artists in a world surrounded by the things that inspire them. Dom came in with references and ideas, and we explored a few directions before landing on a visual that felt personal and expressive.",
-      "From there, I took the lead on illustration and animation. I created the artwork and brought it to life for use across social media and Spotify's canvas feature. The visuals were designed to feel dynamic while still working as a strong standalone cover. The illustration also extended into merchandise, including t-shirts, giving the project a life beyond just the digital release.",
-    ],
-    gallery: [
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-4.gif", caption: "" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-2.jpg", caption: "" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-6.gif", caption: "" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-7.jpg", caption: "" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-8.jpg", caption: "" },
-      { type: "image", src: "/static/img/hold-it-down-cover-art-gallery-5.gif", caption: "" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Cover art Illustration & Motion"] },
   },
 
   // ─── K-STATE WILDCATS ─────────────────────────────────────────────────────
@@ -355,33 +382,6 @@ const projects = [
       { type: "image", caption: "" },
     ],
     credits: { lines: ["Ejuan Henderson", "Large Format Illustration"] },
-  },
-
-  // ─── LEVEE — VINTAGE MARKET ───────────────────────────────────────────────
-  {
-    slug: "levee-vintage-market",
-    title: "The Levee KC",
-    category: "Motion & Campaign Design",
-    tags: ["brand-identity", "motion-design"],
-    year: "",
-    accentColor: "#fff200",
-    mainMediaType: "image",
-    mainImage: "/static/img/levee-vintage-market-hero.gif",
-    noHeroInGallery: true,
-    description: [
-      "The Levee Vintage Market was a community-driven event created in partnership with Swap Studios and The Levee KC, bringing together vendors selling vintage clothing and custom goods.",
-      "I worked on the promotional visuals for the event, building around the idea of clothing that has already been lived in. The concept leaned into pieces holding their own presence, with imagery that suggested form and movement without showing a person directly. It gave the visuals a slightly surreal feel while still highlighting the individuality of the clothing and the people behind it.",
-    ],
-    gallery: [
-      { type: "video", src: "xFjM7kuseiI", caption: "Levee Vintage Market Promo", vertical: true },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-1.gif", caption: "" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-7.jpg", caption: "" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-2.jpg", caption: "" },
-      { type: "image", src: "/static/img/levee-vintage-market-hero.jpg",      caption: "" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-4.jpg", caption: "" },
-      { type: "image", src: "/static/img/levee-vintage-market-gallery-5.jpg", caption: "" },
-    ],
-    credits: { lines: ["Ejuan Henderson", "Motion & Campaign Design"] },
   },
 
   // ─── LEVEE x HALLOWEEN ────────────────────────────────────────────────────
