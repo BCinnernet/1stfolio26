@@ -191,7 +191,7 @@ const ProjectDetail = () => {
           <svg
             viewBox={`0 0 ${BW} ${BH}`}
             preserveAspectRatio="none"
-            style={{ display: "block", width: "100%", height: `${BH}px`, overflow: "visible", position: "relative", zIndex: 1, background: "#141013" }}
+            style={{ display: "block", width: "100%", height: `${BH}px`, overflow: "visible", position: "relative", zIndex: 1 }}
             onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); setBannerCursor({ nx: (e.clientX - r.left) / r.width, active: true }); }}
             onMouseLeave={() => setBannerCursor(p => ({ ...p, active: false }))}
           >
