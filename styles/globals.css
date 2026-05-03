@@ -32,7 +32,7 @@
 
 .site-nav-link {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(241, 235, 223, 0.6);
@@ -276,6 +276,15 @@
   font-family: "Covered By Your Grace", cursive;
   color: #f1ebdf;
   letter-spacing: -0.06em;
+}
+
+.scatter-hello-letter {
+  transition: color 0.4s ease;
+}
+
+.scatter-hello-letter.flashing {
+  color: #c5d400 !important;
+  transition: color 0s;
 }
 
 /* ── Work/Projects button — 3D extrude ───────────────────────────────────── */
