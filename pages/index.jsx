@@ -11,6 +11,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Layout from "@/src/layouts/Layout";
 import dynamic from "next/dynamic";
@@ -29,6 +30,7 @@ const Work = dynamic(() => import("@/src/components/Work"), { ssr: false });
 // GLOSS_DEFAULT = subtle shine at rest; GLOSS_HOVER = slightly brighter on hover.
 
 const Index3 = () => {
+  const router = useRouter();
   // true = project grid is visible, false = collapsed
   const [workOpen, setWorkOpen] = useState(false);
 
@@ -46,11 +48,17 @@ const Index3 = () => {
   const triggerRef = useRef(null); // the wrapper div around the button (used for scroll)
   const aboutRef   = useRef(null); // the about teaser section (used for scroll reveal)
 
-  // ── Auto-open work panel after 1.5 seconds on first load ────────────────
+  // ── Open work panel: immediately if ?work=open, otherwise after 1.5s ────
   useEffect(() => {
-    const t = setTimeout(() => setWorkOpen(true), 1500);
-    return () => clearTimeout(t);
-  }, []);
+    if (!router.isReady) return;
+    if (router.query.work === "open") {
+      setWorkOpen(true);
+      setTimeout(() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" }), 150);
+    } else {
+      const t = setTimeout(() => setWorkOpen(true), 1500);
+      return () => clearTimeout(t);
+    }
+  }, [router.isReady]);
 
   // ── Swap name from EJUAN → EJ after 2.8 seconds ─────────────────────────
   // To change this behavior, edit the two strings here or adjust the timeout.

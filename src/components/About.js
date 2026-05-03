@@ -18,7 +18,7 @@ const About = () => {
       ref={ref}
       id="about"
       className="section gray-bg"
-      style={{ paddingTop: "60px", paddingBottom: "10px" }}
+      style={{ paddingTop: "20px", paddingBottom: "10px" }}
     >
       <div className="container">
 
