@@ -94,14 +94,7 @@ const Work = () => {
             <button
               key={f.key}
               className={`work-filter-btn${activeFilter === f.key ? " active" : ""}`}
-              onClick={(e) => {
-                setActiveFilter(f.key);
-                const btn = e.currentTarget;
-                btn.classList.remove("btn-bounce");
-                void btn.offsetWidth;
-                btn.classList.add("btn-bounce");
-              }}
-              onAnimationEnd={(e) => e.currentTarget.classList.remove("btn-bounce")}
+              onClick={() => setActiveFilter(f.key)}
             >
               <SlideChars text={f.label} stagger={20} />
             </button>
