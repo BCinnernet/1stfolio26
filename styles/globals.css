@@ -296,15 +296,24 @@
 }
 
 /* ── Work/Projects button — 3D extrude ───────────────────────────────────── */
+@keyframes work-btn-bounce {
+  0%   { transform: scale(1.06); }
+  25%  { transform: scale(0.91); }
+  55%  { transform: scale(1.1);  }
+  75%  { transform: scale(0.97); }
+  90%  { transform: scale(1.04); }
+  100% { transform: scale(1.06); }
+}
+
 .work-reveal-btn {
   background: #c5d400 !important;
   border: 1.5px solid #a8b500 !important;
   color: #2b2b2b !important;
   /* hard 7px extrude, no blur */
   box-shadow: 0 7px 0 0 #8a9b00 !important;
-  transform: translateY(0);
+  transform: scale(1);
   transition:
-    transform 0.08s ease,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.08s ease,
     background 0.08s ease;
   will-change: transform, box-shadow;
@@ -316,12 +325,12 @@
   color: #2b2b2b;
 }
 
-/* Desktop hover: no change to depth, just slight brighten */
+/* Desktop hover: grow with spring easing */
 @media (hover: hover) {
   .work-reveal-btn:hover {
     background: #cee400;
     color: #2b2b2b;
-    transform: translateY(0);
+    transform: scale(1.06);
     box-shadow: 0 7px 0 0 #8a9b00;
   }
 }
@@ -338,11 +347,16 @@
   outline: none;
 }
 
-/* click-in: push down 7px, extrude collapses to nothing */
+/* click-in: quick press */
 .work-reveal-btn:active {
-  transform: translateY(7px) !important;
-  box-shadow: 0 0 0 0 #8a9b00 !important;
-  transition-duration: 0.06s;
+  transform: scale(0.93) !important;
+  box-shadow: 0 3px 0 0 #8a9b00 !important;
+  transition-duration: 0.06s !important;
+}
+
+/* bounce spring after click */
+.work-reveal-btn.btn-bounce {
+  animation: work-btn-bounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* ── Skills ticker behind Work button ───────────────────────────────────── */
@@ -393,6 +407,7 @@
 
 .work-reveal-label {
   font-weight: 700;
+  font-size: 20px;
 }
 
 /* ── Scroll nav blobs (up + down) ─────────────────────────────────────────── */

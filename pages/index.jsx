@@ -156,7 +156,14 @@ const Index3 = () => {
 
         <button
           className={`work-reveal-btn${workOpen ? " is-open" : ""}`}
-          onClick={() => setWorkOpen(o => !o)}
+          onClick={(e) => {
+            setWorkOpen(o => !o);
+            const btn = e.currentTarget;
+            btn.classList.remove("btn-bounce");
+            void btn.offsetWidth;
+            btn.classList.add("btn-bounce");
+          }}
+          onAnimationEnd={(e) => e.currentTarget.classList.remove("btn-bounce")}
           aria-expanded={workOpen}
         >
           <span className="work-folder-icon">
