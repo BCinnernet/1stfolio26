@@ -19,12 +19,20 @@ export default function ScatterHello({ inHeader = false }) {
   const prevCursorRef = useRef({ x: -9999, y: -9999 });
 
   useEffect(() => {
-    // Intro: letters rise up from below and bounce into place
+    // Intro: park every letter far below, then launch staggered per character
     stateRef.current.forEach((s) => {
-      s.dx        = (Math.random() - 0.5) * 20;
-      s.dy        = 70 + Math.random() * 40;
-      s.dRotation = (Math.random() - 0.5) * 24;
-      s.vy        = -4 - Math.random() * 2;
+      s.dx        = (Math.random() - 0.5) * 30;
+      s.dy        = 160 + Math.random() * 40;
+      s.dRotation = (Math.random() - 0.5) * 40;
+      s.vx        = 0;
+      s.vy        = 0;
+    });
+    stateRef.current.forEach((s, i) => {
+      setTimeout(() => {
+        s.vy        = -13 - Math.random() * 4;
+        s.vx        = (Math.random() - 0.5) * 5;
+        s.angularVel = (Math.random() - 0.5) * 10;
+      }, i * 65);
     });
 
     const tick = () => {
