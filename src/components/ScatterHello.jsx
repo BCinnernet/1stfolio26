@@ -19,36 +19,23 @@ export default function ScatterHello({ inHeader = false }) {
   const prevCursorRef = useRef({ x: -9999, y: -9999 });
 
   useEffect(() => {
-    // EJUAN (0-4): park below, launch one by one slowly
-    [0, 1, 2, 3, 4].forEach((idx) => {
-      const s = stateRef.current[idx];
+    // All letters park below; EJUAN launches first, .STUDIO follows after
+    stateRef.current.forEach((s) => {
       s.dx = (Math.random() - 0.5) * 30;
       s.dy = 160 + Math.random() * 40;
       s.dRotation = (Math.random() - 0.5) * 40;
       s.vx = 0;
       s.vy = 0;
+    });
+    stateRef.current.forEach((s, i) => {
+      const delay = i < 5
+        ? i * 150           // EJUAN: slower stagger
+        : 600 + (i - 5) * 65; // .STUDIO: starts after EJUAN, tighter
       setTimeout(() => {
         s.vy        = -13 - Math.random() * 4;
         s.vx        = (Math.random() - 0.5) * 5;
         s.angularVel = (Math.random() - 0.5) * 10;
-      }, idx * 150);
-    });
-
-    // .STUDIO (5-11): hide initially, then write on left-to-right
-    [5, 6, 7, 8, 9, 10, 11].forEach((idx) => {
-      const el = letterRefs.current[idx];
-      if (el) el.style.clipPath = "inset(0 100% 0 0)";
-    });
-    [5, 6, 7, 8, 9, 10, 11].forEach((idx, j) => {
-      setTimeout(() => {
-        const el = letterRefs.current[idx];
-        if (!el) return;
-        el.classList.add("scatter-write-on");
-        el.addEventListener("animationend", () => {
-          el.style.clipPath = "";
-          el.classList.remove("scatter-write-on");
-        }, { once: true });
-      }, 700 + j * 90);
+      }, delay);
     });
 
     const tick = () => {
