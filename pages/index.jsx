@@ -208,7 +208,7 @@ const Index3 = () => {
               <div className="about-me-img">
                 <img
                   className="about-gif"
-                  src="/static/img/home-intro-photo.jpg"
+                  src="/static/img/home-intro-photo.png"
                   alt="Ejuan Henderson"
                 />
               </div>
