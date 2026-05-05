@@ -81,6 +81,11 @@ const Contact = () => {
             </div>
           </div>
         </div>
+        <div className="row justify-content-center">
+          <div className="col-lg-10">
+            <p className="contact-quote">"A jack of all trades is a master of none, but oftentimes better than a master of one." That's what they say right?</p>
+          </div>
+        </div>
       </div>
     </section>
   );

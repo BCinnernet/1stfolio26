@@ -48,16 +48,13 @@ const About = () => {
           <div className="col-lg-5 offset-lg-1 about-text-col sr" style={{ "--sr-delay": "100ms" }}>
             <div className="about-me">
               <p>
-                I'm Ejuan Henderson (EJ is cool too), a multimedia artist working across mostly illustration, design, and motion, but don't get me wrong, I can't stick to one lane if I tried, so I don't. It's a lot of fun bringing ideas to life in whatever form they need to take, combining creative instinct with technicality.
+                I'm Ejuan Henderson, EJ works too. I'm a multimedia artist working across illustration, design, and motion. I follow ideas into whatever form they need, blending instinct with technical skill.
               </p>
               <p>
-                I'm naturally curious and into a lot of different things, which ends up shaping how I work. Part of that means staying intentional about keeping up with where tech and creativity intersect — knowing what's possible changes what we can reach for. I believe we are at a point where if we can dream it, we can build it, so we <em>have</em> to play and explore!
+                I'm naturally curious, and that shapes how I work. I stay intentional about where tech and creativity intersect. The only way to know what's possible is to play, experiment, and explore. Keeping that inner childlike curiosity matters to me.
               </p>
               <p>
-                Alongside my creative work, I have a background in marketing, social media, and communication work. We do a lot around here, a creative swiss army knife if you will.
-              </p>
-              <p>
-                <em>"A jack of all trades is a master of none, but oftentimes better than a master of one." That's what they say right?</em>
+                Outside of that, I have a background in marketing, social media, and communication. I know how that world works. I can speak <em>that</em> language too.
               </p>
             </div>
           </div>

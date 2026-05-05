@@ -198,6 +198,16 @@
   color: #c5d400 !important;
 }
 
+.contact-quote {
+  margin-top: 28px;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  letter-spacing: 0.03em;
+  line-height: 1.7;
+}
+
 /* ── Footer marquee — override template green to match site lime ─────────── */
 .marquee-track span {
   color: #c5d400;
