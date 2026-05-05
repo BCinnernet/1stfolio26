@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useLayoutEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 
 const LETTERS         = ["E", "J", "U", "A", "N", ".", "S", "T", "U", "D", "I", "O"];
@@ -18,19 +18,28 @@ export default function ScatterHello({ inHeader = false }) {
   const cursorRef     = useRef({ x: -9999, y: -9999 });
   const prevCursorRef = useRef({ x: -9999, y: -9999 });
 
-  useEffect(() => {
-    // All letters park below; EJUAN launches first, .STUDIO follows after
-    stateRef.current.forEach((s) => {
+  // Set initial positions before first paint so letters never flash at rest
+  useLayoutEffect(() => {
+    stateRef.current.forEach((s, i) => {
       s.dx = (Math.random() - 0.5) * 30;
       s.dy = 160 + Math.random() * 40;
       s.dRotation = (Math.random() - 0.5) * 40;
       s.vx = 0;
       s.vy = 0;
+      const el = letterRefs.current[i];
+      if (el) {
+        const totalRotation = (BASE_ROTATE[i] || 0) + s.dRotation;
+        el.style.transform = `translate(${s.dx.toFixed(2)}px, ${s.dy.toFixed(2)}px) rotate(${totalRotation.toFixed(2)}deg)`;
+      }
     });
+  }, []);
+
+  useEffect(() => {
+    // Stagger launches: EJUAN first, .STUDIO close behind
     stateRef.current.forEach((s, i) => {
       const delay = i < 5
-        ? i * 150           // EJUAN: slower stagger
-        : 280 + (i - 5) * 65; // .STUDIO: starts close behind EJUAN
+        ? i * 150
+        : 280 + (i - 5) * 65;
       setTimeout(() => {
         s.vy        = -13 - Math.random() * 4;
         s.vx        = (Math.random() - 0.5) * 5;
