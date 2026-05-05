@@ -123,6 +123,15 @@ const Index3 = () => {
         <meta name="twitter:image"       content={`${siteUrl}/static/img/Jumbled%20EJUAN%20logo%20-%20henderson%20outline%20-%2063.png`} />
         <meta name="twitter:creator"     content="@ohhej" />
 
+        {/* JSON-LD WebSite schema — tells Google the definitive site name */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Ejuan Henderson",
+          "alternateName": ["ejuan.studio", "ejuanhenderson.com"],
+          "url": siteUrl,
+        })}} />
+
         {/* JSON-LD Person schema */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
