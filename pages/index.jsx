@@ -208,8 +208,8 @@ const Index3 = () => {
               <div className="about-me-img">
                 <img
                   className="about-gif"
-                  src="/static/img/Body_scan_01_Test.gif"
-                  alt="Ejuan animated body scan"
+                  src="/static/img/home-intro-photo.jpg"
+                  alt="Ejuan Henderson"
                 />
               </div>
             </div>
