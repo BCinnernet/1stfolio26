@@ -281,7 +281,7 @@ const Index3 = () => {
                   className="home-teaser-body sr"
                   style={{ "--sr-delay": "300ms" }}
                   segments={[
-                    { text: "I work at the intersection of creative instinct and technicality, bringing ideas to life in whatever form they need to take!", italic: false },
+                    { text: "I work across illustration, design, and motion/animation. I try to keep that childlike curiosity in my process. Having fun and making space for play makes a difference. I'm always open to exploring ideas and seeing what we can make happen.", italic: false },
                   ]}
                 />
 
