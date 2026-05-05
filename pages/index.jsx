@@ -272,14 +272,7 @@ const Index3 = () => {
                     to change the copy. Use italic: true for italic phrases.    */}
                 <ProximityText
                   className="home-teaser-body sr"
-                  style={{ "--sr-delay": "270ms", marginBottom: "0" }}
-                  segments={[
-                    { text: "I can't stick to one lane if I tried... So I don't. Curiosity drives my work, and that's what keeps it eclectic.", italic: false },
-                  ]}
-                />
-                <ProximityText
-                  className="home-teaser-body sr"
-                  style={{ "--sr-delay": "300ms" }}
+                  style={{ "--sr-delay": "270ms" }}
                   segments={[
                     { text: "I work across illustration, design, and motion/animation. I try to keep that childlike curiosity in my process. Having fun and making space for play makes a difference. I'm always open to exploring ideas and seeing what we can make happen.", italic: false },
                   ]}
