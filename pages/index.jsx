@@ -45,8 +45,11 @@ const Index3 = () => {
   const [textLean, setTextLean] = useState(0);
 
   // refs point to actual DOM elements so we can read their size/position.
-  const triggerRef = useRef(null); // the wrapper div around the button (used for scroll)
-  const aboutRef   = useRef(null); // the about teaser section (used for scroll reveal)
+  const triggerRef   = useRef(null); // the wrapper div around the button (used for scroll)
+  const aboutRef     = useRef(null); // the about teaser section (used for scroll reveal)
+  const introImgRef  = useRef(null); // the intro photo wrapper (tilt + parallax)
+  const tiltTarget   = useRef({ x: 0, y: 0 });
+  const tiltCurrent  = useRef({ x: 0, y: 0 });
 
   // ── Open work panel: immediately if ?work=open, otherwise after 1.5s ────
   useEffect(() => {
@@ -76,6 +79,34 @@ const Index3 = () => {
       return () => clearTimeout(t);
     }
   }, [workOpen]);
+
+  // ── Intro photo: tilt on mouse + parallax on scroll ──────────────────────
+  useEffect(() => {
+    let raf;
+    const tick = () => {
+      const el = introImgRef.current;
+      if (el) {
+        // Spring tilt toward target
+        tiltCurrent.current.x += (tiltTarget.current.x - tiltCurrent.current.x) * 0.07;
+        tiltCurrent.current.y += (tiltTarget.current.y - tiltCurrent.current.y) * 0.07;
+
+        // Parallax: how far section has scrolled through viewport
+        const section = aboutRef.current;
+        let parallax = 0;
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+          parallax = (progress - 0.5) * -50;
+        }
+
+        const { x, y } = tiltCurrent.current;
+        el.style.transform = `perspective(900px) rotateY(${x.toFixed(2)}deg) rotateX(${y.toFixed(2)}deg) translateY(${parallax.toFixed(2)}px)`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   // ── Scroll-reveal for the about teaser section ───────────────────────────
   // Any element inside aboutRef with class "sr" starts invisible.
@@ -199,13 +230,25 @@ const Index3 = () => {
         ref={aboutRef}
         className="section slant-top"
         style={{ paddingTop: "80px", paddingBottom: "50px", background: "#c5d400" }}
+        onMouseMove={(e) => {
+          const el = introImgRef.current;
+          if (!el) return;
+          const rect = el.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          tiltTarget.current = {
+            x:  ((e.clientX - cx) / (rect.width  / 2)) * 9,
+            y: -((e.clientY - cy) / (rect.height / 2)) * 7,
+          };
+        }}
+        onMouseLeave={() => { tiltTarget.current = { x: 0, y: 0 }; }}
       >
         <div className="container">
           <div className="row align-items-center">
 
             {/* Left: the animated GIF */}
             <div className="col-lg-5 m-15px-tb sr" style={{ "--sr-delay": "0ms" }}>
-              <div className="about-me-img">
+              <div className="about-me-img" ref={introImgRef} style={{ willChange: "transform", transformStyle: "preserve-3d" }}>
                 <img
                   className="about-gif"
                   src="/static/img/home-intro-photo.png"
