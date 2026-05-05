@@ -30,7 +30,7 @@ export default function ScatterHello({ inHeader = false }) {
     stateRef.current.forEach((s, i) => {
       const delay = i < 5
         ? i * 150           // EJUAN: slower stagger
-        : 600 + (i - 5) * 65; // .STUDIO: starts after EJUAN, tighter
+        : 280 + (i - 5) * 65; // .STUDIO: starts close behind EJUAN
       setTimeout(() => {
         s.vy        = -13 - Math.random() * 4;
         s.vx        = (Math.random() - 0.5) * 5;
