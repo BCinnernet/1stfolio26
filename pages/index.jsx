@@ -283,7 +283,7 @@ const Index3 = () => {
                   className="home-teaser-body sr"
                   style={{ "--sr-delay": "270ms" }}
                   segments={[
-                    { text: "I work across illustration, design, and motion/animation. I try to keep that childlike curiosity in my process. Having fun and making space for play makes all the difference. I'm always open to exploring ideas and seeing what we can make happen.", italic: false },
+                    { text: "I work across illustration, design, and motion/animation. I try to keep that childlike curiosity within my process. Having fun and making space for play makes all the difference. I'm always open to exploring ideas and finding new opportunities in whats possible.", italic: false },
                   ]}
                 />
 

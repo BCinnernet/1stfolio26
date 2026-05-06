@@ -7,7 +7,7 @@ const siteConfig = {
   name: "Ejuan Henderson",
   email: "hello@ejuan.studio",
   location: "Kansas City, Missouri",
-  siteUrl: "https://ejuanhenderson.com",
+  siteUrl: "https://www.ejuanhenderson.com",
 
   social: {
     instagram: {
