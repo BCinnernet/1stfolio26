@@ -39,6 +39,7 @@ const Index3 = () => {
   // Hovering the name toggles it back and forth permanently.
   const [nameVariant, setNameVariant] = useState("EJUAN");
   const [nameHovered, setNameHovered] = useState(false);
+  const [wazzuupWaving, setWazzuupWaving] = useState(false);
 
   // textLean: -1 to 1, updated as the mouse moves across the about column.
   // Used to slightly shift the "Check me out" button for a parallax feel.
@@ -64,6 +65,12 @@ const Index3 = () => {
   // To change this behavior, edit the two strings here or adjust the timeout.
   useEffect(() => {
     const t = setTimeout(() => setNameVariant("EJ"), 2800);
+    return () => clearTimeout(t);
+  }, []);
+
+  // ── Trigger WAZZUUP! wave on page load ───────────────────────────────────
+  useEffect(() => {
+    const t = setTimeout(() => setWazzuupWaving(true), 200);
     return () => clearTimeout(t);
   }, []);
 
@@ -249,7 +256,25 @@ const Index3 = () => {
                     and STAYS in that state until hovered again.
                     To change the greeting text, edit the string below.         */}
                 <h2 className="home-teaser-name sr" style={{ "--sr-delay": "120ms" }}>
-                  WHAT'S UP, I'M
+                  <span
+                    className={`wazzuup-wave${wazzuupWaving ? " is-waving" : ""}`}
+                    onMouseEnter={() => setWazzuupWaving(true)}
+                  >
+                    {"WAZZUUP!".split("").map((char, i, arr) => (
+                      <span
+                        key={i}
+                        className="wazzuup-char"
+                        style={{ "--i": i }}
+                        onAnimationEnd={i === arr.length - 1 ? () => setWazzuupWaving(false) : undefined}
+                      >{char}</span>
+                    ))}
+                  </span>
+                </h2>
+
+                {/* ── Role line ─────────────────────────────────────────────
+                    Name toggles between EJ and EJUAN on hover (SlideChars).  */}
+                <p className="home-teaser-role sr" style={{ "--sr-delay": "200ms" }}>
+                  {"I'm "}
                   <a
                     href="/about"
                     className="home-name-hover-wrap"
@@ -264,17 +289,8 @@ const Index3 = () => {
                       animateIn
                     />
                   </a>
-                </h2>
-
-                {/* ── Role line ─────────────────────────────────────────────
-                    ProximityText makes each character react to cursor proximity:
-                    characters near the cursor scale up, bold, and lift slightly.
-                    To edit the text, change the `text` value in `segments`.    */}
-                <ProximityText
-                  className="home-teaser-role sr"
-                  style={{ "--sr-delay": "200ms" }}
-                  segments={[{ text: "Multimedia Artist", italic: false }]}
-                />
+                  {", a Multimedia Artist."}
+                </p>
 
                 {/* ── Body copy paragraphs ──────────────────────────────────
                     Each ProximityText is one paragraph. Edit the `text` strings

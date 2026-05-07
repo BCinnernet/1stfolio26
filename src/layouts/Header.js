@@ -37,7 +37,7 @@ const Header = ({ headerColor }) => {
     setActiveHash("#contact");
     if (router.pathname === "/about") {
       e.preventDefault();
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      window.dispatchEvent(new CustomEvent("openContactCard"));
     }
   };
 

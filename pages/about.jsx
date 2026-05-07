@@ -1,6 +1,5 @@
 import Head from "next/head";
 import About from "@/src/components/About";
-import Contact from "@/src/components/Contact";
 import Layout from "@/src/layouts/Layout";
 import siteConfig from "@/src/data/siteConfig";
 
@@ -28,7 +27,6 @@ const AboutPage = () => {
         <meta name="twitter:creator"     content="@ohhej" />
       </Head>
       <About />
-      <Contact />
     </Layout>
   );
 };

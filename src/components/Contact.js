@@ -55,7 +55,7 @@ const Contact = () => {
 
                 <div className="contact-card-left">
                   <p className="contact-card-label">Lets make something!</p>
-                  <p className="contact-card-text" style={{ fontWeight: "700", color: "#ffffff" }}>Business Hours: Open 24/7 | 7 days a week.</p>
+                  <p className="contact-card-text" style={{ fontWeight: "700", color: "#ffffff" }}>Business Hours: Open 24/7 <span style={{ padding: "0 6px" }}>|</span> <em style={{ fontFamily: "'Covered By Your Grace', cursive", fontStyle: "italic", fontWeight: "400", fontSize: "1.35em" }}>Always Open !</em></p>
                   <p className="contact-card-text">Available for freelance, collaborations, and creative opportunities.</p>
                 </div>
 
