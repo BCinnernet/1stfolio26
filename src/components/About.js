@@ -47,7 +47,6 @@ const About = () => {
 
   const [cardStyle, setCardStyle] = useState({ transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)" });
   const [glossStyle, setGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
-
   const [overlayCardStyle, setOverlayCardStyle] = useState({ transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)" });
   const [overlayGlossStyle, setOverlayGlossStyle] = useState({ background: GLOSS_DEFAULT, transform: "translateX(0px) translateY(0px)" });
 
@@ -62,10 +61,7 @@ const About = () => {
 
   const closeCard = useCallback(() => {
     setClosing(true);
-    setTimeout(() => {
-      setExpanded(false);
-      setClosing(false);
-    }, 320);
+    setTimeout(() => { setExpanded(false); setClosing(false); }, 320);
   }, []);
 
   useEffect(() => {
@@ -74,7 +70,6 @@ const About = () => {
     return () => window.removeEventListener("openContactCard", openCard);
   }, [openCard]);
 
-  // Close on Escape key
   useEffect(() => {
     if (!expanded) return;
     const onKey = (e) => { if (e.key === "Escape") closeCard(); };
@@ -139,7 +134,7 @@ const About = () => {
                   I'm Ejuan Henderson, EJ works too. I'm a multimedia artist working across illustration, design, and motion. I follow ideas into whatever form they need, blending instinct with technical skill. Things change rapidly, so I aim to keep up to speed with the intersection of tech and art. Learning to build this website is one of my latest examples.
                 </p>
                 <p>
-                  I'm a super curious dude by nature, and I absolutely lead with that in my work. The only way to know what's possible is to play, experiment, and explore is how I sees it. Keeping that inner child alive is everything!
+                  I'm a super curious dude by nature, and I absolutely lead with that in my work. The only way to know what's possible is to play, experiment and explore is how I sees it. Keeping that inner child alive is everything!
                 </p>
                 <p>
                   Outside of that, I have a background in marketing, social media, and communication. I know how that world works and I can speak <em>that</em> language too.
