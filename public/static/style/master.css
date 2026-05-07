@@ -6055,7 +6055,7 @@ h6 {
   align-items: baseline;
   flex-wrap: nowrap;
   gap: 0.22em;
-  font-size: clamp(1.4rem, 3.8vw, 3.4rem);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
   font-weight: 800;
   line-height: 1.1;
   color: #141413;
@@ -6077,7 +6077,7 @@ h6 {
 }
 
 .home-teaser-role {
-  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -6857,6 +6857,9 @@ body {
   /* Text first, photo second on mobile */
   .about-text-col  { order: 1; }
   .about-photo-col { order: 2; }
+
+  .about-page-title { font-size: 4rem; }
+
 
   /* Cap the photo size on mobile */
   .about-photo-col canvas {
