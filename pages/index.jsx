@@ -122,13 +122,13 @@ const Index3 = () => {
         <meta property="og:title"       content={`${name} — Multimedia Artist`} />
         <meta property="og:description" content={HOME_DESC} />
         {/* OG image: swap filename below to a hero artwork piece when ready */}
-        <meta property="og:image"       content={`${siteUrl}/static/img/Jumbled%20EJUAN%20logo%20-%20henderson%20outline%20-%2063.png`} />
+        <meta property="og:image"       content={`${siteUrl}/static/img/ejuan-henderson-og.png`} />
 
         {/* Twitter / X card */}
         <meta name="twitter:card"        content="summary_large_image" />
         <meta name="twitter:title"       content={`${name} — Multimedia Artist`} />
         <meta name="twitter:description" content={HOME_DESC} />
-        <meta name="twitter:image"       content={`${siteUrl}/static/img/Jumbled%20EJUAN%20logo%20-%20henderson%20outline%20-%2063.png`} />
+        <meta name="twitter:image"       content={`${siteUrl}/static/img/ejuan-henderson-og.png`} />
         <meta name="twitter:creator"     content="@ohhej" />
 
         {/* JSON-LD WebSite schema — tells Google the definitive site name */}
