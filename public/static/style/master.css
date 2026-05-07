@@ -6040,8 +6040,8 @@ h6 {
   display: inline-block;
 }
 .wazzuup-wave.is-waving .wazzuup-char {
-  animation: wazzuupWave 0.6s ease forwards;
-  animation-delay: calc(var(--i) * 0.07s);
+  animation: wazzuupWave 0.4s ease forwards;
+  animation-delay: calc(var(--i) * 0.045s);
 }
 @keyframes wazzuupWave {
   0%   { transform: translateY(0); }

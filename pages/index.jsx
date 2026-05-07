@@ -68,10 +68,11 @@ const Index3 = () => {
     return () => clearTimeout(t);
   }, []);
 
-  // ── Trigger WAZZUUP! wave on page load ───────────────────────────────────
+  // ── Trigger WAZZUUP! wave on load and every 5 seconds ───────────────────
   useEffect(() => {
     const t = setTimeout(() => setWazzuupWaving(true), 200);
-    return () => clearTimeout(t);
+    const interval = setInterval(() => setWazzuupWaving(true), 5000);
+    return () => { clearTimeout(t); clearInterval(interval); };
   }, []);
 
   // ── Tell Isotope to recalculate the grid after the work panel opens ──────
