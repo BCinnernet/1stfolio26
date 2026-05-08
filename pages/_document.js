@@ -11,7 +11,9 @@ export default function Document() {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
 
         <link
