@@ -19,8 +19,8 @@ const CardContent = ({ onMouseMove, onMouseLeave, onClick, cardStyle, glossStyle
   >
     <div className="contact-card-gloss" style={glossStyle} />
     <div style={{ padding: "28px 24px", display: "flex", flexDirection: "column", gap: "16px", textAlign: "left" }}>
-      <p className="contact-card-label" style={{ marginBottom: 0 }}>Lets make something!</p>
-      <h3 className="contact-card-title" style={{ marginBottom: 0 }}>Reach out, lets connect.</h3>
+      <p className="contact-card-label" style={{ marginBottom: 0 }}>Let's make something!</p>
+      <h3 className="contact-card-title" style={{ marginBottom: 0, marginTop: "-8px" }}>Don't be a stranger!</h3>
       <a href={`mailto:${email}`} className="contact-card-email">{email}</a>
       <div className="contact-card-socials" style={{ justifyContent: "flex-start", marginBottom: "4px", marginTop: "-8px" }}>
         <a href={instagram.url} target="_blank" rel="noreferrer" aria-label={instagram.label}>
@@ -32,7 +32,7 @@ const CardContent = ({ onMouseMove, onMouseLeave, onClick, cardStyle, glossStyle
           <span>{bluesky.label}</span>
         </a>
       </div>
-      <p className="contact-card-text" style={{ fontWeight: "700", color: "#ffffff", marginBottom: 0 }}>
+      <p className="contact-card-text" style={{ marginBottom: 0 }}>
         Open 24/7 <span style={{ padding: "0 6px" }}>|</span> <em style={{ fontFamily: "'Covered By Your Grace', cursive", fontStyle: "italic", fontWeight: "400", fontSize: "1.35em" }}>Always Open !</em>
       </p>
       <p className="contact-card-text" style={{ marginBottom: 0 }}>Available for freelance, collaborations, and creative opportunities.</p>
@@ -131,7 +131,7 @@ const About = () => {
               </h2>
               <div className="about-me">
                 <p>
-                  I'm Ejuan Henderson, EJ works too. I'm a multimedia artist working across illustration, design, and motion. I follow ideas into whatever form they need, blending instinct with technical skill. Things change rapidly, so I aim to keep up to speed with the intersection of tech and art. Learning to build this website is one of my latest examples.
+                  I'm Ejuan Henderson, I also go by EJ. I'm a multimedia artist working across illustration, design, and motion. I follow ideas into whatever form they need, blending instinct with technical skill. Things change rapidly, so I aim to keep up to speed with the intersection of tech and art. Learning to build this website is one of my latest examples.
                 </p>
                 <p>
                   I'm a super curious dude by nature, and I absolutely lead with that in my work. The only way to know what's possible is to play, experiment and explore is how I sees it. Keeping that inner child alive is everything!
