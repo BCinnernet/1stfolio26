@@ -10,6 +10,9 @@ const DAMPING         = 0.74;
 const VELOCITY_SCALE  = 0.04;  // cursor speed → extra force multiplier
 const FLASH_THRESHOLD = 14;    // letter speed that triggers color flash
 const FLASH_FRAMES    = 28;    // frames before flash fades out
+const JITTER_FORCE    = 0.45;  // subtle random nudge magnitude
+const JITTER_MIN      = 14;    // min frames between jitter ticks (~4/sec at 60fps)
+const JITTER_MAX      = 28;    // max frames between jitter ticks (~2/sec at 60fps)
 
 export default function ScatterHello({ inHeader = false }) {
   const letterRefs    = useRef([]);
@@ -17,6 +20,7 @@ export default function ScatterHello({ inHeader = false }) {
   const rafRef        = useRef(null);
   const cursorRef     = useRef({ x: -9999, y: -9999 });
   const prevCursorRef = useRef({ x: -9999, y: -9999 });
+  const jitterRef     = useRef(LETTERS.map(() => Math.floor(Math.random() * JITTER_MAX) + JITTER_MIN));
 
   // Set initial positions before first paint so letters never flash at rest
   useLayoutEffect(() => {
@@ -87,6 +91,15 @@ export default function ScatterHello({ inHeader = false }) {
         s.dy         += s.vy;
         s.dRotation  += s.angularVel;
 
+        // Stop-motion jitter: independent random nudge per letter
+        jitterRef.current[i]--;
+        if (jitterRef.current[i] <= 0) {
+          s.vx += (Math.random() - 0.5) * JITTER_FORCE * 2;
+          s.vy += (Math.random() - 0.5) * JITTER_FORCE * 2;
+          s.angularVel += (Math.random() - 0.5) * JITTER_FORCE * 0.5;
+          jitterRef.current[i] = Math.floor(Math.random() * (JITTER_MAX - JITTER_MIN)) + JITTER_MIN;
+        }
+
         // Color flash: trigger when letter gets hit hard enough
         const letterSpeed = Math.sqrt(s.vx * s.vx + s.vy * s.vy);
         if (letterSpeed > FLASH_THRESHOLD) s.flashTimer = FLASH_FRAMES;
@@ -146,6 +159,16 @@ export default function ScatterHello({ inHeader = false }) {
       onTouchEnd={onTouchEnd}
       style={{ display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none", cursor: "pointer" }}
     >
+      <video
+        className="scatter-hello-bg-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source src="/static/video/header-bg.mp4" type="video/mp4" />
+      </video>
       <div className="scatter-hello-row">
         {LETTERS.map((char, i) => (
           <span
