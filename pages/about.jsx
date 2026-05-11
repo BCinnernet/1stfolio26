@@ -10,7 +10,7 @@ const AboutPage = () => {
   return (
     <Layout headerColor={"dark"}>
       <Head>
-        <title>About — {name}</title>
+        <title>{`About — ${name}`}</title>
         <meta name="description" content={ABOUT_DESC} />
         <link rel="canonical" href={`${siteUrl}/about`} />
 

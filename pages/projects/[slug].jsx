@@ -148,7 +148,7 @@ const ProjectDetail = () => {
   return (
     <Layout headerColor="dark">
       <Head>
-        <title>{project.title} — {name}</title>
+        <title>{`${project.title} — ${name}`}</title>
         <meta name="description" content={pageDesc} />
         <link rel="canonical" href={pageUrl} />
 

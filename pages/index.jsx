@@ -112,7 +112,7 @@ const Index3 = () => {
   return (
     <Layout headerColor={"dark"}>
       <Head>
-        <title>{name} — Multimedia Artist</title>
+        <title>{`${name} — Multimedia Artist`}</title>
         <meta name="description" content={HOME_DESC} />
         <link rel="canonical" href={siteUrl} />
 
