@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import { Fragment, useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
+import { Analytics } from "@vercel/analytics/next";
 import SlideChars from "@/src/components/SlideChars";
 
 const KONAMI = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];
@@ -408,6 +409,7 @@ export default function App({ Component, pageProps }) {
           </button>
         </>
       )}
+      <Analytics />
     </Fragment>
   );
 }
